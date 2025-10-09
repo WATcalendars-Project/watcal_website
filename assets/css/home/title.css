@@ -1,0 +1,511 @@
+.title {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: clamp(20px, 1vw, 40px);
+    top: 0;
+    z-index: 100;
+    padding-top: 150px; 
+}
+
+.title .desktop-title h1 {
+    display: block;
+    font-size: 3.6rem;
+    font-weight: bold;
+    background: linear-gradient(
+        204deg,
+        rgba(20, 56, 30, 1) 1%,
+        rgba(55, 130, 84, 1) 40%,
+        rgba(83, 237, 178, 1) 100%
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
+    flex-shrink: 0;
+    max-width: fit-content;
+    line-height: 70px;
+    order: 1;
+}
+
+.title .media-title h1 {
+    display: none;
+}
+
+.tablet-text {
+    display: none;
+}
+
+.mobile-text {
+    display: none; 
+}
+
+.logo2 {
+    flex-shrink: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    order: 2;
+}
+
+.logo2 img {
+    margin-top: -80px;
+    width: 400px;
+    margin-right: -60px;
+}
+
+.desktop-title .desktop-text {
+    margin-top: 10px;
+    font-size: 1.8rem;
+    font-weight: 500;
+    line-height: 40px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    top: 0;
+    z-index: 100;
+    background: none; 
+    -webkit-background-clip: initial; 
+    -webkit-text-fill-color: rgba(214, 214, 214, 0.7); 
+    background-clip: initial; 
+}
+
+.media-title .description {
+    color: rgba(214, 214, 214, 0.7);
+}
+
+.media-title .buttons {
+    display: none;
+}
+
+.desktop-buttons {
+    display: flex;
+    gap: 16px; 
+    margin-top: 40px;
+    background: none; 
+    -webkit-background-clip: initial; 
+    -webkit-text-fill-color: white; 
+    background-clip: initial;
+}
+
+.desktop-buttons .get-started {
+    text-decoration: none;
+    border: 2px solid rgba(55, 130, 84, 1);
+    padding: 13px 33px;
+    border-radius: 33px;
+    color: white;
+    font-size: 1.2rem;
+    font-weight: 500;
+    background-color: rgba(55, 130, 84, 1);
+    transition: all 0.3s;
+}
+
+.desktop-buttons .get-started:hover {
+    background-color: rgb(69, 164, 106);
+    box-shadow: 0 1px 8px rgba(69, 164, 106, 0.6);
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.7);
+}
+
+.desktop-buttons .schedules {
+    text-decoration: none;
+    border: 2px solid rgba(214, 214, 214, 0.7);
+    padding: 13px 33px;
+    border-radius: 33px;
+    color: white;
+    font-size: 1.2rem;
+    font-weight: 500;
+    transition: all 0.3s;
+    z-index: 1;
+    position: relative; 
+    overflow: hidden;
+    background-color: transparent;
+}
+
+.desktop-buttons .schedules:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+    border-radius: 33px;
+    z-index: -2;
+}
+
+.desktop-buttons .schedules:before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0%;
+    height: 100%;
+    background-color: rgba(161, 161, 161, 0.7);
+    border-radius: 33px;
+    z-index: -1;
+    transition: all 0.3s;
+}
+
+.desktop-buttons .schedules:hover {
+    color: white;
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.7);
+    box-shadow: 0 1px 8px rgba(97, 97, 97, 0.7);
+}
+
+.desktop-buttons .schedules:hover:before {
+    width: 100%;
+}
+
+.desktop-buttons .arrow img {
+    margin-left: 8px;
+    width: 12px;
+    height: 12px;
+}
+
+.desktop-buttons .github {
+    text-decoration: none;
+    border: 2px solid rgba(214, 214, 214, 0.7);
+    padding: 12px 33px;
+    border-radius: 33px;
+    color: white;
+    font-size: 1.2rem;
+    font-weight: 500;
+    transition: all 0.3s;
+    z-index: 1;
+    position: relative; 
+    overflow: hidden;
+    background-color: transparent;
+}
+
+.desktop-buttons .github:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+    border-radius: 33px;
+    z-index: -2;
+}
+
+.desktop-buttons .github:before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0%;
+    height: 100%;
+    background-color: rgba(161, 161, 161, 0.7);
+    border-radius: 33px;
+    z-index: -1;
+    transition: all 0.3s;
+}
+
+.desktop-buttons .github:hover {
+    color: white;
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.7);
+    box-shadow: 0 1px 8px rgba(97, 97, 97, 0.7);
+}
+
+.desktop-buttons .github:hover:before {
+    width: 100%;
+}
+
+
+@media (max-width: 1100px) {
+    .title {
+        flex-direction: column-reverse; 
+        align-items: center;
+    }
+
+    .description .tablet-text {
+        font-size: 1.3rem;
+    }
+    
+    .logo2 {
+        margin-bottom: -40px; 
+    }
+    
+    .logo2 img {
+        margin-top: -100px; 
+        margin-right: 0; 
+        width: 340px;
+    }
+
+    .desktop-title {
+        align-items: center;
+    }
+
+    .title .desktop-title h1 {
+        display: none;
+    }
+    
+    .title .media-title h1 {
+        display: block;
+        font-weight: bold;
+        background: linear-gradient(
+            204deg,
+            rgba(20, 56, 30, 1) 1%,
+            rgba(55, 130, 84, 1) 40%,
+            rgba(83, 237, 178, 1) 100%
+        );
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        color: transparent;
+        font-size: 2.8rem;
+        text-align: center; 
+        z-index: 10;
+        line-height: 50px;
+    }
+
+    .media-title .description {
+        margin-top: 10px;
+        font-size: 1.4rem;
+        text-align: center;
+        padding: 0 30px;
+    }
+    
+    .desktop-title .desktop-text {
+        display: none; 
+    }
+
+    .tablet-text {
+        display: inline;
+    }
+
+    .mobile-text {
+        display: none; 
+    }
+
+    .desktop-buttons {
+        display: none;
+    }
+
+    .media-title .buttons {
+        display: flex;
+        margin-top: 40px;
+        gap: 16px;
+        justify-content: center;
+    }
+
+    .media-title .buttons .get-started {
+        text-decoration: none;
+        border: 2px solid rgba(55, 130, 84, 1);
+        padding: 12px 30px;
+        border-radius: 30px;
+        color: white;
+        font-size: 1.1rem;
+        font-weight: 500;
+        background-color: rgba(55, 130, 84, 1);
+        transition: all 0.3s;
+    }
+
+    .media-title .buttons .get-started:hover {
+        background-color: rgb(69, 164, 106);
+        box-shadow: 0 1px 8px rgba(69, 164, 106, 0.6);
+        text-shadow: 0 0 5px rgba(255, 255, 255, 0.7);
+    }
+
+    .media-title .buttons .schedules {
+        text-decoration: none;
+        border: 2px solid rgba(214, 214, 214, 0.7);
+        padding: 12px 30px;
+        border-radius: 30px;
+        color: white;
+        font-size: 1.1rem;
+        font-weight: 500;
+        transition: all 0.3s;
+        z-index: 1;
+        position: relative; 
+        overflow: hidden;
+        background-color: transparent;
+    }
+
+    .media-title .buttons .schedules:after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: transparent;
+        border-radius: 30px;
+        z-index: -2;
+    }
+
+    .media-title .buttons .schedules:before {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 0%;
+        height: 100%;
+        background-color: rgba(161, 161, 161, 0.7);
+        border-radius: 30px;
+        z-index: -1;
+        transition: all 0.3s;
+    }
+
+    .media-title .buttons .schedules:hover {
+        color: white;
+        text-shadow: 0 0 5px rgba(255, 255, 255, 0.7);
+        box-shadow: 0 1px 8px rgba(97, 97, 97, 0.7);
+    }
+
+    .media-title .buttons .schedules:hover:before {
+        width: 100%;
+    }
+
+    .media-title .buttons .github {
+        text-decoration: none;
+        border: 2px solid rgba(214, 214, 214, 0.7);
+        padding: 12px 30px;
+        border-radius: 30px;
+        color: white;
+        font-size: 1.1rem;
+        font-weight: 500;
+        transition: all 0.3s;
+        z-index: 1;
+        position: relative; 
+        overflow: hidden;
+        background-color: transparent;
+    }
+
+    .media-title .buttons .github:after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: transparent;
+        border-radius: 30px;
+        z-index: -2;
+    }
+
+    .media-title .buttons .github:before {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 0%;
+        height: 100%;
+        background-color: rgba(161, 161, 161, 0.7);
+        border-radius: 30px;
+        z-index: -1;
+        transition: all 0.3s;
+    }
+
+    .media-title .buttons .github:hover {
+        color: white;
+        text-shadow: 0 0 5px rgba(255, 255, 255, 0.7);
+        box-shadow: 0 1px 8px rgba(97, 97, 97, 0.7);
+    }
+
+    .media-title .buttons .github:hover:before {
+        width: 100%;
+    }
+
+    .media-title .arrow img {
+    margin-left: 4px;
+    width: 12px;
+    height: 12px;
+}
+
+}
+
+@media (max-width: 650px) {
+    .logo2 img {
+        margin-top: -90px;
+        width: 280px;
+        margin-bottom: -20px;
+    }
+    .title .desktop-title h1 {
+        display: none;
+    }
+    .title .media-title h1 {
+        display: block;
+        font-weight: bold;
+        background: linear-gradient(
+            204deg,
+            rgba(20, 56, 30, 1) 1%,
+            rgba(55, 130, 84, 1) 40%,
+            rgba(83, 237, 178, 1) 100%
+        );
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        color: transparent;
+        margin-top: 5px;
+        font-size: 2.1rem;
+        line-height: 40px;
+    }
+    .media-title .description {
+        margin-top: 10px;
+        font-size: 1rem;
+        font-weight: 500;
+        text-align: center;
+    }
+    .desktop-title .desktop-text {
+        display: none; 
+    }
+
+    .tablet-text {
+        display: none;
+    }
+
+    .mobile-text {
+        display: inline; 
+    }
+
+    .desktop-buttons {
+        display: none;
+    }
+
+    .media-title .buttons {
+        margin-top: 30px;
+        gap: 12px;
+    }
+
+    .media-title .buttons .get-started {
+        text-decoration: none;
+        border: 2px solid rgba(55, 130, 84, 1);
+        padding: 10px 15px;
+        border-radius: 25px;
+        color: white;
+        font-size: 0.88rem;
+        font-weight: 500;
+        background-color: rgba(55, 130, 84, 1);
+        transition: all 0.3s;
+    }
+
+    .media-title .buttons .get-started:hover {
+        background-color: rgb(69, 164, 106);
+        box-shadow: 0 1px 8px rgba(69, 164, 106, 0.6);
+        text-shadow: 0 0 5px rgba(255, 255, 255, 0.7);
+    }
+
+    .media-title .buttons .schedules {
+        border: 2px solid rgba(214, 214, 214, 0.7);
+        padding: 10px 15px;
+        border-radius: 25px;
+        color: white;
+        font-size: 0.88rem;
+        font-weight: 500;
+        background-color: transparent;
+    }
+
+    .media-title .buttons .github {
+        border: 2px solid rgba(214, 214, 214, 0.7);
+        padding: 10px 15px;
+        border-radius: 25px;
+        color: white;
+        font-size: 0.88rem;
+        font-weight: 500;
+        background-color: transparent;
+    }
+}

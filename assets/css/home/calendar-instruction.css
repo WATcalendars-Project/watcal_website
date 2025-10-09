@@ -1,0 +1,168 @@
+.get-your-calendar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    color: white;
+    gap: 0px;
+    font-size: 18px;
+    margin-top: 50px;
+    line-height: 2;
+}
+
+.get-your-calendar h1 {
+    font-size: 25px;
+}
+
+.get-your-calendar p {
+    margin-top: 40px;
+    margin-bottom: 0px;
+}
+
+.get-your-calendar img {
+    transform: translateY(-3px);
+    width: 17px;
+    padding: 0 3px;
+    /* Softer, non-rectangular shadow that respects transparent pixels */
+    filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.45)) drop-shadow(0 0 1px rgba(0, 0, 0, 0.2));
+    /* Optional: align tiny icons nicely with inline text */
+    vertical-align: middle;
+}
+
+.tutorial-faculties {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 800px;
+}
+
+.get-your-calendar img[alt="browser-faculties"] {
+    width: 100%;
+    padding: 0 3px;
+
+}
+
+.get-your-calendar img[alt="iphone-faculties"] {
+    width: 50%;
+    padding: 0 3px;
+}
+
+@media (max-width: 1600px) {
+    .get-your-calendar img[alt="browser-faculties"] {
+        transform: translateX(40px);
+    }
+    .get-your-calendar img[alt="iphone-faculties"] {
+        transform: translateX(-40px);
+    }
+    .tutorial-faculties {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 0px 50px;
+    }
+}
+
+.tutorial-groups {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 800px;
+}
+
+.get-your-calendar img[alt="browser-groups"] {
+    width: 100%;
+    padding: 0 3px;
+    z-index: 0;
+}
+
+.get-your-calendar img[alt="iphone-groups"] {
+    width: 50%;
+    padding: 0 3px;
+    z-index: 1;
+}
+
+@media (max-width: 1600px) {
+    .get-your-calendar img[alt="browser-groups"] {
+        transform: translateX(-40px);
+    }
+    .get-your-calendar img[alt="iphone-groups"] {
+        transform: translateX(40px);
+    }
+    .tutorial-groups {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 0px 50px;
+    }
+}
+
+.get-your-calendar img[alt="iphone-subscription"] {
+    width: 50%;
+    margin-top: 10px;
+    max-width: 450px;
+}
+
+.tutorial-view {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 800px;
+}
+
+.get-your-calendar img[alt="iphone-day"] {
+    width: 60%;
+    padding: 0 3px;
+    z-index: 0;
+}
+
+.get-your-calendar img[alt="iphone-month"] {
+    width: 50%;
+    padding: 0 3px;
+    z-index: 1;
+}
+
+@media (max-width: 1600px) {
+    .get-your-calendar img[alt="iphone-day"] {
+        transform: translateX(25px);
+        z-index: 1;
+    }
+    .get-your-calendar img[alt="iphone-month"] {
+        transform: translateX(-25px);
+        z-index: 0;
+    }
+    .tutorial-groups {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 0px 50px;
+    }
+}
+
+.get-your-calendar a {
+    text-decoration: none;
+    border: 2px solid rgba(55, 130, 84, 1);
+    padding: 3px 8px;
+    margin: 7px 7px;
+    border-radius: 33px;
+    color: white;
+    font-size: 0.9rem;
+    font-weight: 500;
+    background-color: rgba(55, 130, 84, 1);
+    transition: all 0.3s;
+}
+
+.get-your-calendar a:hover {
+    background-color: rgb(69, 164, 106);
+    box-shadow: 0 1px 8px rgba(69, 164, 106, 0.6);
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.7);
+}
+
+@media (max-width: 800px) {
+    .get-your-calendar {
+        font-size: 16px;
+    }
+
+    .get-your-calendar h1 {
+    font-size: 20px;
+    }
+}

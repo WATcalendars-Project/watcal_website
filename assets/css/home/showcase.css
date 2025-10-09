@@ -1,0 +1,47 @@
+.showcase-title h1 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    color: white;
+    gap: 0px;
+    font-size: 24px;
+    margin-top: 20px;
+}
+
+.showcase {
+    display: flex;
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    cursor: grab;
+    user-select: none;
+    touch-action: pan-y;
+    -webkit-perspective: 1000;
+    perspective: 1000;
+    backface-visibility: hidden;
+}
+
+.showcase.active {
+    cursor: grabbing;
+    cursor: -webkit-grabbing;
+}
+
+.showcase-slider {
+    display: flex;
+    width: max-content;
+    will-change: transform;
+}
+
+.showcase img {
+    width: 350px;
+    margin: 0 20px;
+}
+
+
+@media (max-width: 900px) {
+    .showcase img {
+        width: 270px;
+        margin: 0 10px;
+    }
+}
