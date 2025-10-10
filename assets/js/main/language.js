@@ -24,7 +24,7 @@
       'hero.buttons.get-started': 'Get Started',
       'hero.buttons.schedules': 'Schedules',
       'hero.buttons.github': 'GitHub',
-      'stats.faculties1': 'The calendars were subscribed by ',
+      'stats.faculties1': 'The calendars have been subscribed by ',
       'stats.faculties2': ' users.',
       'hero.title.media': 'The WATcalendars for .ICS Schedules',
       'hero.media.tablet': 'Created to simplify access to academic schedules and ensure\n                            continuous development through openness and\n                            collaboration.',
