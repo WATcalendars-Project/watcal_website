@@ -25,6 +25,26 @@
     border: 1px solid rgba(79, 86, 95, 0.082);
     border-radius: 18px;
     padding: 30px 30px;
+    transition: all 0.3s ease-in-out;
+}
+
+.desktop-threeitems-description .item1:hover,
+.desktop-threeitems-description .item2:hover,
+.desktop-threeitems-description .item3:hover {
+    background-color: rgba(70, 76, 84, 0.15);
+    border: 1px solid rgba(79, 86, 95, 0.15);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    transform: translateY(-5px);
+    transition: all 0.3s ease-in-out;
+
+}
+
+.desktop-threeitems-description .item1:active,
+.desktop-threeitems-description .item2:active,
+.desktop-threeitems-description .item3:active {
+    transform: translateY(0px);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    transition: all 0.1s ease-in-out;
 }
 
 .desktop-threeitems-description h1 {

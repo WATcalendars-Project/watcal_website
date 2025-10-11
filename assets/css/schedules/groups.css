@@ -34,8 +34,9 @@
     background-color: #f0f0f0;
     border: 1px solid #ffffff;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    border-radius: 10px;
+    border-radius: 15px;
     margin-bottom: 0px;
+    padding: 5px 10px;
     max-width: 200px;
 }
 
@@ -105,11 +106,12 @@
 }
 
 #PNG-Preview {
-    width: 100%;
-    max-width: 1200px; 
+    width: 90%;
     height: auto; 
     display: block;
     margin-inline: auto; 
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
 }
 
 .command .copy img {
