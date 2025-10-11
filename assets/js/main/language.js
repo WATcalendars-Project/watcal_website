@@ -240,7 +240,7 @@ Oprogramowanie dostarczane jest "tak, jak jest", bez jakiejkolwiek gwarancji, wy
 
   function setCheckboxesForLang(lang) {
     const shouldBeChecked = lang === 'en';
-    document.querySelectorAll('#checkbox1').forEach(cb => {
+    document.querySelectorAll('#checkbox').forEach(cb => {
       cb.checked = shouldBeChecked;
     });
   }
@@ -277,7 +277,7 @@ Oprogramowanie dostarczane jest "tak, jak jest", bez jakiejkolwiek gwarancji, wy
 
     // Wire up change handler for all toggles and keep them in sync
     let syncing = false;
-    document.querySelectorAll('#checkbox1').forEach(cb => {
+    document.querySelectorAll('#checkbox').forEach(cb => {
       cb.addEventListener('change', () => {
         if (syncing) return;
         syncing = true;

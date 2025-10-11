@@ -276,7 +276,7 @@ svg {
     place-items: center;
 }
 
-#checkbox1 {
+#checkbox {
     display: none;
 }
 .toggle {
@@ -333,11 +333,11 @@ svg {
     opacity: 0.85;
 }
 
-#checkbox1:checked + .toggle .PL {
+#checkbox:checked + .toggle .PL {
     opacity: 0;
 }
 
-#checkbox1:checked + .toggle .EN {
+#checkbox:checked + .toggle .EN {
     opacity: 1;
 }
 
@@ -354,7 +354,7 @@ svg {
     z-index: 10;
 }
 
-#checkbox1:checked + .toggle::before {
+#checkbox:checked + .toggle::before {
     left: calc(100% - 20px);
 }
 
