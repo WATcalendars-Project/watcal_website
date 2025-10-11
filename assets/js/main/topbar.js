@@ -24,28 +24,13 @@ document.addEventListener("DOMContentLoaded", () => {
         return Array.from(new Set(picked));
     }
 
-    let scrollEl;
-    function pickPrimaryContainer() {
-        const list = getScrollContainers();
-        if (list.length) {
-            scrollEl = list.reduce((a, b) =>
-                (a.scrollHeight - a.clientHeight) > (b.scrollHeight - b.clientHeight) ? a : b
-            );
-        } else {
-            scrollEl = window;
-        }
-        log('using scroll container:', scrollEl === window ? 'window' :
-            `${scrollEl.tagName}#${scrollEl.id || ''}.${scrollEl.className || ''}`);
-    }
-
-    pickPrimaryContainer();
-
+    // Zawsze używaj window jako scrollEl
+    const scrollEl = window;
     const tol = 2;
     const topClamp = 30;
-    let lastY = scrollEl === window ? window.scrollY : scrollEl.scrollTop;
+    let lastY = window.scrollY;
     let ticking = false;
-
-    const getY = () => (scrollEl === window ? window.scrollY : scrollEl.scrollTop);
+    const getY = () => window.scrollY;
 
     function onScroll() {
         if (ticking) return;
@@ -53,6 +38,7 @@ document.addEventListener("DOMContentLoaded", () => {
         requestAnimationFrame(() => {
             ticking = false;
             const y = getY();
+            console.log('[topbar] scroll event, y:', y);
 
             // don't hide when mobile menu is open
             if (header.classList.contains('active')) {
@@ -69,30 +55,20 @@ document.addEventListener("DOMContentLoaded", () => {
 
             const dy = y - lastY;
             if (dy > tol) {
-                header.classList.add('hide');     // scrolling down
+                console.log('[topbar] hide (scroll down)', dy);
+                header.classList.add('hide'); // scrolling down
             } else if (dy < -tol) {
-                header.classList.remove('hide');  // scrolling up
+                console.log('[topbar] show (scroll up)', dy);
+                header.classList.remove('hide'); // scrolling up
             }
             lastY = y;
         });
     }
 
     function attach() {
-        if (scrollEl === window) {
-            window.addEventListener('scroll', onScroll, { passive: true });
-        } else {
-            scrollEl.addEventListener('scroll', onScroll, { passive: true });
-        }
-
+        window.addEventListener('scroll', onScroll, { passive: true });
         window.addEventListener('resize', () => {
-            const prev = scrollEl;
-            pickPrimaryContainer();
-            if (scrollEl !== prev) {
-                if (prev && prev !== window) prev.removeEventListener('scroll', onScroll);
-                if (scrollEl === window) window.addEventListener('scroll', onScroll, { passive: true });
-                else scrollEl.addEventListener('scroll', onScroll, { passive: true });
-                lastY = getY();
-            }
+            lastY = getY();
             if (getY() <= topClamp) header.classList.remove('hide');
         });
     }

@@ -112,7 +112,7 @@
 	position: relative;
 	margin-top: 200px;
 	display: flex;
-	height: 550px;
+	height: 500px;
     background-color: rgba(13, 17, 23, 0.526);
 }
 
@@ -350,7 +350,7 @@
 		height: 332px;
 	}
 	.footer {
-		height: 430px;
+		height: 400px;
 	}
 
 	.footer .separator {
@@ -455,6 +455,10 @@
 	}
 	.column1 {
 		width: 55%;
+	}
+
+	.footer {
+		height: 380px;
 	}
 
 	.footer .footer-title img {
