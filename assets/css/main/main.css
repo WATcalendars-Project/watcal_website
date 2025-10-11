@@ -1,7 +1,8 @@
 html, body {
     margin: 0;
     padding: 0;
-    width: 100vw;
+    /* Use dynamic viewport units to better handle iOS Safari UI bars */
+    min-height: 100dvh;
     height: 100vh;
     /* background-image: linear-gradient(
         30deg,
