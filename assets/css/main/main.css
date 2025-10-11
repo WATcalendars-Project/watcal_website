@@ -25,6 +25,13 @@ html, body {
     overflow-x: hidden;
 }
 
+body {
+  padding-top: max(0px, env(safe-area-inset-top));
+  padding-bottom: max(0px, env(safe-area-inset-bottom));
+  padding-left: max(0px, env(safe-area-inset-left));
+  padding-right: max(0px, env(safe-area-inset-right));
+}
+
 .noscroll {
   overflow: hidden !important;
   position: fixed !important;
