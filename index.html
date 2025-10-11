@@ -6,17 +6,17 @@
     <title>WATcalendars</title>
     <link rel="icon" href="/images/logo/logo.png" type="image/png">
     <!--CSS-->
-    <link rel="stylesheet" href="/assets/css/main/main.css?v=0.2.15">
-    <link rel="stylesheet" href="/assets/css/main/topbar.css?v=0.2.1">
-    <link rel="stylesheet" href="/assets/css/main/footer.css?v=0.2.0">
-    <link rel="stylesheet" href="/assets/css/home/title.css?v=0.2.0">
-    <link rel="stylesheet" href="/assets/css/home/3items.css?v=0.2.0">
-    <link rel="stylesheet" href="/assets/css/home/showcase.css?v=0.2.0">
-    <link rel="stylesheet" href="/assets/css/home/calendar-instruction.css?v=0.2.0">
-    <link rel="stylesheet" href="/assets/css/home/installation.css?v=0.2.0">
-    <link rel="stylesheet" href="/assets/css/home/counter.css?v=0.2.0">
-    <link rel="stylesheet" href="/assets/css/main/support.css?v=0.2.0">
-    <link rel="stylesheet" href="/assets/css/home/slider.css?v=0.2.0">
+    <link rel="stylesheet" href="/assets/css/main/main.css?v=0.2.16">
+    <link rel="stylesheet" href="/assets/css/main/topbar.css?v=0.2.2">
+    <link rel="stylesheet" href="/assets/css/main/footer.css?v=0.2.1">
+    <link rel="stylesheet" href="/assets/css/home/title.css?v=0.2.1">
+    <link rel="stylesheet" href="/assets/css/home/3items.css?v=0.2.1">
+    <link rel="stylesheet" href="/assets/css/home/showcase.css?v=0.2.1">
+    <link rel="stylesheet" href="/assets/css/home/calendar-instruction.css?v=0.2.1">
+    <link rel="stylesheet" href="/assets/css/home/installation.css?v=0.2.1">
+    <link rel="stylesheet" href="/assets/css/home/counter.css?v=0.2.1">
+    <link rel="stylesheet" href="/assets/css/main/support.css?v=0.2.1">
+    <link rel="stylesheet" href="/assets/css/home/slider.css?v=0.2.1">
     <!--JS-->
     <script src="/assets/js/main/text-animation.js?v=0.2.0"></script>
     <script src="/assets/js/main/topbar.js?v=0.2.1" defer></script>
@@ -93,14 +93,18 @@
                 <div class="dropdown-schedules">
                     <a href="/schedules/" class="dropdown-trigger" alt="schedules"><span data-i18n="nav.schedules">Schedules</span> <span class="down_arrow"><img src="/assets/images/icons/down-arrow.svg" alt="arrow"></span></a>
                     <div class="accordion-schedules">
-                        <a href="/schedules/ioe/">IOE</a>
-                        <a href="/schedules/wcy/">WCY</a>
-                        <a href="/schedules/wel/">WEL</a>
-                        <a class="disabled" aria-disabled="true" tabindex="-1">WIG</a>
-                        <a href="/schedules/wim/">WIM</a>
-                        <a href="/schedules/wlo/">WLO</a>
-                        <a class="disabled" aria-disabled="true" tabindex="-1">WML</a>
-                        <a href="/schedules/wtc/">WTC</a>
+                        <div class="column1">
+                            <a href="/schedules/ioe/">IOE</a>
+                            <a href="/schedules/wcy/">WCY</a>
+                            <a href="/schedules/wel/">WEL</a>
+                            <a class="disabled" aria-disabled="true" tabindex="-1">WIG</a>
+                        </div>
+                        <div class="column2">
+                            <a href="/schedules/wim/">WIM</a>
+                            <a href="/schedules/wlo/">WLO</a>
+                            <a class="disabled" aria-disabled="true" tabindex="-1">WML</a>
+                            <a href="/schedules/wtc/">WTC</a>
+                        </div>
                     </div>
                 </div>
                 <div class="dropdown-changelog">
