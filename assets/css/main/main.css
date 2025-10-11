@@ -19,13 +19,15 @@ html, body {
       rgba(25, 41, 40, 1) 55%,
       rgba(13, 17, 23, 1) 100%
     );
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-attachment: scroll;
-    background-clip: border-box;
-    background-origin: padding-box;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
     overflow-x: hidden;
+}
+
+body {
+  padding-top: env(safe-area-inset-top);
+  padding-bottom: env(safe-area-inset-bottom);
+  padding-left: env(safe-area-inset-left);
+  padding-right: env(safe-area-inset-right);
 }
 
 .noscroll {
@@ -41,12 +43,6 @@ html, body {
 
 .noscroll .navigation {
   touch-action: pan-y !important;
-}
-
-@media (max-width: 800px) {
-	.padding {
-		padding: 0px 20px;
-	}
 }
 
 html {

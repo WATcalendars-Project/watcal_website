@@ -21,7 +21,8 @@
     flex-direction: column;
     align-items: flex-start;
     text-align: center;
-    background-color: rgba(63, 63, 63, 0.224);
+    background-color: rgba(70, 76, 84, 0.082);
+    border: 1px solid rgba(79, 86, 95, 0.082);
     border-radius: 18px;
     padding: 30px 30px;
 }
@@ -44,7 +45,7 @@
 .threeitems-description img {
     width: 40px;
     height: auto;
-    background-color: rgba(166, 166, 166, 0.337);
+    background-color: rgba(166, 166, 166, 0.117);
     border-radius: 6px;
     padding: 6px 6px;
 }
@@ -70,7 +71,6 @@
     }
 
     .desktop-threeitems-description p {
-        color: rgba(214, 214, 214, 0.7);
         font-size: 0.9rem;
         line-height: 1.6;
         text-align: left;
@@ -80,7 +80,6 @@
     .threeitems-description img {
         width: 30px;
         height: auto;
-        background-color: rgba(166, 166, 166, 0.337);
         border-radius: 6px;
         padding: 6px 6px;
     }

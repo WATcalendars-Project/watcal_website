@@ -1,3 +1,109 @@
+.glass-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+.glass-radio-group {
+  --bg: rgba(255, 255, 255, 0.06);
+  --text: #e5e5e5;
+
+  display: flex;
+  position: relative;
+  background: var(--bg);
+  border-radius: 1rem;
+  backdrop-filter: blur(12px);
+  box-shadow:
+    inset 1px 1px 4px rgba(255, 255, 255, 0.2),
+    inset -1px -1px 6px rgba(0, 0, 0, 0.3),
+    0 4px 12px rgba(0, 0, 0, 0.15);
+  overflow: hidden;
+  width: fit-content;
+}
+
+.glass-radio-group input {
+  display: none;
+}
+
+.glass-radio-group label {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 80px;
+  font-size: 14px;
+  padding: 0.8rem 1.6rem;
+  cursor: pointer;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  color: var(--text);
+  position: relative;
+  z-index: 2;
+  transition: color 0.3s ease-in-out;
+}
+
+@media (max-width: 600px) {
+    .glass-radio-group label {
+        font-size: 12px;
+        padding: 0.7rem 1.2rem;
+        min-width: 60px;
+    }
+}
+
+.glass-radio-group label img {
+    width: 16px;
+    margin-right: 2px;
+    transform: translateY(0px);
+}
+
+.glass-radio-group label img[alt="apple-logo"] {
+    transform: translateY(-1px);
+}
+
+.glass-radio-group label:hover {
+  color: white;
+}
+
+.glass-radio-group input:checked + label {
+  color: #fff;
+}
+
+.glass-glider {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: calc(100% / 3);
+  border-radius: 1rem;
+  z-index: 1;
+  transition:
+    transform 0.5s cubic-bezier(0.37, 1.95, 0.66, 0.56),
+    box-shadow 0.4s ease-in-out;
+}
+
+#glass-iphone:checked ~ .glass-glider {
+  transform: translateX(0%);
+  background: linear-gradient(135deg, #c0c0c055, #e0e0e0);
+  box-shadow:
+    0 0 18px rgba(192, 192, 192, 0.5),
+    0 0 10px rgba(255, 255, 255, 0.4) inset;
+}
+
+#glass-android:checked ~ .glass-glider {
+  transform: translateX(100%);
+  background: linear-gradient(135deg, #00ff6655, #00ff73);
+  box-shadow:
+    0 0 18px rgba(0, 255, 72, 0.5),
+    0 0 10px rgba(150, 255, 180, 0.4) inset;
+}
+
+#glass-desktop:checked ~ .glass-glider {
+  transform: translateX(200%);
+  background: linear-gradient(135deg, #d0d9ff55, #6388ff);
+  box-shadow:
+    0 0 18px rgba(160, 187, 255, 0.5),
+    0 0 10px rgba(200, 219, 255, 0.4) inset;
+}
+
 .get-your-calendar {
     display: flex;
     flex-direction: column;
@@ -7,6 +113,9 @@
     gap: 0px;
     font-size: 18px;
     margin-top: 50px;
+}
+
+.get-your-calendar .iphone-tutorial {
     line-height: 2;
 }
 
@@ -23,9 +132,7 @@
     transform: translateY(-3px);
     width: 17px;
     padding: 0 3px;
-    /* Softer, non-rectangular shadow that respects transparent pixels */
     filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.45)) drop-shadow(0 0 1px rgba(0, 0, 0, 0.2));
-    /* Optional: align tiny icons nicely with inline text */
     vertical-align: middle;
 }
 
