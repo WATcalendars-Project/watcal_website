@@ -219,6 +219,8 @@
     .title {
         flex-direction: column-reverse; 
         align-items: center;
+        padding-left: 40px;
+        padding-right: 40px;
     }
 
     .description .tablet-text {
@@ -419,6 +421,10 @@
 }
 
 @media (max-width: 650px) {
+    .title {
+        padding-left: 0px;
+        padding-right: 0px;
+    }
     .logo2 img {
         margin-top: -90px;
         width: 280px;

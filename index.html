@@ -14,14 +14,15 @@
     <link rel="stylesheet" href="/assets/css/home/showcase.css">
     <link rel="stylesheet" href="/assets/css/home/calendar-instruction.css">
     <link rel="stylesheet" href="/assets/css/home/installation.css">
-    <link rel="stylesheet" href="/assets/css/main/bottom-fade.css">
     <link rel="stylesheet" href="/assets/css/home/counter.css">
     <link rel="stylesheet" href="/assets/css/main/support.css">
+    <link rel="stylesheet" href="/assets/css/home/slider.css">
     <!--JS-->
     <script src="/assets/js/main/text-animation.js"></script>
     <script src="/assets/js/main/topbar.js" defer></script>
     <script src="/assets/js/main/dropdown-menu.js" defer></script>
     <script src="/assets/js/main/carousel.js" defer></script>
+    <script src="/assets/js/main/slider.js" defer></script>
     <script src="/assets/js/main/copy.js" defer></script>
     <script src="/assets/js/main/language.js" defer></script>
     <script src="/assets/js/main/simple-counter.js" defer></script>
@@ -32,7 +33,7 @@
     <nav id="topbar">
         <div class="logo">
             <img src="/assets/images/logo/logo.png" alt="logo-WAT">
-            <span id="decrypt" class="decrypt-text" data-original="WATcalendars" data-target="©DominikSerafin">WATcalendars</span>
+            <span id="decrypt" class="decrypt-text" data-original="WATcalendars" data-target="@DominikSerafin">WATcalendars</span>
         </div>
         <div class="media-container">
             <div class="language">
@@ -89,7 +90,7 @@
                 <a href="/" data-i18n="nav.home">Home</a>
                 <a href="/about/" data-i18n="nav.about">About</a>
                 <div class="dropdown-schedules">
-                    <a href="/schedules/" class="dropdown-trigger"><span data-i18n="nav.schedules">Schedules</span> <span class="down_arrow"><img src="/assets/images/icons/down-arrow.svg" alt="arrow"></span></a>
+                    <a href="/schedules/" class="dropdown-trigger" alt="schedules"><span data-i18n="nav.schedules">Schedules</span> <span class="down_arrow"><img src="/assets/images/icons/down-arrow.svg" alt="arrow"></span></a>
                     <div class="accordion-schedules">
                         <a href="/schedules/ioe/">IOE</a>
                         <a href="/schedules/wcy/">WCY</a>
@@ -122,8 +123,8 @@
                 <div class="separator"></div>
                 <div class="container">
                     <div class="language">
-                        <label for="checkbox">
-                            <input type="checkbox" name="" id="checkbox">
+                        <label for="checkbox1">
+                            <input type="checkbox" name="" id="checkbox1">
                             <div class="toggle">
                                 <div class="EN"></div>
                                 <div class="PL"></div>
@@ -220,7 +221,35 @@
                 </div>
             </div>
 
-
+            <!-- faculties spinner -->
+            <div class="slider">
+                <div class="slide-track">
+                    <div class="slide">
+                        <img src="/assets/images/faculties/ioe_logo.png" alt="ioe_logo"/>
+                    </div>
+                    <div class="slide">
+                        <img src="/assets/images/faculties/wcy_logo.png" alt="wcy_logo"/>
+                    </div>
+                    <div class="slide">
+                        <img src="/assets/images/faculties/wel_logo.png" alt="wel_logo"/>
+                    </div>
+                    <div class="slide">
+                        <img src="/assets/images/faculties/wig_logo.png" alt="wig_logo" />
+                    </div>
+                    <div class="slide">
+                        <img src="/assets/images/faculties/wim_logo.png" alt="wim_logo"/>
+                    </div>
+                    <div class="slide">
+                        <img src="/assets/images/faculties/wlo_logo.png" alt="wlo_logo"/>
+                    </div>
+                    <div class="slide">
+                        <img src="/assets/images/faculties/wml_logo.png" alt="wml_logo"/>
+                    </div>
+                    <div class="slide">
+                        <img src="/assets/images/faculties/wtc_logo.png" alt="wtc_logo" />
+                    </div>
+                </div>
+            </div>
 
             <div class="threeitems-description">
                 <div class="desktop-threeitems-description">
@@ -303,7 +332,7 @@
             <section id="Installer">
                 <div class="installation">
                     <h1 data-i18n="install.title">Manual Installation</h1>
-                    <p data-i18n-html="true" data-i18n="install.p1">You can install the WATcalendars project available on Github that include <img src="/img/icons/python-icon.png" alt="python-icon"> Python Scripts.</p>
+                    <p data-i18n-html="true" data-i18n="install.p1">You can install the WATcalendars project available on Github that include <img src="/assets/images/icons/python-icon.png" alt="python-icon"> Python Scripts.</p>
                     <p data-i18n="install.p2">Clone the repository to your local machine.</p>
                     <div class="command">
                         <code>git clone https://github.com/dominikx2002/WATcalendars.git</code>
@@ -355,92 +384,83 @@
 
     <!--footer-->
     <div class="footer">
-        <div class="footer-container">
-            <div class="row1">
-                <div class="column1">
-                    <div class="logo-footer">
-                        <img src="/assets/images/logo/logo.png" alt="logo-wat">
-                        <h1>WATcalendars</h1>
+        <div class="column1">
+            <div class="website-map">
+                <div class="home">
+                    <a href="/" data-i18n="footer.home" alt="title">HOME</a>
+                    <div class="home-elements">
+                        <span class="separator"></span>
+                        <div class="home-sections">
+                            <a href="/#Showcase" alt="normal">Showcase</a>
+                            <a href="/#Tutorial" alt="normal">Get Started</a>
+                            <a href="/#Installer" alt="normal">Local Installation</a>
+                            <a href="/#support" alt="normal">Donate</a>
+                        </div>
                     </div>
-                    <p data-i18n="footer.text">Created to simplify access to academic schedules and ensure continuous development through openness and collaboration.</p>
                 </div>
-                <div class="column2">
-                    <a href="/" alt="home">Home</a>
-                    <a href="/about/" alt="about">About Project</a>
-                    <a href="/about/#1" alt="normal">1</a>
-                    <a href="/about/#2" alt="normal">2</a>
-                    <a href="/about/#3" alt="normal">3</a>
-                    <a href="/about/#4" alt="normal">4</a>
-                    <a href="/about/#5" alt="normal">5</a>
+
+                <div class="about">
+                    <a href="/about/" data-i18n="footer.about" alt="title">ABOUT PROJECT</a>
+                    <div class="about-elements">
+                        <span class="separator"></span>
+                        <div class="about-sections">
+                            <a href="/about/1" alt="normal">1</a>
+                            <a href="/about/2" alt="normal">2</a>
+                            <a href="/about/3" alt="normal">3</a>
+                            <a href="/about/4" alt="normal">4</a>
+                        </div>
+                    </div>
                 </div>
-                <div class="column3">
-                    <a alt="schedules">Schedules</a>
-                    <a href="/faculties/" alt="normal">Faculties</a>
-                    <a href="/schedules/ioe/" alt="normal">
-                        <img src="/assets/images/faculties/ioe_logo.png" alt="normal">
-                        IOE
-                    </a>
-                    <a href="/schedules/wcy/" alt="normal">
-                        <img src="/assets/images/faculties/wcy_logo.png" alt="normal">
-                        WCY
-                    </a>
-                    <a href="/schedules/wel/" alt="normal">
-                        <img src="/assets/images/faculties/wel_logo.png" alt="normal">
-                        WEL
-                    </a>
-                    <a href="/schedules/wig/" alt="unavailable">
-                        <img src="/assets/images/faculties/wig_logo.png" alt="unavailable">
-                        WIG
-                    </a>
-                    <a href="/schedules/wim/" alt="normal">
-                        <img src="/assets/images/faculties/wim_logo.png" alt="normal">
-                        WIM
-                    </a>
-                    <a href="/schedules/wlo/" alt="normal">
-                        <img src="/assets/images/faculties/wlo_logo.png" alt="normal">
-                        WLO
-                    </a>
-                    <a href="/schedules/wml/" alt="unavailable">
-                        <img src="/assets/images/faculties/wml_logo.png" alt="unavailable">
-                        WML
-                    </a>
-                    <a href="/schedules/wtc/" alt="normal">
-                        <img src="/assets/images/faculties/wtc_logo.png" alt="normal">
-                        WTC
-                    </a>
-                </div>
-                <div class="column4">
-                    <a alt="support">Support</a>
-                    <a href="/#get-started" alt="normal">Get Started</a>
-                    <a href="/#donate" alt="normal">Donate</a>
-                    <a href="/#local-installation" alt="normal">Local Installation</a>
-                    <a href="/dependencies/" alt="normal">Dependencies</a>
-                    <a href="/#showcase" alt="normal">Showcase</a>
-                    <a href="/feedback/" alt="normal">Feedback</a>
-                    <a href="/license/" alt="normal">License</a>
+
+                <div class="schedules">
+                    <a href="/schedules/" data-i18n="footer.schedules" alt="title">SCHEDULES</a>
+                    <div class="schedules-elements">
+                        <span class="separator"></span>
+                        <div class="schedules-sections1">
+                            <a href="/schedules/ioe" alt="normal">IOE</a>
+                            <a href="/schedules/wcy" alt="normal">WCY</a>
+                            <a href="/schedules/wel" alt="normal">WEL</a>
+                            <a href="/schedules/wig" alt="unavailable">WIG</a>
+                        </div>
+                        <div class="schedules-sections2">
+                            <a href="/schedules/wim" alt="normal">WIM</a>
+                            <a href="/schedules/wlo" alt="normal">WLO</a>
+                            <a href="/schedules/wml" alt="unavailable">WML</a>
+                            <a href="/schedules/wtc" alt="normal">WTC</a>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="separator-footer"></div>
-            <div class="row2">
-                <div class="footer2">
-                    <div class="signature">
-                        <a href="/license/">Designed by @DominikSerafin</a>
-                    </div>
-                    <div class="media">
-                        <a href="https://github.com/dominikx2002/WATcalendars" target="_blank">
-                            <img src="/assets/images/logo/github-mark-white.svg" alt="Github">
-                        </a>
-                        <a href="/feedback/">
-                            <img src="/assets/images/icons/feedback.svg" alt="Signal">
-                        </a>
+            <div class="title-container">
+                <div class="footer-title">
+                    <img src="/assets/images/logo/logo.png" alt="logo">
+                    <h1>WATcalendars</h1>
+                </div>
+            </div>
+        </div>
+
+        <div class="column2">
+            <div class="more">
+                <a data-i18n="footer.More" alt="title">MORE</a>
+                <div class="more-elements">
+                    <span class="separator2"></span>
+                    <div class="more-sections">
+                        <a href="/dependencies/" alt="normal">Dependencies</a>
+                        <a href="https://github.com/dominikx2002/WATcalendars/activity" target="_blank" alt="normal">Changelog</a>
+                        <div class="buttons">
+                            <a href="/" class="get-started" data-i18n="footer.get-started">GO TO HOME PAGE</a>
+                            <a href="https://github.com/dominikx2002/WATcalendars" class="github" target="_blank">GITHUB</a>
+                        </div>
+                        <a href="/feedback/" data-i18n="footer.feedback" alt="sections2">FEEDBACK</a>
+                        <a href="/contact/" data-i18n="footer.contact" alt="sections2">CONTACT</a>
+                        <a href="/license/" alt="sections2">LICENSE</a>
+                        <a href="/license/" alt="signature">© DOMINIK SERAFIN 2025</a>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
 
-    <!-- bottombar -->
-    <div class="bottom-fade"></div>
+    </div>
 
 </body>
 

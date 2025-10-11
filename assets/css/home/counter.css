@@ -37,6 +37,7 @@
 }
 
 .statistics {
+    margin-top: 40px;
     display: flex !important;
     justify-content: flex-start !important;
     align-items: center !important;
@@ -83,9 +84,19 @@
     font-size: 1.5rem;
 }
 
+@media (max-width: 1100px) {
+    .statistics {
+        margin-top: 0px;
+    }
+    .statistics h2,
+    .statistics h3 {
+        font-size: 1.2rem;
+    }
+}
+
 @media (max-width: 650px) {
     .statistics {
-        margin-top: -20px;
+        margin-top: 0px;
     }
     .dot {
         width: 1rem;
@@ -102,6 +113,6 @@
     .statistics h3,
     .statistics .number {
         font-weight: 300;
-        font-size: 0.75rem;
+        font-size: 0.9rem;
     }
 }

@@ -19,10 +19,8 @@ class SimpleSubscriptionCounter {
 
     // Załaduj i wyświetl aktualną liczbę
     async loadCount() {
-        console.log('🔄 Ładuję licznik z:', this.endpoint);
         try {
             const response = await fetch(this.endpoint);
-            console.log('📡 Odpowiedź:', response.status, response.statusText);
             
             if (response.ok) {
                 const data = await response.json();
@@ -32,8 +30,6 @@ class SimpleSubscriptionCounter {
                 throw new Error(`API error: ${response.status} ${response.statusText}`);
             }
         } catch (error) {
-            console.warn('❌ Nie można pobrać licznika, używam fallback:', error);
-            console.log('🔄 Próbuję alternatywną ścieżkę...');
             
             // Spróbuj alternatywnej ścieżki
             try {
@@ -41,13 +37,11 @@ class SimpleSubscriptionCounter {
                 const altResponse = await fetch(altEndpoint);
                 if (altResponse.ok) {
                     const data = await altResponse.json();
-                    console.log('✅ Sukces z alternatywną ścieżką:', data);
                     this.endpoint = altEndpoint; // Zapisz działającą ścieżkę
                     this.displayCount(data.count);
                     return;
                 }
             } catch (altError) {
-                console.warn('❌ Alternatywna ścieżka też nie działa:', altError);
             }
             
             this.displayCount(this.fallbackCount);
@@ -82,7 +76,6 @@ class SimpleSubscriptionCounter {
 
     // Wyślij kliknięcie na serwer (+1 do licznika)
     async trackClick() {
-        console.log('🔥 KLIKNIĘCIE! Wysyłam POST do:', this.endpoint);
         try {
             const response = await fetch(this.endpoint, {
                 method: 'POST',
@@ -91,21 +84,15 @@ class SimpleSubscriptionCounter {
                 }
             });
 
-            console.log('📡 POST Odpowiedź:', response.status, response.statusText);
-
             if (response.ok) {
                 const data = await response.json();
-                console.log('✅ Dane z POST:', data);
                 if (data.success) {
                     // Zaktualizuj wyświetlaną liczbę
                     this.displayCount(data.count);
-                    console.log('🎉 Subskrypcja zarejestrowana! Nowa liczba:', data.count);
                 }
             } else {
-                console.error('❌ POST błąd:', response.status, response.statusText);
             }
         } catch (error) {
-            console.error('❌ Nie udało się zarejestrować kliknięcia:', error);
         }
     }
 

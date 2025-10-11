@@ -58,7 +58,7 @@
 .navigation {
     display: flex;
     align-items: center;
-    gap: clamp(1rem, 4vw, 4rem);
+    gap: clamp(1rem, 4vw, 3rem);
     flex-wrap: wrap;
     margin: 0;
 }
@@ -276,7 +276,7 @@ svg {
     place-items: center;
 }
 
-#checkbox {
+#checkbox1 {
     display: none;
 }
 .toggle {
@@ -333,11 +333,11 @@ svg {
     opacity: 0.85;
 }
 
-#checkbox:checked + .toggle .PL {
+#checkbox1:checked + .toggle .PL {
     opacity: 0;
 }
 
-#checkbox:checked + .toggle .EN {
+#checkbox1:checked + .toggle .EN {
     opacity: 1;
 }
 
@@ -354,7 +354,7 @@ svg {
     z-index: 10;
 }
 
-#checkbox:checked + .toggle::before {
+#checkbox1:checked + .toggle::before {
     left: calc(100% - 20px);
 }
 
@@ -362,7 +362,7 @@ svg {
     display: none;
 }
 
-@media(max-width: 1500px) {
+@media(max-width: 1400px) {
     #topbar {
         padding-left: 2vw;
         padding-right: 3vw;
@@ -372,7 +372,7 @@ svg {
     }
 }
 
-@media(max-width: 1210px) {
+@media(max-width: 1200px) {
     svg {
         margin-top: -3px;
     }
@@ -436,7 +436,7 @@ svg {
         opacity: 1;
     }
     .dropdown-schedules.open ~.dropdown-changelog {
-        margin-top: 250px;
+        margin-top: 275px;
         transition: margin-top 0.4s cubic-bezier(.4,0,.2,1);
     }
     .dropdown-schedules ~.dropdown-changelog {
@@ -452,7 +452,7 @@ svg {
         transition: margin-top 0.4s cubic-bezier(.4,0,.2,1);
     }
     .dropdown-more.open ~.feedback {
-        margin-top: 210px;
+        margin-top: 230px;
         transition: margin-top 0.4s cubic-bezier(.4,0,.2,1);
     }
     .dropdown-more ~.feedback {

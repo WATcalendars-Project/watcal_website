@@ -40,19 +40,19 @@
       'showcase.title': 'Showcase',
 
       'tutorial.title': 'Get Your Calendar',
-      'tutorial.step1': 'Open the <a href="/web/Schedules.html" class="schedules">Schedules</a> menu and choose your Faculty.',
+      'tutorial.step1': 'Open the <a href="/schedules/" class="schedules">Schedules</a> menu and choose your Faculty.',
       'tutorial.step2': 'Select the group of your choice.',
-      'tutorial.step3': 'On <img src="/img/logo/apple-logo.png" alt="apple-logo"> iPhone, the schedule will appear as a calendar subscription.',
+      'tutorial.step3': 'On <img src="/assets/images/logo/apple-logo.png" alt="apple-logo"> iPhone, the schedule will appear as a calendar subscription.',
       'tutorial.step4': 'Once you confirm with the <strong>Find</strong> option, your group schedule will\n                        be available directly in your calendar app.',
 
       'install.title': 'Manual Installation',
-      'install.p1': 'You can install the WATcalendars project available on Github that include <img src="/img/icons/python-icon.png" alt="python-icon"> Python Scripts.',
+      'install.p1': 'You can install the WATcalendars project available on Github that include <img src="/assets/images/icons/python-icon.png" alt="python-icon"> Python Scripts.',
       'install.p2': 'Clone the repository to your local machine.',
       'install.p3': 'Next add rights to the setup script.',
       'install.p4': 'Running following script will automaticaly install required dependencies.',
       'install.p5': 'After that, you can Use the scraping scripts, Change them, Customize them, Fix as needed.',
       'install.p6': 'In the repository check "help.txt" file for available options and useful informations or simply type cat help.txt:',
-      'install.p7': 'Setup script to install the required dependencies are included for\n                        <img src="/img/distribution/arch.png" alt=Arch> <strong>Arch</strong>.\n                        <br>For other distros, please install <a href="/web/Dependencies.html">the dependencies</a> first.',
+      'install.p7': 'Setup script to install the required dependencies are included for\n                        <img src="/assets/images/distribution/arch.png" alt=Arch> <strong>Arch</strong>.\n                        <br>For other distros, please install <a href="/web/Dependencies.html">the dependencies</a> first.',
 
       'footer.mit': 'Released under the MIT license',
       'footer.copyright': 'Copyright © 2025 Dominik Serafin',
@@ -140,17 +140,17 @@ SOFTWARE.`,
       'tutorial.title': 'Zdobądź swój kalendarz',
       'tutorial.step1': 'Otwórz menu <a href="/web/Schedules.html" class="schedules">Plany</a> i wybierz swoj Wydział.',
       'tutorial.step2': 'Wybierz interesującą Cię grupę.',
-      'tutorial.step3': 'Na <img src="/img/logo/apple-logo.png" alt="apple-logo"> iPhone, plan pojawi się jako subskrypcja kalendarza.',
+      'tutorial.step3': 'Na <img src="/assets/images/logo/apple-logo.png" alt="apple-logo"> iPhone, plan pojawi się jako subskrypcja kalendarza.',
       'tutorial.step4': 'Po potwierdzeniu opcją <strong>Znajdź</strong>, plan grupy będzie\n                        dostępny bezpośrednio w aplikacji Kalendarz.',
 
       'install.title': 'Instalacja ręczna',
-      'install.p1': 'Możesz zainstalować projekt WATcalendars dostępny na Githubie, który zawiera <img src="/img/icons/python-icon.png" alt="python-icon"> skrypty Pythona.',
+      'install.p1': 'Możesz zainstalować projekt WATcalendars dostępny na Githubie, który zawiera <img src="/assets/images/icons/python-icon.png" alt="python-icon"> skrypty Pythona.',
       'install.p2': 'Sklonuj repozytorium na swój komputer.',
       'install.p3': 'Następnie nadaj uprawnienia do skryptu instalacyjnego.',
       'install.p4': 'Uruchomienie poniższego skryptu automatycznie zainstaluje wymagane zależności.',
       'install.p5': 'Po tym możesz używać skryptów do scrapowania, zmieniać je, dostosowywać i poprawiać.',
       'install.p6': 'W repozytorium sprawdź plik "help.txt" po dostępne opcje i informacje lub wpisz: cat help.txt:',
-      'install.p7': 'Skrypt instalacyjny instalujący wymagane zależności jest dostępny dla\n                        <img src="/img/distribution/arch.png" alt=Arch> <strong>Arch</strong>.\n                        <br>Dla innych dystrybucji najpierw zainstaluj <a href="/web/Dependencies.html">zależności</a>.',
+      'install.p7': 'Skrypt instalacyjny instalujący wymagane zależności jest dostępny dla\n                        <img src="/assets/images/distribution/arch.png" alt=Arch> <strong>Arch</strong>.\n                        <br>Dla innych dystrybucji najpierw zainstaluj <a href="/web/Dependencies.html">zależności</a>.',
 
       'footer.mit': 'Wydane na licencji MIT',
       'footer.copyright': 'Copyright © 2025 Dominik Serafin',
@@ -240,7 +240,7 @@ Oprogramowanie dostarczane jest "tak, jak jest", bez jakiejkolwiek gwarancji, wy
 
   function setCheckboxesForLang(lang) {
     const shouldBeChecked = lang === 'en';
-    document.querySelectorAll('#checkbox').forEach(cb => {
+    document.querySelectorAll('#checkbox1').forEach(cb => {
       cb.checked = shouldBeChecked;
     });
   }
@@ -277,7 +277,7 @@ Oprogramowanie dostarczane jest "tak, jak jest", bez jakiejkolwiek gwarancji, wy
 
     // Wire up change handler for all toggles and keep them in sync
     let syncing = false;
-    document.querySelectorAll('#checkbox').forEach(cb => {
+    document.querySelectorAll('#checkbox1').forEach(cb => {
       cb.addEventListener('change', () => {
         if (syncing) return;
         syncing = true;
