@@ -108,12 +108,21 @@
 	border-radius: 1px;
 }
 
+.footer-container {
+    position: relative; 
+	flex-direction: column;
+    min-height: 100vh;
+	display: flex;
+}
+
 .footer {
 	position: relative;
-	margin-top: 200px;
+	margin-top: auto;
 	display: flex;
 	height: 500px;
     background-color: rgba(13, 17, 23, 0.526);
+	align-items: center;    
+    justify-content: center;
 }
 
 .column2 {
