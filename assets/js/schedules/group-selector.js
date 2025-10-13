@@ -1,227 +1,198 @@
-// Unified group selector used by all faculty-specific wrappers.
-// Usage: set window.__groupSelectorConfig = { plansTemplate: 'https://.../{group}.htm' }
-// then call window.initGroupSelector() or include this file before wrappers (they will call init if available).
+// Populate the #group <select> with group names loaded from local JSON files in /db/groups_url/
+// Detects faculty from URL: /schedules/{faculty}/ and fetches {faculty}_groups_url.json
+// Extras: placeholder option, sorted names, persistence in localStorage, optional preselect via ?group=
 
-/* global window, document, navigator */
+(function () {
+	'use strict';
 
-// Helper: robust cross-origin .ics download
-async function downloadIcs(url, filename) {
-  try {
-    const res = await fetch(url);
-    if (!res.ok) throw new Error(`HTTP ${res.status}`);
-    const blob = await res.blob();
-    const a = document.createElement('a');
-    const objectUrl = URL.createObjectURL(blob);
-    a.href = objectUrl;
-    a.download = filename || 'calendar.ics';
-    document.body.appendChild(a);
-    a.click();
-    a.remove();
-    URL.revokeObjectURL(objectUrl);
-  } catch (e) {
-    console.error('Download failed, falling back to direct link', e);
-    // Fallback: navigate to the URL so the browser handles it
-    window.location.href = url;
-  }
-}
+	// Run after DOM is ready (script is deferred on pages, but keep it safe)
+	if (document.readyState === 'loading') {
+		document.addEventListener('DOMContentLoaded', init);
+	} else {
+		init();
+	}
 
-function replaceTemplate(tpl, group) {
-  if (!tpl) return '';
-  return tpl.replace(/\{\s*group\s*\}/gi, encodeURIComponent(group));
-}
+	function init() {
+		const selectEl = document.getElementById('group');
+			if (!selectEl) return;
 
-async function loadGroupsGeneric() {
-  try {
-    const select = document.getElementById('group');
-    const output = document.getElementById('output');
-    if (!select || !output) return;
+		const faculty = detectFacultyFromPath(location.pathname);
+		const jsonMap = {
+			ioe: 'ioe_groups_url.json',
+			wcy: 'wcy_groups_url.json',
+			wel: 'wel_groups_url.json',
+			wim: 'wim_groups_url.json',
+			wlo: 'wlo_groups_url.json',
+			wtc: 'wtc_groups_url.json'
+		};
 
-    const config = Object.assign({}, window.__groupSelectorConfig || {});
+		if (!faculty || !(faculty in jsonMap)) {
+			setOptions(selectEl, [placeholderOption('Brak danych dla tego wydziału', true)]);
+			return;
+		}
 
-    const repo = select.dataset.repo || config.repo || 'dominikx2002/WATcalendars';
-    const mainBranch = select.dataset.branch || config.branch || 'main';
-    const calendarsCandidates = (select.dataset.calendarsPaths || config.calendarsPaths || 'db/calendars').split(',').map(s => s.trim()).filter(Boolean);
-    const schedulesCandidates = (select.dataset.schedulesPaths || config.schedulesPaths || 'db/schedules').split(',').map(s => s.trim()).filter(Boolean);
-    const plansTemplate = select.dataset.plansTemplate || config.plansTemplate || '';
+		// Show loading state
+		setOptions(selectEl, [placeholderOption('Ładowanie…', true)]);
 
-    select.innerHTML = '';
-    const loadingOpt = document.createElement('option');
-    loadingOpt.setAttribute('data-i18n', 'groups.loading');
-    loadingOpt.textContent = 'Ładowanie…';
-    loadingOpt.disabled = true;
-    loadingOpt.selected = true;
-    select.appendChild(loadingOpt);
-    document.dispatchEvent(new CustomEvent('i18n:refresh'));
+		const cacheBuster = Date.now();
+		const url = `/db/groups_url/${jsonMap[faculty]}?v=${cacheBuster}`;
 
-    const fetchApiArray = async (apiUrl) => {
-      const res = await fetch(apiUrl, { headers: { Accept: 'application/vnd.github.v3+json' } });
-      if (!res.ok) throw new Error(`GitHub API error: ${res.status} ${res.statusText}`);
-      const data = await res.json();
-      if (!Array.isArray(data)) throw new Error('Unexpected API response shape');
-      return data;
-    };
+		fetch(url)
+			.then((res) => {
+				if (!res.ok) throw new Error(`HTTP ${res.status} while fetching ${url}`);
+				return res.json();
+			})
+					.then((data) => {
+				// data shape: { "GROUP_NAME": "https://...", ... }
+				const names = Object.keys(data || {});
+				if (!names.length) {
+					setOptions(selectEl, [placeholderOption('Brak grup do wyświetlenia', true)]);
+					return;
+				}
 
-    let calBaseApi = null;
-    let usedPngFallback = false;
-    let icsFiles = [];
+				// Sort alphabetically, natural, Polish locale
+				names.sort((a, b) => a.localeCompare(b, 'pl', { numeric: true, sensitivity: 'base' }));
 
-    const tried = [];
-    for (const path of calendarsCandidates) {
-      const apiUrl = `https://api.github.com/repos/${repo}/contents/${path}`;
-      tried.push(apiUrl);
-      try {
-        const arr = await fetchApiArray(apiUrl);
-        const found = arr.filter(f => f && typeof f.name === 'string' && f.name.toLowerCase().endsWith('.ics'));
-        if (found.length > 0) {
-          calBaseApi = apiUrl;
-          icsFiles = found;
-          break;
-        }
-      } catch (e) {
-        // ignore and try next
-      }
-    }
+				// Build options list: placeholder + groups
+				const opts = [placeholderOption('Wybierz grupę', true, true)];
+				for (const name of names) {
+					const opt = document.createElement('option');
+					opt.value = name;
+					opt.textContent = name;
+					// keep URL for potential future use
+					try { opt.dataset.url = String(data[name]); } catch (_) {}
+					opts.push(opt);
+				}
+						setOptions(selectEl, opts);
 
-    if (icsFiles.length === 0) {
-      for (const path of schedulesCandidates) {
-        const apiUrl = `https://api.github.com/repos/${repo}/contents/${path}`;
-        tried.push(apiUrl);
-        try {
-          const arr = await fetchApiArray(apiUrl);
-          const pngs = arr.filter(f => f && typeof f.name === 'string' && f.name.toLowerCase().endsWith('.png'));
-          if (pngs.length > 0) {
-            icsFiles = pngs.map(f => ({ name: f.name.replace(/\.png$/i, '.ics') }));
-            usedPngFallback = true;
-            break;
-          }
-        } catch (e) {
-          // ignore
-        }
-      }
-    }
+				// Preselect from ?group= or localStorage
+				const preselect = getPreselectedGroup(faculty, names);
+				if (preselect) {
+					selectEl.value = preselect;
+							renderGroupPreview(faculty, preselect);
+				}
 
-    if (icsFiles.length === 0) {
-      select.innerHTML = '';
-      const emptyOpt = document.createElement('option');
-      emptyOpt.setAttribute('data-i18n', 'groups.none.title');
-      emptyOpt.textContent = 'Brak dostępnych grup (.ics/.png)';
-      emptyOpt.disabled = true;
-      emptyOpt.selected = true;
-      select.appendChild(emptyOpt);
-      output.setAttribute('data-i18n', 'groups.none.text');
-      output.textContent = 'Brak dostępnych grup do wyświetlenia.';
-      console.warn('Nie znaleziono plików grup.', { tried });
-      document.dispatchEvent(new CustomEvent('i18n:refresh'));
-      return;
-    }
+				// Persist selection
+				selectEl.addEventListener('change', () => {
+					const val = selectEl.value;
+					if (val && names.includes(val)) {
+						try { localStorage.setItem(lsKey(faculty), val); } catch (_) {}
+								renderGroupPreview(faculty, val);
+					}
+				});
+			})
+			.catch((err) => {
+				console.error('[group-selector] Failed to load groups:', err);
+				setOptions(selectEl, [placeholderOption('Nie udało się wczytać grup', true)]);
+			});
+	}
 
-    // Clear loading and add placeholder so nothing is preselected
-    select.innerHTML = '';
-    const placeholder = document.createElement('option');
-    placeholder.textContent = '           ';
-    placeholder.value = '';
-    placeholder.disabled = true;
-    placeholder.selected = true;
-    select.appendChild(placeholder);
+	function detectFacultyFromPath(path) {
+		// Expected path examples: /schedules/wcy/, /schedules/wim/index.html
+		const m = /\/schedules\/([^/]+)\//i.exec(path || '');
+		return m ? m[1].toLowerCase() : null;
+	}
 
-    icsFiles.sort((a, b) => a.name.localeCompare(b.name, undefined, { numeric: true }));
-    icsFiles.forEach(file => {
-      const option = document.createElement('option');
-      option.value = file.name;
-      option.textContent = file.name.replace(/\.ics$/i, '');
-      select.appendChild(option);
-    });
+	function setOptions(selectEl, optionElements) {
+		while (selectEl.firstChild) selectEl.removeChild(selectEl.firstChild);
+		for (const opt of optionElements) selectEl.appendChild(opt);
+	}
 
-    const render = (groupName) => {
-      if (!groupName) return;
-      const pngName = groupName.replace('.ics', '.png');
-      const grupaId = groupName.replace(/\.(ics|json)$/i, '');
-      const icsBaseRaw = calBaseApi
-        ? calBaseApi.replace('https://api.github.com/repos/', 'https://raw.githubusercontent.com/').replace('/contents/', `/${mainBranch}/`)
-        : null;
-      const icsUrl = icsBaseRaw ? `${icsBaseRaw}/${groupName}` : null;
-      const pngBaseRaw = `https://raw.githubusercontent.com/${repo}/${mainBranch}/${schedulesCandidates[0]}`;
-      const pngUrl = `${pngBaseRaw}/${pngName}`;
+	function placeholderOption(text, disabled, selected) {
+		const opt = document.createElement('option');
+		opt.textContent = text;
+		if (disabled) opt.disabled = true;
+		if (selected) opt.selected = true;
+		opt.hidden = true;
+		opt.value = '';
+		return opt;
+	}
 
-      const planzajecUrl = plansTemplate ? replaceTemplate(plansTemplate, grupaId) : '';
-      const isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
-      const isAndroid = /Android/i.test(navigator.userAgent);
+	function lsKey(faculty) {
+		return `watcal:selectedGroup:${faculty}`;
+	}
 
-      if (usedPngFallback || !icsUrl) {
-        output.innerHTML = `
-          <span class="png-generated-from" data-i18n="groups.png_from">PNG generated from:</span>
-          ${planzajecUrl ? `<a href="${planzajecUrl}" target="_blank">${planzajecUrl}</a><br>` : ''}
-          <img id="PNG-Preview" src="${pngUrl}" alt="PNG-preview" />
-        `;
-        document.dispatchEvent(new CustomEvent('i18n:refresh'));
-        return;
-      }
+	function getPreselectedGroup(faculty, names) {
+		const params = new URLSearchParams(location.search);
+		const byQuery = params.get('group');
+		if (byQuery && names.includes(byQuery)) return byQuery;
+		try {
+			const byLS = localStorage.getItem(lsKey(faculty));
+			if (byLS && names.includes(byLS)) return byLS;
+		} catch (_) {}
+		return null;
+	}
 
-      const webcalUrl = icsUrl.replace(/^https?:\/\//i, 'webcal://');
+		function renderGroupPreview(faculty, groupName) {
+			const output = document.getElementById('output');
+			if (!output || !faculty || !groupName) return;
 
-      if (isIOS) {
-        output.innerHTML = `
-          <a href="${webcalUrl}" id="subscribe-calendar-link"><span data-i18n="groups.subscribe.link">Subscribe Calendar</span></a><br>
-          ${!isIOS && planzajecUrl ? '' : ''}
-          <span class="png-generated-from" data-i18n="groups.png_from">PNG generated from:</span>
-          ${planzajecUrl ? `<a href="${planzajecUrl}" id="schedule-url" target="_blank">${planzajecUrl}</a>` : ''}
-          <img id="PNG-Preview" src="${pngUrl}" alt="PNG-preview" />
-        `;
-        document.dispatchEvent(new CustomEvent('i18n:refresh'));
-      } else {
-        let gcalIcs = icsUrl;
-        if (gcalIcs && gcalIcs.startsWith('https://raw.githubusercontent.com/')) {
-          const parts = gcalIcs.replace('https://raw.githubusercontent.com/', '').split('/');
-          if (parts.length >= 4) {
-            gcalIcs = `https://github.com/${parts[0]}/${parts[1]}/raw/${parts[2]}/${parts.slice(3).join('/')}`;
-          }
-        }
-        const gcalHref = gcalIcs ? `https://calendar.google.com/calendar/u/0/r?cid=${encodeURIComponent(gcalIcs)}` : '';
-        output.innerHTML = `
-          <button id=\"download-ics-btn\" type=\"button\" data-i18n=\"groups.download_btn\">Download .ICS file</button><br>
-          ${isAndroid && gcalHref ? `<a class=\"gcal-subscribe\" target=\"_blank\" href=\"${gcalHref}\" data-i18n=\"groups.subscribe.gcal\">Subscribe in Google Calendar</a><br>` : ''}
-          <span class=\"subscribe-url\" data-i18n=\"groups.subscribe.orcopy\">or copy URL to subscribe:</span>
-          <div class=\"command\"> 
-              <code>${webcalUrl}</code>
-              <span class=\"copy\"><img src=\"/img/icons/copy-icon.png\" alt=\"copy-icon\" onclick=\"copyToClipboard('${webcalUrl}', this)\"></span>
-          </div>
-          <span class=\"png-generated-from\" data-i18n=\"groups.png_from\">PNG generated from:</span>
-          ${planzajecUrl ? `<a href=\"${planzajecUrl}\" id=\"schedule-url\" target=\"_blank\">${planzajecUrl}</a>` : ''}
-          <img id=\"PNG-Preview\" src=\"${pngUrl}\" alt=\"PNG-preview\" />
-        `;
-        window.dispatchEvent(new Event('i18n:refresh'));
-        const btn = document.getElementById('download-ics-btn');
-        if (btn) {
-          btn.addEventListener('click', () => downloadIcs(icsUrl, groupName));
-        }
-      }
-    };
+			// Map group name to local filename conventions
+			// Rule observed: '*' in JSON names maps to '_' in local files for some faculties (e.g., WCY24*MM -> WCY24_MM)
+			const fileBase = groupName.replace(/\*/g, '_');
+			const encoded = encodeURIComponent(fileBase);
 
-    select.addEventListener('change', () => {
-      if (select.value) render(select.value);
-      else output.textContent = '';
-    });
+			const icsUrl = `/db/calendars/${faculty}_calendars/${encoded}.ics`;
+			const pngUrl = `/db/schedules/${faculty}_schedules/${encoded}.png`;
 
-    // leave placeholder until user selects
-    output.textContent = '';
-  } catch (err) {
-    const output = document.getElementById('output');
-    if (output) {
-      output.setAttribute('data-i18n', 'groups.fetch_error');
-      output.textContent = 'Nie udało się pobrać listy grup. Spróbuj ponownie później.';
-      document.dispatchEvent(new CustomEvent('i18n:refresh'));
-    }
-    console.error(err);
-  }
-}
+			// Build DOM
+			output.innerHTML = '';
 
-window.initGroupSelector = function(cfg) {
-  window.__groupSelectorConfig = Object.assign({}, window.__groupSelectorConfig || {}, cfg || {});
-  // Run loader after a tick so wrappers can set config first
-  setTimeout(() => loadGroupsGeneric(), 0);
-};
+			const container = document.createElement('div');
+			container.className = 'schedule-output';
 
-// If some wrapper set config before this file loaded, initialize now
-if (window.__groupSelectorConfig) {
-  setTimeout(() => loadGroupsGeneric(), 0);
-}
+			const actions = document.createElement('div');
+			actions.className = 'schedule-actions';
+
+			const icsFile = document.createElement('a');
+			icsFile.href = icsUrl;
+			icsFile.setAttribute('download', `${fileBase}.ics`);
+			icsFile.textContent = 'Download .ICS';
+			icsFile.className = 'download-ics-btn';
+
+      const icsLink = document.createElement('a');
+      icsLink.href = `webcal://watcalendars.byst.re/db/calendars/${encodeURIComponent(groupName)}.ics`;
+      icsLink.textContent = 'Subscribe Calendar';
+      icsLink.className = 'download-ics-btn';
+
+      const googleLink = document.createElement('a');
+      googleLink.href = `https://calendar.google.com/calendar/u/0/r/settings/addbyurl`;
+      googleLink.target = '_blank';
+      googleLink.rel = 'noopener noreferrer';
+      googleLink.textContent = 'Subscribe in Google Calendar';
+      googleLink.className = 'download-ics-btn';
+      googleLink.addEventListener('click', (e) => {
+        e.preventDefault();
+          const originalText = googleLink.textContent;
+          let seconds = 5;
+          googleLink.textContent = `Opening in ${seconds}...`;
+
+
+			const preview = document.createElement('div');
+			preview.className = 'schedule-preview';
+
+			const img = document.createElement('img');
+			img.src = pngUrl;
+			img.alt = `Plan zajęć: ${groupName}`;
+			img.loading = 'lazy';
+			img.decoding = 'async';
+			img.onerror = () => {
+				// Fallback when PNG is missing
+				preview.innerHTML = '';
+				const msg = document.createElement('div');
+				msg.className = 'schedule-missing';
+				msg.textContent = 'Brak podglądu PNG dla wybranej grupy.';
+				preview.appendChild(msg);
+			};
+
+			actions.appendChild(icsFile);
+      actions.appendChild(icsLink);
+      actions.appendChild(googleLink);
+			preview.appendChild(img);
+
+			container.appendChild(actions);
+			container.appendChild(preview);
+			output.appendChild(container);
+		}
+})();
+
