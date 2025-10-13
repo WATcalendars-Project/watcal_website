@@ -166,7 +166,17 @@
           const originalText = googleLink.textContent;
           let seconds = 5;
           googleLink.textContent = `Opening in ${seconds}...`;
-
+          const countdown = setInterval(() => {
+            seconds--;
+            if (seconds > 0) {
+              googleLink.textContent = `Opening in ${seconds}...`;
+            } else {
+              clearInterval(countdown);
+              googleLink.textContent = originalText;
+              window.open(googleLink.href, googleLink.target); 
+            }
+          }, 1000);
+        });
 
 			const preview = document.createElement('div');
 			preview.className = 'schedule-preview';
