@@ -50,41 +50,144 @@
 }
 
 .download-ics-btn {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 16px;
+    letter-spacing: 0.02em;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+    padding: 0.8em 1.5em 0.8em 1.2em;
+    color: #ffffff;
+    background: linear-gradient(
+        0deg,
+        rgba(55, 130, 84, 1) 0%,
+        rgba(83, 237, 178, 1) 100%
+    );
+    border: none;
+    box-shadow: 0 0.7em 1.5em -0.5em rgba(69, 164, 106, 0.6);
+    border-radius: 20em;
+    transition: background 0.25s ease, box-shadow 0.25s ease, transform 0.06s ease;
     text-decoration: none;
-    border: 2px solid rgba(55, 130, 84, 1);
-    padding: 12px 30px;
-    border-radius: 30px;
-    color: white;
-    font-size: 1.1rem;
-    font-weight: 500;
-    background-color: rgba(55, 130, 84, 1);
-    transition: all 0.3s;
+}
+
+.download-ics-btn svg {
+  margin-right: 8px;
+  transform: translateY(2px);
 }
 
 .download-ics-btn:hover {
-    background-color: rgb(69, 164, 106);
-    box-shadow: 0 1px 8px rgba(69, 164, 106, 0.6);
-    text-shadow: 0 0 5px rgba(255, 255, 255, 0.7);
+    box-shadow: 0 0.6em 1.6em -0.5em rgba(69, 164, 106, 0.65);
+    background: linear-gradient(
+        0deg,
+        rgba(69, 164, 106, 1) 0%,
+        rgba(120, 245, 198, 1) 100%
+    );
 }
 
-.subscribe-url {
-    margin-top: 20px;
-    margin-bottom: -10px;
-    font-size: 17px;
-    color: white;
-    opacity: 1;
+.download-ics-btn:active {
+    transform: translateY(1px);
+    box-shadow: 0 0.35em 1em -0.5em rgba(55, 130, 84, 0.55);
+    background: linear-gradient(
+        0deg,
+        rgba(46, 110, 71, 1) 0%,
+        rgba(69, 200, 155, 1) 100%
+    );
 }
 
-#subscribe-calendar-link {
+
+.google-calendar-btn {
+    --lift: 0px; /* controls vertical movement */
+    display: inline-flex;
+    align-items: center;
+    padding: 12px 20px 12px 50px;
+    border: 1px solid rgba(218, 220, 224, 0.8);
+    border-radius: 9999px; /* pill shape */
+    background-color: #ffffff;
+    color: #3c4043;
+    font-size: 14px;
+    font-weight: 600;
+    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen,Ubuntu,Cantarell,"Fira Sans","Droid Sans","Helvetica Neue",sans-serif;
     text-decoration: none;
-    border: 2px solid rgba(55, 130, 84, 1);
-    padding: 12px 30px;
-    border-radius: 30px;
-    color: white;
-    font-size: 1.1rem;
-    font-weight: 500;
-    background-color: rgba(55, 130, 84, 1);
-    transition: all 0.3s;
+    cursor: pointer;
+
+    background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTgiIGhlaWdodD0iMTgiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGcgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIj48cGF0aCBkPSJNMTcuNiA5LjJsLS4xLTEuOEg5djMuNGg0LjhDMTMuNiAxMiAxMyAxMyAxMiAxMy42djIuMmgzYTguOCA4LjggMCAwIDAgMi42LTYuNnoiIGZpbGw9IiM0Mjg1RjQiIGZpbGwtcnVsZT0ibm9uemVybyIvPjxwYXRoIGQ9Ik05IDE4YzIuNCAwIDQuNS0uOCA2LTIuMmwtMy0yLjJhNS40IDUuNCAwIDAgMS04LTIuOUgxVjEzYTkgOSAwIDAgMCA4IDV6IiBmaWxsPSIjMzRBODUzIiBmaWxsLXJ1bGU9Im5vbnplcm8iLz48cGF0aCBkPSJNNCAxMC43YTUuNCA1LjQgMCAwIDEgMC0zLjRWNUgxYTkgOSAwIDAgMCAwIDhsMy0yLjN6IiBmaWxsPSIjRkJCQzA1IiBmaWxsLXJ1bGU9Im5vbnplcm8iLz48cGF0aCBkPSJNOSAzLjZjMS4zIDAgMi41LjQgMy40IDEuM0wxNSAyLjNBOSA5IDAgMCAwIDEgNWwzIDIuNGE1LjQgNS40IDAgMCAxIDUtMy43eiIgZmlsbD0iI0VBNDMzNSIgZmlsbC1ydWxlPSJub256ZXJvIi8+PHBhdGggZD0iTTAgMGgxOHYxOEgweiIvPjwvZz48L3N2Zz4=);
+    background-repeat: no-repeat;
+    background-position: 18px 50%;
+    background-size: 18px 18px;
+
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.06), 0 2px 6px rgba(0, 0, 0, 0.08);
+    transform: translateY(var(--lift));
+    transition: box-shadow 0.2s ease, background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease, transform 0.08s ease;
+}
+
+.google-calendar-btn:hover {
+    --lift: -1px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.14), 0 10px 24px rgba(0, 0, 0, 0.12);
+    background-color: #f8fbff; 
+    border-color: #d2e3fc; 
+    color: #1a73e8;
+}
+
+.google-calendar-btn:active {
+    background-color: #f6f9fe;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.14);
+}
+
+.google-calendar-btn:focus { outline: none; }
+
+.google-calendar-btn:focus-visible {
+    outline: none;
+    border-color: #4285f4;
+    box-shadow: 0 0 0 3px rgba(66, 133, 244, 0.35), 0 1px 3px rgba(0, 0, 0, 0.12);
+}
+
+/* Apple-style subscribe button */
+.apple-login-button {
+    --lift: 0px;
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+    padding: 14px 32px 16px 32px;
+    border-radius: 9999px;
+    background-color: #000;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 600;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+    text-decoration: none;
+    cursor: pointer;
+    box-shadow: 0 1px 1px rgba(0,0,0,0.4), 0 2px 6px rgba(0,0,0,0.35);
+    transform: translateY(var(--lift));
+    transition: transform 0.08s ease, box-shadow 0.2s ease, background-color 0.2s ease, color 0.2s ease;
+}
+
+.apple-login-button .apple-icon {
+    width: 22px;
+    height: 22px;
+    color: currentColor; /* inherits white */
+}
+
+.apple-login-button .btn-label {
+    display: inline-block;
+    transform: translateY(var(--lift));
+}
+
+.apple-login-button:hover {
+    --lift: -1px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.5), 0 10px 24px rgba(0,0,0,0.45);
+    background-color: #0a0a0a;
+}
+
+.apple-login-button:active {
+    --lift: 1px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.6);
+}
+
+.apple-login-button:focus { outline: none; }
+.apple-login-button:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(255,255,255,0.3), 0 1px 3px rgba(0,0,0,0.5);
 }
 
 #subscribe-calendar-link:hover {
@@ -107,6 +210,7 @@
 
 .schedule-preview img {
     width: 90%;
+    margin-top: 50px;
     height: auto; 
     display: block;
     margin-inline: auto; 
@@ -132,6 +236,7 @@
     border-radius: 8px;
     margin-top: 30px;
     margin-bottom: 30px;
+    max-width: 650px;
 }
 
 code {
@@ -176,6 +281,33 @@ code {
     opacity: 0.4;
     border-radius: 5px;
     transition-delay: 2s;
+}
+
+.schedule-actions {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: 20px;
+}
+
+.schedule-output {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 50px;
+}
+
+.schedule-placeholder {
+    color: white;
+    font-style: italic;
+    opacity: 0.7;
+    font-size: 20px;
+    margin: 50px 0;
 }
 
 @media (max-width: 1100px) {

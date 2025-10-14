@@ -12,24 +12,22 @@
     z-index: 99998;
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
-    background-color: rgba(0, 0, 0, 0.4);
-    background: linear-gradient( to bottom, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.2),rgba(0, 0, 0, 0) );
+    background-color: rgba(0, 0, 0, 0.1);
     height: 70px;
     transition: min-height 0.3s, transform 0.25s cubic-bezier(.4,0,.2,1), opacity 0.2s ease;
     will-change: transform, opacity;
 }
 
 #topbar.hide {
-    opacity: 0;
-    transform: translateY(-100%);
-    pointer-events: none;
+    opacity: 0 !important;
+    transform: translateY(-100%) !important;
+    pointer-events: none !important;
 }
 
 .logo {
     display: flex;
     align-items: center;
     gap: 10px;
-    
 }
 
 .logo img {
@@ -59,7 +57,7 @@
 .navigation {
     display: flex;
     align-items: center;
-    gap: clamp(1rem, 4vw, 4rem);
+    gap: clamp(1rem, 4vw, 3rem);
     flex-wrap: wrap;
     margin: 0;
 }
@@ -259,7 +257,7 @@ body.dropdown-open .verse:hover .faculty {
     height: 12px;
 }
 
-svg {
+.nav svg {
     display: none;
 }
 
@@ -363,7 +361,12 @@ svg {
     display: none;
 }
 
-@media(max-width: 1500px) {
+@media(max-width: 1680px) {
+    .decrypt-text {
+        max-width: 160px;
+        font-size: 12px;
+        line-height: 1.2;
+    }
     #topbar {
         padding-left: 2vw;
         padding-right: 3vw;
@@ -373,7 +376,7 @@ svg {
     }
 }
 
-@media(max-width: 1210px) {
+@media(max-width: 1200px) {
     svg {
         margin-top: -3px;
     }
@@ -394,7 +397,6 @@ svg {
     #topbar {
         background-color: rgba(41, 41, 41, 0.044);
     }
-
     .menu-schedules,
     .menu-more,
     .menu-changelog {
@@ -423,7 +425,7 @@ svg {
         top: 40px;
         left: 50%;
         transform: translateX(-50%);
-        width: 240px;
+        width: 140px;
         max-height: 0;
         opacity: 0;
         overflow: hidden;
@@ -437,7 +439,7 @@ svg {
         opacity: 1;
     }
     .dropdown-schedules.open ~.dropdown-changelog {
-        margin-top: 250px;
+        margin-top: 142px;
         transition: margin-top 0.4s cubic-bezier(.4,0,.2,1);
     }
     .dropdown-schedules ~.dropdown-changelog {
@@ -445,7 +447,7 @@ svg {
         transition: margin-top 0.4s cubic-bezier(.4,0,.2,1);
     }
     .dropdown-changelog.open ~.dropdown-more {
-        margin-top: 40px;
+        margin-top: 47px;
         transition: margin-top 0.4s cubic-bezier(.4,0,.2,1);
     }
     .dropdown-changelog ~.dropdown-more {
@@ -453,7 +455,7 @@ svg {
         transition: margin-top 0.4s cubic-bezier(.4,0,.2,1);
     }
     .dropdown-more.open ~.feedback {
-        margin-top: 210px;
+        margin-top: 230px;
         transition: margin-top 0.4s cubic-bezier(.4,0,.2,1);
     }
     .dropdown-more ~.feedback {
@@ -483,6 +485,10 @@ svg {
         align-items: center;
         transition: height 0.3s ease, transform 0.25s cubic-bezier(.4,0,.2,1), opacity 0.2s ease;
     }
+    #topbar .accordion-schedules {
+        display: flex;
+        justify-content: center;
+    }
     .navigation {
         display: flex;
         flex-direction: column;
@@ -494,7 +500,7 @@ svg {
         transform: translateX(-50%) translateY(-100vh);
         width: 100vw;
         height: calc(100vh - 80px);
-        gap: 1.5rem;
+        gap: 0.9rem;
         z-index: 9999;
         text-align: center;
         opacity: 0;
@@ -595,12 +601,5 @@ svg {
     }
     .active path:nth-child(6) {
         transform: translateX(9px) translateY(1px) rotate(45deg);
-    }
-}
-
-@media(max-width: 1680px) {
-    #topbar .decrypt-text {
-        font-size: 14px;
-        max-width: 130px;
     }
 }

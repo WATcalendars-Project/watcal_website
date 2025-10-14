@@ -109,20 +109,19 @@
 }
 
 .footer-container {
-    position: relative; 
-	flex-direction: column;
-    min-height: 100vh;
+	position: relative;
 	display: flex;
+	flex-direction: column;
+	margin-top: auto; /* push to bottom of page when content is short */
 }
 
 .footer {
 	position: relative;
-	margin-top: auto;
 	display: flex;
 	height: 500px;
-    background-color: rgba(13, 17, 23, 0.526);
-	align-items: center;    
-    justify-content: center;
+	background-color: rgba(13, 17, 23, 0.526);
+	align-items: center;
+	justify-content: center;
 }
 
 .column2 {
