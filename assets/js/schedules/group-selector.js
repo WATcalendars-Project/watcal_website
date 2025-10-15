@@ -322,9 +322,13 @@
 			DesktopWebcalTitle.className = 'webcal-desktop-title';
 			DesktopWebcalTitle.textContent = 'or copy the webcal URL to subscribe in Apple Calendar settings:';
 
+			const outputLine = document.createElement('div');
+			outputLine.className = 'output-line';
+
 			// Arrange items differently per device
 			if (device === 'iphone') {
 				// iOS prefers webcal; include Google as alternative; download last
+				actions.appendChild(outputLine);
 				actions.appendChild(icsLink);
 				actions.appendChild(AppleicsLinkTitle);
 				actions.appendChild(command1);
@@ -416,8 +420,6 @@
 		};
 
 		renderInto(outputs.iphone, 'iphone');
-		renderInto(outputs.android, 'android');
-		renderInto(outputs.desktop, 'desktop');
 	}
 })();
 
