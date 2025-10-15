@@ -5,32 +5,32 @@ document.addEventListener("DOMContentLoaded", () => {
     const DEBUG = false; // set true to see logs
     const log = (...a) => DEBUG && console.log('[topbar]', ...a);
 
-    function getScrollContainers() {
-        const picked = [];
-        const guess = document.querySelectorAll(
-            'main, #content, [data-scroll], [data-scroll-container], [data-scrollable], .scroll-container, .content, body, html'
+    // Robust getter for vertical scroll position
+    const getY = () => {
+        // Prefer scrollingElement, then documentElement/body, then window
+        const se = document.scrollingElement || document.documentElement || document.body;
+        return (
+            (se && typeof se.scrollTop === 'number' ? se.scrollTop : 0) ||
+            (typeof window.pageYOffset === 'number' ? window.pageYOffset : 0) ||
+            (typeof window.scrollY === 'number' ? window.scrollY : 0) ||
+            0
         );
-        guess.forEach(el => {
-            const cs = getComputedStyle(el);
-            const oy = cs.overflowY;
-            if ((oy === 'auto' || oy === 'scroll') && el.scrollHeight > el.clientHeight + 1) {
-                picked.push(el);
-            }
-        });
-        if (!picked.length) {
-            const se = document.scrollingElement || document.documentElement || document.body;
-            if (se.scrollHeight > se.clientHeight + 1) picked.push(se);
-        }
-        return Array.from(new Set(picked));
-    }
+    };
 
-    // Zawsze używaj window jako scrollEl
-    const scrollEl = window;
-    const tol = 2;
-    const topClamp = 30;
-    let lastY = window.scrollY;
+    const tol = 2;        // minimal delta to toggle
+    const topClamp = 30;  // always show near top
+    let lastY = getY();
     let ticking = false;
-    const getY = () => window.scrollY;
+
+    // When dropdown menus are open or body is locked, don't auto-hide
+    const isInteractionOpen = () => {
+        if (header.classList.contains('active')) return true; // mobile menu
+        if (document.body.classList.contains('noscroll')) return true; // body locked
+        // any desktop dropdown open
+        return (
+            document.querySelector('.menu-schedules.open, .menu-changelog.open, .menu-more.open') !== null
+        );
+    };
 
     function onScroll() {
         if (ticking) return;
@@ -38,10 +38,10 @@ document.addEventListener("DOMContentLoaded", () => {
         requestAnimationFrame(() => {
             ticking = false;
             const y = getY();
-            console.log('[topbar] scroll event, y:', y);
+            log('scroll y=', y);
 
-            // don't hide when mobile menu is open
-            if (header.classList.contains('active')) {
+            // don't hide when menus are open / interaction overlays
+            if (isInteractionOpen()) {
                 header.classList.remove('hide');
                 lastY = y;
                 return;
@@ -55,34 +55,72 @@ document.addEventListener("DOMContentLoaded", () => {
 
             const dy = y - lastY;
             if (dy > tol) {
-                console.log('[topbar] hide (scroll down)', dy);
-                header.classList.add('hide'); // scrolling down
+                // scrolling down
+                header.classList.add('hide');
             } else if (dy < -tol) {
-                console.log('[topbar] show (scroll up)', dy);
-                header.classList.remove('hide'); // scrolling up
+                // scrolling up
+                header.classList.remove('hide');
             }
             lastY = y;
         });
     }
 
     function attach() {
+        // Listen on multiple potential emitters for robustness
         window.addEventListener('scroll', onScroll, { passive: true });
+        document.addEventListener('scroll', onScroll, { passive: true });
+
+        // Wheel hint: when components prevent page scroll (e.g., tutorial slider),
+        // still infer intent to hide/show the topbar from wheel direction.
+        const onWheel = (e) => {
+            // Ignore if overlays/menus are open
+            if (isInteractionOpen()) return;
+            const y = getY();
+            const threshold = 2; // minimal wheel delta to react
+            if (y <= topClamp && e.deltaY < 0) {
+                header.classList.remove('hide');
+                lastY = y;
+                return;
+            }
+            if (e.deltaY > threshold) {
+                header.classList.add('hide');
+            } else if (e.deltaY < -threshold) {
+                header.classList.remove('hide');
+            }
+            // keep lastY in sync with current page scroll position
+            lastY = y;
+        };
+        window.addEventListener('wheel', onWheel, { passive: true });
+
+        // touchmove as hint is less reliable cross-devices; keep scroll-based logic
+        window.addEventListener('touchmove', onScroll, { passive: true });
+
         window.addEventListener('resize', () => {
             lastY = getY();
             if (getY() <= topClamp) header.classList.remove('hide');
         });
+
+        // When visibility changes (tab switch), reset baseline
+        document.addEventListener('visibilitychange', () => {
+            lastY = getY();
+        });
     }
 
     attach();
-    onScroll(); 
+    onScroll();
 });
 
+// Avoid redefining if another script already provides these helpers
 function openTopbar() {
-  document.body.classList.add('noscroll');
+  if (!document.body.classList.contains('noscroll')) {
+    document.body.classList.add('noscroll');
+  }
 }
 
 function closeTopbar() {
-  document.body.classList.remove('noscroll');
+  if (document.body.classList.contains('noscroll')) {
+    document.body.classList.remove('noscroll');
+  }
 }
 
 /* ------------------

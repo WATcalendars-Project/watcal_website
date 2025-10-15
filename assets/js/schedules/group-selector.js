@@ -5,6 +5,9 @@
 (function () {
 	'use strict';
 
+	// Cache: faculty -> { groupName: sourceUrl }
+	const groupUrlMapByFaculty = {};
+
 	// Run after DOM is ready (script is deferred on pages, but keep it safe)
 	if (document.readyState === 'loading') {
 		document.addEventListener('DOMContentLoaded', init);
@@ -43,6 +46,8 @@
 				return res.json();
 			})
 					.then((data) => {
+				// cache mapping for later use in preview
+				try { groupUrlMapByFaculty[faculty] = data || {}; } catch (_) {}
 				// data shape: { "GROUP_NAME": "https://...", ... }
 				const names = Object.keys(data || {});
 				if (!names.length) {
@@ -281,27 +286,71 @@
 			command2.appendChild(codeEl2);
 			command2.appendChild(copyEl2);
 
+			const AppleicsLinkTitle = document.createElement('div');
+			AppleicsLinkTitle.className = 'subscribe-apple-title';
+			AppleicsLinkTitle.textContent = 'or Copy webcal URL to subscribe in Apple Calendar settings:';
+
+			const AppleicsDownloadTitle = document.createElement('div');
+			AppleicsDownloadTitle.className = 'download-apple-title';
+			AppleicsDownloadTitle.textContent = 'you can also Download .ICS file to import into calendar apps:';
+
+			const AppleGoogleTitle = document.createElement('div');
+			AppleGoogleTitle.className = 'google-apple-title';
+			AppleGoogleTitle.textContent = 'or go to Google Calendar to add by URL:';
+
+			const AndroidGoogleTitle = document.createElement('div');
+			AndroidGoogleTitle.className = 'google-android-title';
+			AndroidGoogleTitle.textContent = 'Copy URL to add via Google Calendar:';
+
+			const AndroidicsDownloadTitle = document.createElement('div');
+			AndroidicsDownloadTitle.className = 'download-android-title';
+			AndroidicsDownloadTitle.textContent = 'or Download .ICS file to import into calendar apps:';
+
+			const DesktopDownloadTitle = document.createElement('div');
+			DesktopDownloadTitle.className = 'download-desktop-title';
+			DesktopDownloadTitle.textContent = 'Download .ICS to import into calendar apps:';
+
+			const DesktopGoogleTitle = document.createElement('div');
+			DesktopGoogleTitle.className = 'google-desktop-title';
+			DesktopGoogleTitle.textContent = 'you can also copy the link to add via Google Calendar:';
+
+			const DesktopMACOSTitle = document.createElement('div');
+			DesktopMACOSTitle.className = 'macos-desktop-title';
+			DesktopMACOSTitle.textContent = 'For macOS, you can subscribe from button below:';
+
+			const DesktopWebcalTitle = document.createElement('div');
+			DesktopWebcalTitle.className = 'webcal-desktop-title';
+			DesktopWebcalTitle.textContent = 'or copy the webcal URL to subscribe in Apple Calendar settings:';
 
 			// Arrange items differently per device
 			if (device === 'iphone') {
 				// iOS prefers webcal; include Google as alternative; download last
 				actions.appendChild(icsLink);
+				actions.appendChild(AppleicsLinkTitle);
 				actions.appendChild(command1);
+				actions.appendChild(AppleicsDownloadTitle);
 				actions.appendChild(icsFile);
+				actions.appendChild(AppleGoogleTitle);
 				actions.appendChild(command2);
 				actions.appendChild(googleLink);
 
 			} else if (device === 'android') {
 				// Android: emphasize download and Google (https). Omit webcal.
+				actions.appendChild(AndroidGoogleTitle);
 				actions.appendChild(googleLink);
 				actions.appendChild(command2);
+				actions.appendChild(AndroidicsDownloadTitle);
 				actions.appendChild(icsFile);
 			} else {
 				// Desktop: show everything, download first
+				actions.appendChild(DesktopDownloadTitle);
 				actions.appendChild(icsFile);
+				actions.appendChild(DesktopGoogleTitle);
 				actions.appendChild(command2);
 				actions.appendChild(googleLink);
+				actions.appendChild(DesktopMACOSTitle);
 				actions.appendChild(icsLink);
+				actions.appendChild(DesktopWebcalTitle);
 				actions.appendChild(command1);
 			}
 
@@ -323,6 +372,35 @@
 				msg.textContent = 'No preview available.';
 				preview.appendChild(msg);
 			};
+
+			// Source link mapped from db/groups_url JSON
+			const sourceUrl = (() => {
+				try {
+					const m = groupUrlMapByFaculty[faculty];
+					const raw = m ? m[groupName] : null;
+					return raw ? String(raw) : null;
+				} catch (_) { return null; }
+			})();
+
+			const sourceWrap = document.createElement('div');
+			sourceWrap.className = 'png-generated-from';
+			sourceWrap.textContent = '// PNG screenshoted from:';
+			preview.appendChild(sourceWrap);
+
+			const srcLink = document.createElement('a');
+			srcLink.className = 'schedule-url';
+			if (sourceUrl) {
+				srcLink.href = sourceUrl;
+				srcLink.target = '_blank';
+				srcLink.rel = 'noopener noreferrer';
+				srcLink.textContent = sourceUrl;
+			} else {
+				srcLink.href = '#';
+				srcLink.textContent = 'source link unavailable';
+				srcLink.style.opacity = '0.7';
+				srcLink.style.pointerEvents = 'none';
+			}
+			preview.appendChild(srcLink);
 			preview.appendChild(img);
 			return preview;
 		};

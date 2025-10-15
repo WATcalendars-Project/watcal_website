@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="/assets/css/home/title.css?v=0.2.1">
     <link rel="stylesheet" href="/assets/css/home/3items.css?v=0.2.1">
     <link rel="stylesheet" href="/assets/css/home/showcase.css?v=0.2.1">
-    <link rel="stylesheet" href="/assets/css/main/calendar-instruction.css?v=0.2.1">
+    <link rel="stylesheet" href="/assets/css/home/calendar-instructions-home.css?v=0.2.1">
     <link rel="stylesheet" href="/assets/css/home/installation.css?v=0.2.1">
     <link rel="stylesheet" href="/assets/css/home/counter.css?v=0.2.1">
     <link rel="stylesheet" href="/assets/css/main/support.css?v=0.2.1">
@@ -27,6 +27,8 @@
     <script src="/assets/js/main/language.js?v=0.2.0" defer></script>
     <script src="/assets/js/main/simple-counter.js?v=0.2.0" defer></script>
     <script src="/assets/js/main/tutorial-toggle.js?v=0.2.0" defer></script>
+    <script src="/assets/js/main/tutorial-dots.js?v=0.2.0" defer></script>
+    <script src="/assets/js/main/star.js?v=0.2.0" defer></script>
 </head>
 
 <body>
@@ -189,18 +191,6 @@
                     <a href="/schedules/" class="schedules" data-i18n="hero.buttons.schedules">Schedules</a>
                     <a href="https://github.com/dominikx2002/WATcalendars" class="github" target="_blank"><span data-i18n="hero.buttons.github">GitHub</span><span class="arrow"><img src="/assets/images/icons/right-arrow.svg" alt="arrow"></span></a>
                 </div>
-                <!-- statistics -->
-                <div class="statistics">
-                    <div class="subscriptions">
-                        <div class="green-checkmark">
-                            <span class="heartbeat"></span>
-                            <span class="dot"></span>
-                        </div>
-                        <h2 data-i18n="stats.faculties1">The calendars were subscribed by </h1>
-                        <span class="number" id="subscription-counter"></span>
-                        <h3 data-i18n="stats.faculties2"> users.</h1>
-                    </div>
-                </div>
             </div>
             <div class="media-title">
                 <h1 data-i18n="hero.title.media">The WATcalendars for .ICS Schedules</h1>
@@ -303,24 +293,16 @@
                     </div>
                 </div>
                 <div class="iphone-tutorial">
-                    <p data-i18n-html="true" data-i18n="tutorial.step1">Open the <a href="/schedules/" class="schedules">Schedules</a> menu and choose your Faculty.</p>
-                    <div class="tutorial-faculties">
+                    <div class="slider-container">
                         <img src="/assets/images/web/browser-mockup-schedules.png" alt="browser-faculties">
                         <img src="/assets/images/web/iphone-mockup-schedule.png" alt="iphone-faculties">
-                    </div>
-                    <p data-i18n="tutorial.step2">Select the group of your choice.</p>
-                    <div class="tutorial-groups">
                         <img src="/assets/images/web/iphone-mockup-groups.png" alt="iphone-groups">
                         <img src="/assets/images/web/browser-mockup-groups.png" alt="browser-groups">
-                    </div>
-                    <p data-i18n-html="true" data-i18n="tutorial.step3">On <img src="/assets/images/logo/apple-logo.png" alt="apple-logo"> iPhone, the schedule will appear as a calendar subscription.</p>
-                    <img src="/assets/images/mockups/iphone-subscription.png" alt="iphone-subscription">
-                    <p data-i18n-html="true" data-i18n="tutorial.step4">Once you confirm with the <strong>Find</strong> option, your group schedule will
-                        be available directly in your calendar app.</p>
-                    <div class="tutorial-view">
+                        <img src="/assets/images/mockups/iphone-subscription.png" alt="iphone-subscription">
                         <img src="/assets/images/mockups/iphone-day.png" alt="iphone-day">
                         <img src="/assets/images/mockups/iphone-month.png" alt="iphone-month">
                     </div>
+                    <div class="slider-dots"></div>
                 </div>
                 <div class="android-tutorial">
 
@@ -397,9 +379,27 @@
                         alt="Buy Me A Coffee">
                 </a>
             </div>
-            <a href="https://github.com/dominikx2002/WATcalendars" target="_blank" class="support-text">
-                If you're using GitHub, consider starring my repository ⭐
-            </a>
+            <button class="star-button">
+                <span class="text">Star on GitHub</span>
+                <svg
+                    aria-hidden="true"
+                    fill="currentColor"
+                    viewBox="0 0 47.94 47.94"
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="20px"
+                    height="20px"
+                    class="icon"
+                >
+                    <path
+                    d="M26.285,2.486l5.407,10.956c0.376,0.762,1.103,1.29,1.944,1.412l12.091,1.757
+                    c2.118,0.308,2.963,2.91,1.431,4.403l-8.749,8.528c-0.608,0.593-0.886,1.448-0.742,2.285l2.065,12.042
+                    c0.362,2.109-1.852,3.717-3.746,2.722l-10.814-5.685c-0.752-0.395-1.651-0.395-2.403,0l-10.814,5.685
+                    c-1.894,0.996-4.108-0.613-3.746-2.722l2.065-12.042c0.144-0.837-0.134-1.692-0.742-2.285l-8.749-8.528
+                    c-1.532-1.494-0.687-4.096,1.431-4.403l12.091-1.757c0.841-0.122,1.568-0.65,1.944-1.412l5.407-10.956
+                    C22.602,0.567,25.338,0.567,26.285,2.486z"
+                    ></path>
+                </svg>
+            </button>
         </section>
     </section>
 
