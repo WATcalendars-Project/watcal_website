@@ -1,5 +1,5 @@
 /* Copy button icon */
-.command .copy img {
+#Contact .command .copy img {
     background-color: rgba(85, 85, 85, 0.459);
     padding: 7px;
     width: 24px;
@@ -10,15 +10,15 @@
     cursor: pointer;
 }
 
-.command .copy img:hover {
+#Contact .command .copy img:hover {
     opacity: 1;
 }
 
-.command .copy img:active {
+#Contact .command .copy img:active {
     transform: scale(0.96);
 }
 
-.command {
+#Contact .command {
     margin-top: 30px; /* keep original top spacing */
     margin-bottom: 0; /* no extra bottom margin here */
     display: flex;
@@ -31,12 +31,12 @@
 }
 
 /* Reduce visible space under .command by limiting next element's top margin */
-.command + * {
+#Contact .command + * {
     margin-top: 10px !important;
 }
 
 /* Command text */
-.command code {
+#Contact .command code {
     overflow-x: auto;
     font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
     color: rgba(255, 255, 255, 0.86);
@@ -44,7 +44,7 @@
 }
 
 /* Copy button container */
-.command .copy {
+#Contact .command .copy {
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -53,10 +53,10 @@
 }
 
 /* Kept for compatibility if hover is applied on container elsewhere */
-.command .copy:hover { opacity: 1; }
+#Contact .command .copy:hover { opacity: 1; }
 
 /* Copied tooltip */
-.command .copied-msg {
+#Contact .command .copied-msg {
     display: none; /* toggled via JS */
     position: absolute;
     right: 50px;
@@ -74,20 +74,20 @@
 
 /* Responsive tweaks */
 @media (max-width: 640px) {
-    .command {
+    #Contact .command {
         padding: 10px 12px;
         max-width: 100%;
         gap: 10px;
     }
-    .command code {
+    #Contact .command code {
         font-size: 16px;
     }
-    .command .copy img {
+    #Contact .command .copy img {
         width: 22px;
         height: 22px;
         padding: 6px;
     }
-    .command .copied-msg {
+    #Contact .command .copied-msg {
         right: 0;
         top: -6px;
         font-size: 13px;
