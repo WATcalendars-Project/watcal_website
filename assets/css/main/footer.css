@@ -586,7 +586,14 @@
 		font-size: 14px;
 	}
 	.footer .more {
-		margin-top: 370px;
+		margin-top: 385px;
 	}
-
+	.footer .website-map {
+		position: relative; 
+		z-index: 2;
+	}
+	.footer .more {
+		position: relative; /* stack below website-map without altering column2 layout */
+		z-index: 1;
+	}
 }

@@ -4,20 +4,20 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>WATcalendars</title>
-    <link rel="icon" href="/assets/images/logo/logo.png" type="image/png">
+    <link rel="icon" href="/images/logo/logo.png" type="image/png">
     <!--CSS-->
     <link rel="stylesheet" href="/assets/css/main/main.css?v=0.2.18">
-    <link rel="stylesheet" href="/assets/css/main/topbar.css?v=0.2.0">
-    <link rel="stylesheet" href="/assets/css/Contact/contact.css?v=0.2.0">
-    <link rel="stylesheet" href="/assets/css/main/footer.css?v=0.2.0">
+    <link rel="stylesheet" href="/assets/css/main/topbar.css?v=0.2.3">
+    <link rel="stylesheet" href="/assets/css/main/footer.css?v=0.2.2">
     <link rel="stylesheet" href="/assets/css/main/footer-short.css?v=0.2.0">
+    <link rel="stylesheet" href="/assets/css/feedback/feedback.css?v=0.2.1">
+    <link rel="stylesheet" href="/assets/css/main/copy.css">
     <!--JS-->
-    <script src="/assets/js/main/text-animation.js?v=0.2.0"></script>
-    <script src="/assets/js/main/topbar.js?v=0.2.0" defer></script>
-    <script src="/assets/js/main/dropdown-menu.js?v=0.2.0" defer></script>
-    <script src="/assets/js/main/carousel.js?v=0.2.0" defer></script>
+    <script src="/assets/js/main/text-animation.js?v=0.2.1"></script>
+    <script src="/assets/js/main/topbar.js?v=0.2.2" defer></script>
+    <script src="/assets/js/main/dropdown-menu.js?v=0.2.1" defer></script>
+    <script src="/assets/js/main/language.js?v=0.2.1" defer></script>
     <script src="/assets/js/main/copy.js?v=0.2.0" defer></script>
-    <script src="/assets/js/main/language.js?v=0.2.0" defer></script>
 </head>
 
 <body>
@@ -25,7 +25,7 @@
     <nav id="topbar">
         <div class="logo">
             <img src="/assets/images/logo/logo.png" alt="logo-WAT">
-            <span id="decrypt" class="decrypt-text" data-original="WATcalendars" data-target="©DominikSerafin">WATcalendars</span>
+            <span id="decrypt" class="decrypt-text" data-original="WATcalendars" data-target="@DominikSerafin" style="cursor: default">WATcalendars</span>
         </div>
         <div class="media-container">
             <div class="language">
@@ -82,22 +82,26 @@
                 <a href="/" data-i18n="nav.home">Home</a>
                 <a href="/about/" data-i18n="nav.about">About</a>
                 <div class="dropdown-schedules">
-                    <a href="/schedules/" class="dropdown-trigger"><span data-i18n="nav.schedules">Schedules</span> <span class="down_arrow"><img src="/assets/images/icons/down-arrow.svg" alt="arrow"></span></a>
+                    <a href="/schedules/" class="dropdown-trigger" alt="schedules"><span data-i18n="nav.schedules">Schedules</span> <span class="down_arrow"><img src="/assets/images/icons/down-arrow.svg" alt="arrow"></span></a>
                     <div class="accordion-schedules">
-                        <a href="/schedules/ioe/">IOE</a>
-                        <a href="/schedules/wcy/">WCY</a>
-                        <a href="/schedules/wel/">WEL</a>
-                        <a class="disabled" aria-disabled="true" tabindex="-1">WIG</a>
-                        <a href="/schedules/wim/">WIM</a>
-                        <a href="/schedules/wlo/">WLO</a>
-                        <a class="disabled" aria-disabled="true" tabindex="-1">WML</a>
-                        <a href="/schedules/wtc/">WTC</a>
+                        <div class="column1">
+                            <a href="/schedules/ioe/">IOE</a>
+                            <a href="/schedules/wcy/">WCY</a>
+                            <a href="/schedules/wel/">WEL</a>
+                            <a href="/schedules/wig/">WIG</a>
+                        </div>
+                        <div class="column2">
+                            <a href="/schedules/wim/">WIM</a>
+                            <a href="/schedules/wlo/">WLO</a>
+                            <a href="/schedules/wml/">WML</a>
+                            <a href="/schedules/wtc/">WTC</a>
+                        </div>
                     </div>
                 </div>
                 <div class="dropdown-changelog">
-                    <a href="#" class="dropdown-trigger">0.2.0 <span class="down_arrow"><img src="/assets/images/icons/down-arrow.svg" alt="arrow"></span></a>
+                    <a href="#" class="dropdown-trigger">Project <span class="down_arrow"><img src="/assets/images/icons/down-arrow.svg" alt="arrow"></span></a>
                     <div class="accordion-changelog">
-                        <a href="https://github.com/dominikx2002/WATcalendars/activity" target="_blank"><span data-i18n="nav.changelog">Changelog</span></a>
+                        <a href="https://github.com/dominikx2002/WATcalendars/activity" target="_blank"><span data-i18n="nav.changelog">GitHub Actions</span></a>
                     </div>
                 </div>
                 <div class="dropdown-more">
@@ -139,14 +143,14 @@
         <a href="/schedules/ioe/">IOE <span class="arrow"><img src="/assets/images/icons/right-arrow.svg" alt="arrow"></span></a>
         <a href="/schedules/wcy/">WCY <span class="arrow"><img src="/assets/images/icons/right-arrow.svg" alt="arrow"></span></a>
         <a href="/schedules/wel/">WEL <span class="arrow"><img src="/assets/images/icons/right-arrow.svg" alt="arrow"></span></a>
-        <a class="disabled" aria-disabled="true" tabindex="-1">WIG <span class="arrow"><img src="/assets/images/icons/right-arrow.svg" alt="arrow"></span></a>
+        <a href="/schedules/wig/">WIG <span class="arrow"><img src="/assets/images/icons/right-arrow.svg" alt="arrow"></span></a>
         <a href="/schedules/wim/">WIM <span class="arrow"><img src="/assets/images/icons/right-arrow.svg" alt="arrow"></span></a>
         <a href="/schedules/wlo/">WLO <span class="arrow"><img src="/assets/images/icons/right-arrow.svg" alt="arrow"></span></a>
-        <a class="disabled" aria-disabled="true" tabindex="-1">WML <span class="arrow"><img src="/assets/images/icons/right-arrow.svg" alt="arrow"></span></a>
+        <a href="/schedules/wml/">WML <span class="arrow"><img src="/assets/images/icons/right-arrow.svg" alt="arrow"></span></a>
         <a href="/schedules/wtc/">WTC <span class="arrow"><img src="/assets/images/icons/right-arrow.svg" alt="arrow"></span></a>
     </div>
     <div class="menu-changelog">
-        <a href="https://github.com/dominikx2002/WATcalendars/activity" target="_blank"><span data-i18n="nav.changelog">Changelog</span> <span class="arrow"><img src="/assets/images/icons/right-arrow.svg" alt="arrow"></span></a>
+        <a href="https://github.com/dominikx2002/WATcalendars/activity" target="_blank"><span data-i18n="nav.changelog">GitHub Actions</span> <span class="arrow"><img src="/assets/images/icons/right-arrow.svg" alt="arrow"></span></a>
     </div>
     <div class="menu-more">
         <a href="/#Tutorial"><span data-i18n="nav.more.tutorial">Get Started</span></a>
@@ -158,102 +162,140 @@
         <a href="/license/"><span data-i18n="nav.more.license">License</span> <span class="arrow"><img src="/assets/images/icons/right-arrow.svg" alt="arrow"></span></a>
     </div>
 
-    <div class="padding">
-
-        <!--Contact-->
-        <form id="FeedbackForm">
-            
-        </form>
-
-
-
-        <!-- Formularz Feedback -->
-        <!-- Walidacja adresu e-mail i pól (odrzucanie \n/\r),
-        Wysyłka przez From: z Twojej domeny + Reply-To: user,
-        HTTPS,
-        CAPTCHA lub honeypot,
-        Ochrona przed XSS (htmlspecialchars),
-        Token CSRF. -->
+    <!--Contact-->
+    <section id="Contact">
+        <h1 data-i18n="contact">Feedback & Contact</h1>
+        <h2 data-i18n="contact.text">
+            WATcalendars is an ongoing project that constantly evolves to accourately refflect
+            real class schedules and make them easy to follow.
+            <br>
+            Despite my best efforts, there may occasionaly be issues - for example, a schedule
+            for a specific group might display incorrectly, classes might shift or overlap, or
+            certain elements may not appear as expected.
+            <br><br>
+            To keep the calendars accurate and reliable, <span class="strong">I'm relying on your feedback.</span>
+            <br><br>
+            If you notice any errors in your group's schedule or have suggestions for improvements,
+            please let me know using one of the methods listed below.
+        </h2>
+        <h3 data-i18n="contact.email">E-mail</h3>
+        <p data-i18n="contact.email.text">
+            You can contact me directly via email at
+            <a href="mailto:serafin652002@gmail.com">serafin652002@gmail.com</a>,
+            <br>
+            or send a message using your preferred email client.
+        </p>
+        <div class="command-container">
+            <div class="command">
+                <code>serafin652002@gmail.com</code>
+                <span class="copy"><img src="/assets/images/icons/copy-icon.png" alt="copy-icon" onclick="copyToClipboard('serafin652002@gmail.com', this)"></span>
+            </div>
+        </div>
+        <p>
+            <br><br>
+            In your message, please include:
+            <ul>
+                <li>Short title/issue or improvements description,</li>
+                <li>Date, when the issue occurred,</li>
+                <li>(Optional) screenshots or examples that might help.</li>
+            </ul>
+        </p>
+        <h3 data-i18n="contact.github">Reporting Issues & Suggestions</h3>
+        <p data-i18n="contact.github.text">
+            You can also report issues or suggest improvements directly from <a class="normal" href="https://github.com/dominikx2002/WATcalendars/issues">Github</a> - it's the
+            fastest way for me to respond and track progress.
+            <br><br>
+            Also, on the github page, you can find contributing guidelines if you want to help
+            improve the project by yourself - <a class="normal" href="https://github.com/dominikx2002/WATcalendars">check it out</a>.
+        </p>
+        <h3 data-i18n="contact.important">!Important</h3>
+        <p class="important-text" data-i18n="contact.important.text">
+            Please avoid sharing any personal or sensitive information in your messages.
+            I respect your privacy and will only use the information you provide to address
+            the reported issues or suggestions.
+        </p>
+    </section>
 
 
     <!--footer-->
-    <div class="footer">
-        <div class="column1">
-            <div class="website-map">
-                <div class="home">
-                    <a href="/" data-i18n="footer.home" alt="title">HOME</a>
-                    <div class="home-elements">
-                        <span class="separator"></span>
-                        <div class="home-sections">
-                            <a href="/#Showcase" alt="normal">Showcase</a>
-                            <a href="/#Tutorial" alt="normal">Get Started</a>
-                            <a href="/#Installer" alt="normal">Local Installation</a>
-                            <a href="/#support" alt="normal">Donate</a>
+    <div class="footer-container">
+        <div class="footer">
+            <div class="column1">
+                <div class="website-map">
+                    <div class="home">
+                        <a href="/" data-i18n="footer.home" alt="title">HOME</a>
+                        <div class="home-elements">
+                            <span class="separator"></span>
+                            <div class="home-sections">
+                                <a href="/#Showcase" alt="normal">Showcase</a>
+                                <a href="/#Tutorial" alt="normal">Get Started</a>
+                                <a href="/#Installer" alt="normal">Local Installation</a>
+                                <a href="/#support" alt="normal">Donate</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="about">
+                        <a href="/about/" data-i18n="footer.about" alt="title">ABOUT PROJECT</a>
+                        <div class="about-elements">
+                            <span class="separator"></span>
+                            <div class="about-sections">
+                                <a href="/about/1" alt="normal">How it works</a>
+                                <a href="/about/2" alt="normal">1. Python Scripts</a>
+                                <a href="/about/3" alt="normal">2. Github Actions</a>
+                                <a href="/about/4" alt="normal">3. Deployment</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="schedules">
+                        <a href="/schedules/" data-i18n="footer.schedules" alt="title">SCHEDULES</a>
+                        <div class="schedules-elements">
+                            <span class="separator"></span>
+                            <div class="schedules-sections1">
+                                <a href="/schedules/ioe" alt="normal">IOE</a>
+                                <a href="/schedules/wcy" alt="normal">WCY</a>
+                                <a href="/schedules/wel" alt="normal">WEL</a>
+                                <a href="/schedules/wig" alt="normal">WIG</a>
+                            </div>
+                            <div class="schedules-sections2">
+                                <a href="/schedules/wim" alt="normal">WIM</a>
+                                <a href="/schedules/wlo" alt="normal">WLO</a>
+                                <a href="/schedules/wml" alt="normal">WML</a>
+                                <a href="/schedules/wtc" alt="normal">WTC</a>
+                            </div>
                         </div>
                     </div>
                 </div>
-
-                <div class="about">
-                    <a href="/about/" data-i18n="footer.about" alt="title">ABOUT PROJECT</a>
-                    <div class="about-elements">
-                        <span class="separator"></span>
-                        <div class="about-sections">
-                            <a href="/about/1" alt="normal">How it works</a>
-                            <a href="/about/2" alt="normal">1. Python Scripts</a>
-                            <a href="/about/3" alt="normal">2. Github Actions</a>
-                            <a href="/about/4" alt="normal">3. Deployment</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="schedules">
-                    <a href="/schedules/" data-i18n="footer.schedules" alt="title">SCHEDULES</a>
-                    <div class="schedules-elements">
-                        <span class="separator"></span>
-                        <div class="schedules-sections1">
-                            <a href="/schedules/ioe" alt="normal">IOE</a>
-                            <a href="/schedules/wcy" alt="normal">WCY</a>
-                            <a href="/schedules/wel" alt="normal">WEL</a>
-                            <a href="/schedules/wig" alt="unavailable">WIG</a>
-                        </div>
-                        <div class="schedules-sections2">
-                            <a href="/schedules/wim" alt="normal">WIM</a>
-                            <a href="/schedules/wlo" alt="normal">WLO</a>
-                            <a href="/schedules/wml" alt="unavailable">WML</a>
-                            <a href="/schedules/wtc" alt="normal">WTC</a>
-                        </div>
+                <div class="title-container">
+                    <div class="footer-title">
+                        <img src="/assets/images/logo/logo.png" alt="logo">
+                        <h1>WATcalendars</h1>
                     </div>
                 </div>
             </div>
-            <div class="title-container">
-                <div class="footer-title">
-                    <img src="/assets/images/logo/logo.png" alt="logo">
-                    <h1>WATcalendars</h1>
+
+            <div class="column2">
+                <div class="more">
+                    <a data-i18n="footer.More" alt="title">MORE</a>
+                    <div class="more-elements">
+                        <span class="separator2"></span>
+                        <div class="more-sections">
+                            <a href="/dependencies/" alt="normal">Dependencies</a>
+                            <a href="https://github.com/dominikx2002/WATcalendars/activity" target="_blank" alt="normal">GitHub Actions</a>
+                            <div class="buttons">
+                                <a href="/" class="get-started" data-i18n="footer.get-started">GO TO HOME PAGE</a>
+                                <a href="https://github.com/dominikx2002/WATcalendars" class="github" target="_blank">GITHUB</a>
+                            </div>
+                            <a href="/feedback/" data-i18n="footer.feedback" alt="sections2">FEEDBACK</a>
+                            <a href="/privacypolicy/" data-i18n="privacypolicy.feedback" alt="sections2">PRIVACY POLICY</a>
+                            <a href="/license/" alt="sections2">LICENSE</a>
+                            <a href="/license/" alt="signature">© DOMINIK SERAFIN 2025</a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-
-        <div class="column2">
-            <div class="more">
-                <a data-i18n="footer.More" alt="title">MORE</a>
-                <div class="more-elements">
-                    <span class="separator2"></span>
-                    <div class="more-sections">
-                        <a href="/dependencies/" alt="normal">Dependencies</a>
-                        <a href="https://github.com/dominikx2002/WATcalendars/activity" target="_blank" alt="normal">Changelog</a>
-                        <div class="buttons">
-                            <a href="/" class="get-started" data-i18n="footer.get-started">GO TO HOME PAGE</a>
-                            <a href="https://github.com/dominikx2002/WATcalendars" class="github" target="_blank">GITHUB</a>
-                        </div>
-                        <a href="/feedback/" data-i18n="footer.feedback" alt="sections2">FEEDBACK</a>
-                        <a href="/contact/" data-i18n="footer.contact" alt="sections2">CONTACT</a>
-                        <a href="/license/" alt="sections2">LICENSE</a>
-                        <a href="/license/" alt="signature">© DOMINIK SERAFIN 2025</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-
     </div>
 
 </body>

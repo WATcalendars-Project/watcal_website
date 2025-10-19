@@ -599,4 +599,7 @@ svg {
     .active path:nth-child(6) {
         transform: translateX(9px) translateY(1px) rotate(45deg);
     }
+    .logo {
+        gap: 0px;
+    }
 }

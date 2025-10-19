@@ -63,6 +63,8 @@ p {
     border-radius: 8px;
     margin-top: 30px;
     margin-bottom: 30px;
+    align-self: flex-start; /* align left within centered parent */
+    text-align: left; /* left-align inner text */
 }
 
 code {
