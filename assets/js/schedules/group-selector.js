@@ -24,8 +24,10 @@
 			ioe: 'ioe_groups_url.json',
 			wcy: 'wcy_groups_url.json',
 			wel: 'wel_groups_url.json',
+			wig: 'wig_groups_url.json',
 			wim: 'wim_groups_url.json',
 			wlo: 'wlo_groups_url.json',
+			wml: 'wml_groups_url.json',
 			wtc: 'wtc_groups_url.json'
 		};
 
