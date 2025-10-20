@@ -334,3 +334,32 @@
   }
 
 }
+
+/* --- Staggered reveal animations for tutorial sections --- */
+@keyframes staggerFadeUp {
+  from { opacity: 0; transform: translateY(28px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Initial hidden state for items that will animate */
+.animate-stagger .stagger-item {
+  opacity: 0;
+  transform: translateY(16px);
+}
+
+/* Start animation only when the run-flag class is present */
+.animate-stagger .stagger-item.stagger-run {
+  animation: staggerFadeUp 1500ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  animation-delay: calc(var(--stagger-offset, 0ms) + var(--stagger-delay, 0ms));
+  will-change: opacity, transform;
+}
+
+/* Accessibility: disable animations for users preferring reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .animate-stagger .stagger-item,
+  .animate-stagger .stagger-item.stagger-run {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
