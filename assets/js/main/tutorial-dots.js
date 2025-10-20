@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
-  const container = document.querySelector('.iphone-tutorial .slider-container');
-  const images = document.querySelectorAll('.iphone-tutorial .slider-container img');
-  const dotsContainer = document.querySelector('.iphone-tutorial .slider-dots');
+  const container = document.querySelector('.tutorial-slider .slider-container');
+  const images = document.querySelectorAll('.tutorial-slider .slider-container img');
+  const dotsContainer = document.querySelector('.tutorial-slider .slider-dots');
 
   if (!container || !images.length || !dotsContainer) return; // bezpieczeństwo
 
@@ -55,7 +55,7 @@ document.addEventListener('DOMContentLoaded', () => {
     dragStartX = e.clientX;
     dragStartY = e.clientY;
     // Fokus do klawiatury
-    const tutorialRoot = document.querySelector('.iphone-tutorial');
+  const tutorialRoot = document.querySelector('.tutorial-slider');
     if (tutorialRoot) tutorialRoot.focus();
   });
 
@@ -191,7 +191,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Dostępność – strzałki na klawiaturze
   // Umożliw fokus, by przechwycić klawisze
-  const tutorialRoot = document.querySelector('.iphone-tutorial');
+  const tutorialRoot = document.querySelector('.tutorial-slider');
   if (tutorialRoot) {
     tutorialRoot.setAttribute('tabindex', '0');
     tutorialRoot.addEventListener('keydown', (e) => {
