@@ -20,7 +20,8 @@ document.addEventListener('DOMContentLoaded', () => {
       desktop: desktopSection,
     };
     Object.entries(map).forEach(([key, el]) => {
-      el.style.display = key === target ? '' : 'none';
+      // Explicitly show the target section to override CSS `display: none` defaults
+      el.style.display = key === target ? 'block' : 'none';
     });
   };
 
