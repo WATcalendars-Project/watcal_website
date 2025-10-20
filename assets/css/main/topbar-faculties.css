@@ -357,9 +357,9 @@ body.dropdown-open .verse:hover .faculty {
     display: none;
 }
 
-@media(max-width: 1680px) {
+@media(max-width: 1700px) {
     .logo .decrypt-text {
-        max-width: 160px;
+        max-width: 250px;
         font-size: 12px;
         line-height: 1.2;
     }
@@ -372,7 +372,10 @@ body.dropdown-open .verse:hover .faculty {
     }
 }
 
-@media(max-width: 1200px) {
+@media(max-width: 1300px) {
+    .logo .decrypt-text {
+        font-size: 15px;
+    }
     svg {
         margin-top: -3px;
     }
@@ -391,7 +394,9 @@ body.dropdown-open .verse:hover .faculty {
         font-size: 10px;
     }
     #topbar {
-        background-color: rgba(41, 41, 41, 0.044);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        background-color: rgba(0, 0, 0, 0.1);
     }
     .menu-schedules,
     .menu-more,
@@ -597,5 +602,14 @@ body.dropdown-open .verse:hover .faculty {
     }
     .active path:nth-child(6) {
         transform: translateX(9px) translateY(1px) rotate(45deg);
+    }
+    #topbar .logo {
+        gap: 0;
+    }
+    #topbar .logo .decrypt-text {
+        max-width: 160px;
+    }
+    #topbar .logo .decrypt-text a {
+        font-size: 12px;
     }
 }

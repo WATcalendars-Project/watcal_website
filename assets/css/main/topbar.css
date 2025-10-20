@@ -391,8 +391,11 @@ svg {
         font-size: 10px;
     }
     #topbar {
-        background-color: rgba(41, 41, 41, 0.044);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        background-color: rgba(0, 0, 0, 0.1);
     }
+
 
     .menu-schedules,
     .menu-more,
