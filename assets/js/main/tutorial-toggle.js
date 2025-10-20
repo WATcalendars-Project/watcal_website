@@ -1,14 +1,14 @@
 // Toggle tutorial sections based on selected "glass" radio buttons
 document.addEventListener('DOMContentLoaded', () => {
   const iphoneRadio = document.getElementById('glass-iphone');
-  const androidRadio = document.getElementById('glass-android');
-  const desktopRadio = document.getElementById('glass-desktop');
+  const googleRadio = document.getElementById('glass-google');
+  const manualRadio = document.getElementById('glass-manual');
 
   const iphoneSection = document.querySelector('.iphone-tutorial');
-  const androidSection = document.querySelector('.android-tutorial');
-  const desktopSection = document.querySelector('.desktop-tutorial');
+  const googleSection = document.querySelector('.google-tutorial');
+  const manualSection = document.querySelector('.manual-tutorial');
 
-  if (!iphoneRadio || !androidRadio || !desktopRadio || !iphoneSection || !androidSection || !desktopSection) {
+  if (!iphoneRadio || !googleRadio || !manualRadio || !iphoneSection || !googleSection || !manualSection) {
     // Required elements missing — safely do nothing
     return;
   }
@@ -16,8 +16,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const setVisible = (target) => {
     const map = {
       iphone: iphoneSection,
-      android: androidSection,
-      desktop: desktopSection,
+      google: googleSection,
+      manual: manualSection,
     };
     Object.entries(map).forEach(([key, el]) => {
       // Explicitly show the target section to override CSS `display: none` defaults
@@ -28,15 +28,15 @@ document.addEventListener('DOMContentLoaded', () => {
   const updateFromSelection = () => {
     if (iphoneRadio.checked) {
       setVisible('iphone');
-    } else if (androidRadio.checked) {
-      setVisible('android');
-    } else if (desktopRadio.checked) {
-      setVisible('desktop');
+    } else if (googleRadio.checked) {
+      setVisible('google');
+    } else if (manualRadio.checked) {
+      setVisible('manual');
     }
   };
 
   // Listen for changes on the radio buttons
-  [iphoneRadio, androidRadio, desktopRadio].forEach((r) => {
+  [iphoneRadio, googleRadio, manualRadio].forEach((r) => {
     r.addEventListener('change', updateFromSelection);
     r.addEventListener('click', updateFromSelection);
   });
