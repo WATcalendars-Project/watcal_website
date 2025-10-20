@@ -292,7 +292,7 @@
   align-items: center;
 }
 
-@media (max-width: 800px) {
+@media (max-width: 1000px) {
   .iphone-tutorial .desktop-layout,
   .android-tutorial .desktop-layout,
   .desktop-tutorial .desktop-layout {
