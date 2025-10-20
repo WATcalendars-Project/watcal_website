@@ -184,6 +184,7 @@
 			wrapper.className = 'schedule-output';
 			const msg = document.createElement('div');
 			msg.className = 'schedule-placeholder';
+			msg.setAttribute('data-i18n', 'groups.none.text');
 			msg.textContent = '// Select a group to see options and preview.';
 			wrapper.appendChild(msg);
 			root.appendChild(wrapper);
@@ -239,7 +240,7 @@
 					d="M1 14.5a6.496 6.496 0 0 1 3.064-5.519 8.001 8.001 0 0 1 15.872 0 6.5 6.5 0 0 1-2.936 12L7 21c-3.356-.274-6-3.078-6-6.5zm15.848 4.487a4.5 4.5 0 0 0 2.03-8.309l-.807-.503-.12-.942a6.001 6.001 0 0 0-11.903 0l-.12.942-.805.503a4.5 4.5 0 0 0 2.029 8.309l.173.013h9.35l.173-.013zM13 12h3l-4 5-4-5h3V8h2v4z"
 					></path>
 				</svg>
-				<span class="btn-label">Download .ICS</span>
+				<span data-i18n="groups.download_btn" class="btn-label">Download .ICS</span>
 			`;
 
 			const icsLink = document.createElement('a');
@@ -250,7 +251,7 @@
 				<svg class="apple-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 1024 1024" aria-hidden="true" focusable="false">
 					<path fill="currentColor" d="M747.4 535.7c-.4-68.2 30.5-119.6 92.9-157.5-34.9-50-87.7-77.5-157.3-82.8-65.9-5.2-138 38.4-164.4 38.4-27.9 0-91.7-36.6-141.9-36.6C273.1 298.8 163 379.8 163 544.6c0 48.7 8.9 99 26.7 150.8 23.8 68.2 109.6 235.3 199.1 232.6 46.8-1.1 79.9-33.2 140.8-33.2 59.1 0 89.7 33.2 141.9 33.2 90.3-1.3 167.9-153.2 190.5-221.6-121.1-57.1-114.6-167.2-114.6-170.7zm-105.1-305c50.7-60.2 46.1-115 44.6-134.7-44.8 2.6-96.6 30.5-126.1 64.8-32.5 36.8-51.6 82.3-47.5 133.6 48.4 3.7 92.6-21.2 129-63.7z"/>
 				</svg>
-				<span class="btn-label">Subscribe Calendar</span>
+				<span data-i18n="groups.subscribe.link" class="btn-label">Subscribe Calendar</span>
 			`;
 
 			const command1 = document.createElement('div');
@@ -271,6 +272,7 @@
 			googleLink.href = 'https://calendar.google.com/calendar/u/0/r/settings/addbyurl';
 			googleLink.target = '_blank';
 			googleLink.rel = 'noopener noreferrer';
+			googleLink.setAttribute('data-i18n', 'groups.subscribe.gcal.btn');
 			googleLink.textContent = 'Go to Google Calendar';
 			googleLink.className = 'google-calendar-btn';
 
@@ -290,14 +292,17 @@
 
 			const AppleicsLinkTitle = document.createElement('div');
 			AppleicsLinkTitle.className = 'subscribe-apple-title';
+			AppleicsLinkTitle.setAttribute('data-i18n', 'groups.subscribe.orcopy');
 			AppleicsLinkTitle.textContent = 'or Copy webcal URL to subscribe in Apple Calendar settings:';
 
 			const AppleicsDownloadTitle = document.createElement('div');
 			AppleicsDownloadTitle.className = 'download-apple-title';
+			AppleicsDownloadTitle.setAttribute('data-i18n', 'groups.download');
 			AppleicsDownloadTitle.textContent = 'you can also Download .ICS file to import into calendar apps:';
 
 			const AppleGoogleTitle = document.createElement('div');
 			AppleGoogleTitle.className = 'google-apple-title';
+			AppleGoogleTitle.setAttribute('data-i18n', 'groups.subscribe.gcal');
 			AppleGoogleTitle.textContent = 'or go to Google Calendar to add by URL:';
 
 			const AndroidGoogleTitle = document.createElement('div');
@@ -390,6 +395,7 @@
 
 			const sourceWrap = document.createElement('div');
 			sourceWrap.className = 'png-generated-from';
+			sourceWrap.setAttribute('data-i18n', 'groups.png_from');
 			sourceWrap.textContent = '// PNG screenshoted from:';
 			preview.appendChild(sourceWrap);
 

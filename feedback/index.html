@@ -82,7 +82,7 @@
                 <a href="/" data-i18n="nav.home">Home</a>
                 <a href="/about/" data-i18n="nav.about">About</a>
                 <div class="dropdown-schedules">
-                    <a href="/schedules/" class="dropdown-trigger" alt="schedules"><span data-i18n="nav.schedules">Schedules</span> <span class="down_arrow"><img src="/assets/images/icons/down-arrow.svg" alt="arrow"></span></a>
+                    <a href="/schedules/" class="dropdown-trigger" alt="schedules"><span data-i18n="nav.schedules">Schedules </span> <span class="down_arrow"><img src="/assets/images/icons/down-arrow.svg" alt="arrow"></span></a>
                     <div class="accordion-schedules">
                         <div class="column1">
                             <a href="/schedules/ioe/">IOE</a>
@@ -99,7 +99,7 @@
                     </div>
                 </div>
                 <div class="dropdown-changelog">
-                    <a href="#" class="dropdown-trigger">Project <span class="down_arrow"><img src="/assets/images/icons/down-arrow.svg" alt="arrow"></span></a>
+                    <a href="#" class="dropdown-trigger"><span data-i18n-html="nav.project">Project </span><span class="down_arrow"><img src="/assets/images/icons/down-arrow.svg" alt="arrow"></span></a>
                     <div class="accordion-changelog">
                         <a href="https://github.com/dominikx2002/WATcalendars/activity" target="_blank"><span data-i18n="nav.changelog">GitHub Actions</span></a>
                     </div>
@@ -165,11 +165,11 @@
     <!--Contact-->
     <section id="Contact">
         <h1 data-i18n="contact">Feedback & Contact</h1>
-        <h2 data-i18n="contact.text">
+        <h2 data-i18n-html="contact.text">
             WATcalendars is an ongoing project that constantly evolves to accourately refflect
             real class schedules and make them easy to follow.
             <br>
-            Despite my best efforts, there may occasionaly be issues - for example, a schedule
+            Despite my best efforts, there may be issues - for example, a schedule
             for a specific group might display incorrectly, classes might shift or overlap, or
             certain elements may not appear as expected.
             <br><br>
@@ -179,7 +179,7 @@
             please let me know using one of the methods listed below.
         </h2>
         <h3 data-i18n="contact.email">E-mail</h3>
-        <p data-i18n="contact.email.text">
+        <p data-i18n-html="contact.email.text1">
             You can contact me directly via email at
             <a href="mailto:serafin652002@gmail.com">serafin652002@gmail.com</a>,
             <br>
@@ -191,24 +191,24 @@
                 <span class="copy"><img src="/assets/images/icons/copy-icon.png" alt="copy-icon" onclick="copyToClipboard('serafin652002@gmail.com', this)"></span>
             </div>
         </div>
-        <p>
+        <p data-i18n-html="contact.email.text2">
             <br><br>
             In your message, please include:
-            <ul>
+            <ul data-i18n-html="contact.email.text3">
                 <li>Short title/issue or improvements description,</li>
                 <li>Date, when the issue occurred,</li>
                 <li>(Optional) screenshots or examples that might help.</li>
             </ul>
         </p>
-        <h3 data-i18n="contact.github">Reporting Issues & Suggestions</h3>
-        <p data-i18n="contact.github.text">
+        <h4 data-i18n="contact.github">Reporting Issues & Suggestions</h3>
+        <p data-i18n-html="contact.github.text">
             You can also report issues or suggest improvements directly from <a class="normal" href="https://github.com/dominikx2002/WATcalendars/issues">Github</a> - it's the
             fastest way for me to respond and track progress.
             <br><br>
             Also, on the github page, you can find contributing guidelines if you want to help
             improve the project by yourself - <a class="normal" href="https://github.com/dominikx2002/WATcalendars">check it out</a>.
         </p>
-        <h3 data-i18n="contact.important">!Important</h3>
+        <h4 data-i18n="contact.important">!Important</h3>
         <p class="important-text" data-i18n="contact.important.text">
             Please avoid sharing any personal or sensitive information in your messages.
             I respect your privacy and will only use the information you provide to address
@@ -226,9 +226,9 @@
                         <a href="/" data-i18n="footer.home" alt="title">HOME</a>
                         <div class="home-elements">
                             <span class="separator"></span>
-                            <div class="home-sections">
+                            <div class="home-sections" data-i18n-html="footer.home.elements">
+                                <a href="/#Tutorial" alt="normal">Instructions</a>
                                 <a href="/#Showcase" alt="normal">Showcase</a>
-                                <a href="/#Tutorial" alt="normal">Get Started</a>
                                 <a href="/#Installer" alt="normal">Local Installation</a>
                                 <a href="/#support" alt="normal">Donate</a>
                             </div>
@@ -239,7 +239,7 @@
                         <a href="/about/" data-i18n="footer.about" alt="title">ABOUT PROJECT</a>
                         <div class="about-elements">
                             <span class="separator"></span>
-                            <div class="about-sections">
+                            <div class="about-sections" data-i18n-html="footer.about.elements">
                                 <a href="/about/1" alt="normal">How it works</a>
                                 <a href="/about/2" alt="normal">1. Python Scripts</a>
                                 <a href="/about/3" alt="normal">2. Github Actions</a>
@@ -277,10 +277,10 @@
 
             <div class="column2">
                 <div class="more">
-                    <a data-i18n="footer.More" alt="title">MORE</a>
+                    <a data-i18n="footer.more" alt="title">MORE</a>
                     <div class="more-elements">
                         <span class="separator2"></span>
-                        <div class="more-sections">
+                        <div class="more-sections" data-i18n-html="footer.more.elements">
                             <a href="/dependencies/" alt="normal">Dependencies</a>
                             <a href="https://github.com/dominikx2002/WATcalendars/activity" target="_blank" alt="normal">GitHub Actions</a>
                             <div class="buttons">

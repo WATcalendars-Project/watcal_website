@@ -133,6 +133,7 @@ code {
     justify-content: flex-end;
     width: 75%;
     color: rgba(255, 255, 255, 0.6);
+    margin-bottom: 100px;
 }
 
 .last-updated p{
@@ -140,6 +141,6 @@ code {
     justify-content: flex-end;
     width: 100%;
     color: rgba(255, 255, 255, 0.6);
-    margin-top: 5px;
+    margin-top: -15px;
     font-size: 15px;
 }
