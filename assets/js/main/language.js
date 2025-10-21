@@ -115,6 +115,13 @@
       'groups.subscribe.gcal.btn': 'Go to Google Calendar',
       'groups.png_from': '// PNG screenshoted from:',
 
+      // privacy policy
+      'privacy': 'Privacy Policy',
+      'privacy.text': `
+        This website does not collect, store, or process any personal data from its visitors.
+        I do not use cookies, analytics tools, or any third-party services that track users.
+        If this changes in the future, this policy will be updated accordingly.
+      `,
 
         // Index page
 
@@ -294,6 +301,13 @@ SOFTWARE.`,
       'groups.subscribe.gcal.btn': 'Przejdź do Kalendarza Google',
       'groups.png_from': '// Zdjęcie wycięte z:',
 
+      // privacy policy
+      'privacy': 'Polityka Prywatności',
+      'privacy.text': `
+        Ta strona internetowa nie zbiera, nie przechowuje ani nie przetwarza żadnych danych osobowych swoich odwiedzających.
+        Nie używam plików cookie, narzędzi analitycznych ani żadnych usług stron trzecich, które śledzą użytkowników.
+        Jeśli w przyszłości to się zmieni, polityka ta zostanie odpowiednio zaktualizowana.
+      `,
 
         // Index page
 
