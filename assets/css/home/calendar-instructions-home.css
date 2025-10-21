@@ -235,7 +235,7 @@
 }
 .google-tutorial,
 .manual-tutorial {
-    margin-top: 70px;
+    margin-top: 0px;
 }
 
 .iphone-tutorial p a,
@@ -259,7 +259,7 @@
 
 .google-tutorial img,
 .manual-tutorial img {
-  margin: -30px 20px -30px 20px;
+  width: 200px;
 }
 
 .iphone-tutorial .media-layout,
@@ -292,6 +292,10 @@
   align-items: center;
 }
 
+.google-tutorial .desktop-layout img[alt="desktop"] {
+  width: 600px;
+}
+
 @media (max-width: 1000px) {
   .iphone-tutorial .desktop-layout,
   .google-tutorial .desktop-layout,
@@ -315,7 +319,9 @@
     max-width: 90%;
   }
 
-  .iphone-tutorial .media-layout img {
+  .iphone-tutorial .media-layout img,
+  .google-tutorial .media-layout img,
+  .manual-tutorial .media-layout img {
     margin-top: -10px;
     width: 250px;
   }
@@ -325,12 +331,6 @@
   .manual-tutorial .media-layout .get-started {
     font-size: 1rem;
     padding: 3px 16px 5px 16px;
-  }
-
-  .google-tutorial img,
-  .manual-tutorial img {
-    margin: 0px 0px 0px 0px;
-    width: 250px;
   }
 
 }
