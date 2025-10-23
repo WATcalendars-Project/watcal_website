@@ -292,8 +292,29 @@
   align-items: center;
 }
 
+.google-tutorial .desktop-layout .right-google {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: -50px;
+}
+
+.google-tutorial .desktop-layout .left-google {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: -50px;
+  margin-top: -30px;
+}
+
 .google-tutorial .desktop-layout img[alt="desktop"] {
   width: 600px;
+}
+
+.google-tutorial .desktop-layout img[alt="desktop-google"] {
+  width: 700px;
+  margin-left: -55px;
+  margin-top: 0px;
 }
 
 @media (max-width: 1000px) {
