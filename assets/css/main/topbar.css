@@ -7,13 +7,13 @@
     left: 0;
     width: 100%;
     box-sizing: border-box;
-    padding-left: 10vw;
-    padding-right: 10vw;
+    padding-left: 4vw;
+    padding-right: 4vw;
     z-index: 99998;
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     background-color: rgba(0, 0, 0, 0.1);
-    height: 70px;
+    height: 60px;
     transition: min-height 0.3s, transform 0.25s cubic-bezier(.4,0,.2,1), opacity 0.2s ease;
     will-change: transform, opacity;
 }
@@ -27,19 +27,19 @@
 .logo {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 5px;
     
 }
 
 .logo img {
-    height: 48px;
+    height: 42px;
     margin-right: 5px;
     width: auto;
 }
 
 .decrypt-text {
     color: white;
-    font-size: 19px;
+    font-size: 18px;
     font-weight: bold;
     letter-spacing: 1px;
     opacity: 0.9;
@@ -68,9 +68,9 @@ nav a {
     opacity: 0.7;
     text-decoration: none;
     color: white;
-    font-size: 16px;
+    font-size: 14px;
     font-weight: 600;
-    transition: opacity 0.3s ease;
+    transition: all 0.3s ease;
 }
 
 nav .separator {
@@ -84,7 +84,7 @@ nav .separator {
 }
 
 nav img {
-    height: 24px;
+    height: 22px;
     width: auto;
 }
 
@@ -94,12 +94,15 @@ nav img[alt="Signal"] {
 
 nav a:hover {
     opacity: 1;
-    filter: drop-shadow(0 0 5px rgb(109, 109, 109));
+    color: rgba(55, 130, 84, 1);
+    filter: drop-shadow(0 0 5px rgba(55, 130, 84, 0.2));
 }
 
 /* active/current nav link styling (same feel as hover) */
 nav a.current {
     opacity: 0.9;
+    color: rgba(55, 130, 84, 1);
+    filter: drop-shadow(0 0 5px rgba(55, 130, 84, 0.2));
 }
 
 nav .accordion-schedules,
@@ -117,17 +120,17 @@ nav .dropdown-more {
     text-decoration: none;
     color: white;
     font-size: 16px;
-    transition: opacity 0.3s ease;
+    transition: all 0.3s ease;
 }
 
 .dropdown-schedules .down_arrow img,
 .dropdown-changelog .down_arrow img,
 .dropdown-more .down_arrow img {
-    left: 5px;
+    left: 2px;
     position: relative;
     bottom: 0px;
-    width: 12px;
-    height: 12px;
+    width: 9px;
+    height: 9px;
 }
 
 nav .dropdown-schedules:hover,
@@ -235,7 +238,7 @@ body.dropdown-open .verse:hover .faculty {
     padding: 5px 3px;
     opacity: 0.7;
     font-size: 16px;
-    transition: opacity 0.3s ease;
+    transition: all 0.3s ease;
     position: relative;
     z-index: 1;
     padding: 5px 15px;
@@ -245,6 +248,8 @@ body.dropdown-open .verse:hover .faculty {
 .menu-changelog a:hover,
 .menu-more a:hover {
     opacity: 1;
+    color: rgba(55, 130, 84, 1);
+    filter: drop-shadow(0 0 5px rgba(55, 130, 84, 0.2));
     border-radius: 8px;
     background-color: #92929219;
     backdrop-filter: blur(8px);
@@ -280,8 +285,8 @@ svg {
     display: none;
 }
 .toggle {
-    height: 20px;
-    width: 40px;
+    height: 15px;
+    width: 30px;
     border-radius: 9999px;
     background-color: rgba(0,0,0,0.20);
     position: relative;
@@ -343,8 +348,8 @@ svg {
 
 .toggle::before {
     content: "";
-    height: 20px;
-    width: 20px;
+    height: 15px;
+    width: 15px;
     position: absolute;
     left: 0;
     top: 0;
@@ -355,7 +360,7 @@ svg {
 }
 
 #checkbox:checked + .toggle::before {
-    left: calc(100% - 20px);
+    left: calc(100% - 15px);
 }
 
 .media-container {
