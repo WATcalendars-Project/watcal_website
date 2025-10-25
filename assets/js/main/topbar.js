@@ -129,7 +129,7 @@ function closeTopbar() {
          or when scrolling through sections (using IntersectionObserver).
      - Graceful fallback: if IntersectionObserver not supported, highlight by hash on load/click.
 */
-(function() {
+document.addEventListener('DOMContentLoaded', () => {
     // Include anchors in nav AND in desktop dropdown menus so highlighting works everywhere
     const navLinks = Array.from(document.querySelectorAll('nav a, .menu-schedules a, .menu-changelog a, .menu-more a'));
     if (!navLinks.length) return;
@@ -151,7 +151,7 @@ function closeTopbar() {
         });
     });
 
-    // normalize a path: strip /index.html, ensure leading slash, keep trailing slash if root/dir
+    // normalize a path: strip /index.html; keep trailing slash if present
     const normalizePath = (p) => p.replace(/\/index\.html$/, '/');
 
     // highlight based on best path match (exact, else deepest prefix)
@@ -161,6 +161,10 @@ function closeTopbar() {
         let bestLen = -1;
         for (const a of navLinks) {
             try {
+                const rawHref = a.getAttribute('href') || '';
+                // Skip pure-hash links (like dropdown triggers '#'). They resolve to current pathname and would always match.
+                if (rawHref.trim().startsWith('#')) continue;
+
                 const url = new URL(a.href, location.origin);
                 const ahrefPath = normalizePath(url.pathname);
                 if (!ahrefPath) continue;
@@ -186,8 +190,8 @@ function closeTopbar() {
             const schedTrigger = document.querySelector('nav .dropdown-schedules > a.dropdown-trigger');
             if (schedTrigger) schedTrigger.classList.add('current');
         }
-        // More group: dependencies, feedback, license
-        const morePaths = ['/dependencies/', '/feedback/', '/license/'];
+        // More group: dependencies, feedback, license, privacy policy
+        const morePaths = ['/dependencies/', '/feedback/', '/license/', '/privacypolicy/'];
         if (morePaths.some(p => current === p || current.startsWith(p))) {
             const moreTrigger = document.querySelector('nav .dropdown-more > a.dropdown-trigger');
             if (moreTrigger) moreTrigger.classList.add('current');
@@ -266,4 +270,4 @@ function closeTopbar() {
         matchByPath() || highlightByHash();
         highlightParents();
     });
-})();
+});

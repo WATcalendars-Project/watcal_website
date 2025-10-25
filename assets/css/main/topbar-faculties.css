@@ -7,13 +7,13 @@
     left: 0;
     width: 100%;
     box-sizing: border-box;
-    padding-left: 10vw;
-    padding-right: 10vw;
+    padding-left: 4vw;
+    padding-right: 4vw;
     z-index: 99998;
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     background-color: rgba(0, 0, 0, 0.1);
-    height: 70px;
+    height: 60px;
     transition: min-height 0.3s, transform 0.25s cubic-bezier(.4,0,.2,1), opacity 0.2s ease;
     will-change: transform, opacity;
 }
@@ -27,22 +27,27 @@
 .logo {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 5px;
+    
 }
 
 .logo img {
-    height: 48px;
+    height: 42px;
     margin-right: 5px;
     width: auto;
 }
 
-.logo .decrypt-text {
+.decrypt-text {
     color: white;
-    font-size: 19px;
+    font-size: 18px;
     font-weight: bold;
     letter-spacing: 1px;
-    opacity: 0.8;
+    opacity: 0.9;
     cursor: pointer;
+}
+
+.decrypt-text .color {
+    color: green;
 }
 
 .encrypted-char {
@@ -53,7 +58,7 @@
 .navigation {
     display: flex;
     align-items: center;
-    gap: clamp(1rem, 4vw, 3rem);
+    gap: clamp(1rem, 4vw, 2.2rem);
     flex-wrap: wrap;
     margin: 0;
 }
@@ -63,15 +68,15 @@ nav a {
     opacity: 0.7;
     text-decoration: none;
     color: white;
-    font-size: 16px;
+    font-size: 14px;
     font-weight: 600;
-    transition: opacity 0.3s ease;
+    transition: all 0.3s ease;
 }
 
 nav .separator {
     height: 30px;
-    width: 3px;
-    border-radius: 1.5px;
+    width: 2px;
+    border-radius: 1px;
     background-color: rgba(255, 255, 255, 0.068);
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
@@ -79,7 +84,8 @@ nav .separator {
 }
 
 nav img {
-    height: 24px;
+    height: 22px;
+    margin-top: 4px;
     width: auto;
 }
 
@@ -89,12 +95,15 @@ nav img[alt="Signal"] {
 
 nav a:hover {
     opacity: 1;
-    filter: drop-shadow(0 0 5px rgb(109, 109, 109));
+    color: rgba(55, 130, 84, 1);
+    filter: drop-shadow(0 0 5px rgba(55, 130, 84, 0.2));
 }
 
 /* active/current nav link styling (same feel as hover) */
 nav a.current {
     opacity: 0.9;
+    color: rgba(55, 130, 84, 1);
+    filter: drop-shadow(0 0 5px rgba(55, 130, 84, 0.2));
 }
 
 nav .accordion-schedules,
@@ -112,17 +121,17 @@ nav .dropdown-more {
     text-decoration: none;
     color: white;
     font-size: 16px;
-    transition: opacity 0.3s ease;
+    transition: all 0.3s ease;
 }
 
 .dropdown-schedules .down_arrow img,
 .dropdown-changelog .down_arrow img,
 .dropdown-more .down_arrow img {
-    left: 5px;
+    left: 2px;
     position: relative;
     bottom: 0px;
-    width: 12px;
-    height: 12px;
+    width: 9px;
+    height: 9px;
 }
 
 nav .dropdown-schedules:hover,
@@ -230,7 +239,7 @@ body.dropdown-open .verse:hover .faculty {
     padding: 5px 3px;
     opacity: 0.7;
     font-size: 16px;
-    transition: opacity 0.3s ease;
+    transition: all 0.3s ease;
     position: relative;
     z-index: 1;
     padding: 5px 15px;
@@ -240,6 +249,8 @@ body.dropdown-open .verse:hover .faculty {
 .menu-changelog a:hover,
 .menu-more a:hover {
     opacity: 1;
+    color: rgba(55, 130, 84, 1);
+    filter: drop-shadow(0 0 5px rgba(55, 130, 84, 0.2));
     border-radius: 8px;
     background-color: #92929219;
     backdrop-filter: blur(8px);
@@ -253,7 +264,7 @@ body.dropdown-open .verse:hover .faculty {
     height: 12px;
 }
 
-.menu svg {
+svg {
     display: none;
 }
 
@@ -264,9 +275,10 @@ body.dropdown-open .verse:hover .faculty {
     box-sizing: border-box;
 }
 
-.container {
+.desktop-language-container {
     margin-top: 4px;
-    margin-right: -30px;
+    margin-right: -10px;
+    margin-left: -10px;
     display: grid;
     place-items: center;
 }
@@ -275,8 +287,8 @@ body.dropdown-open .verse:hover .faculty {
     display: none;
 }
 .toggle {
-    height: 20px;
-    width: 40px;
+    height: 15px;
+    width: 30px;
     border-radius: 9999px;
     background-color: rgba(0,0,0,0.20);
     position: relative;
@@ -322,6 +334,8 @@ body.dropdown-open .verse:hover .faculty {
     display: inline-block;
     width: 2.6ch; 
     margin-left: 8px;
+    margin-right: -14px;
+    margin-bottom: 1px;
     font-weight: 700;
     font-size: 12px;
     color: #fff;
@@ -338,8 +352,8 @@ body.dropdown-open .verse:hover .faculty {
 
 .toggle::before {
     content: "";
-    height: 20px;
-    width: 20px;
+    height: 15px;
+    width: 15px;
     position: absolute;
     left: 0;
     top: 0;
@@ -350,45 +364,37 @@ body.dropdown-open .verse:hover .faculty {
 }
 
 #checkbox:checked + .toggle::before {
-    left: calc(100% - 20px);
+    left: calc(100% - 15px);
 }
 
 .media-container {
     display: none;
 }
 
-@media(max-width: 1700px) {
-    .logo .decrypt-text {
-        max-width: 250px;
-        font-size: 12px;
-        line-height: 1.2;
-    }
+@media(max-width: 1100px) {
     #topbar {
         padding-left: 2vw;
         padding-right: 3vw;
     }
-    .menu svg {
+    svg {
         display: none;
     }
 }
 
-@media(max-width: 1300px) {
-    .logo .decrypt-text {
-        font-size: 15px;
-    }
+@media(max-width: 1000px) {
     svg {
         margin-top: -3px;
+        width: 50px;
     }
-    .media-container {
-        display: flex;
-        position: absolute;
-        top: 26px;
-        right: calc(5vw + 50px);
-        margin: 0; 
-        align-items: center;
-    }
-    .container {
-        display: none;
+    /* Mobile: hide standalone language switcher container */
+    .media-container { display: none; }
+    /* Show the language switcher inside the expanded mobile navigation, above feedback icons */
+    .desktop-language-container { display: none; }
+    #topbar.active .desktop-language-container {
+        display: grid;
+        place-items: center;
+        margin-top: 4px;
+        margin-bottom: 4px;
     }
     .arrow {
         font-size: 10px;
@@ -398,6 +404,12 @@ body.dropdown-open .verse:hover .faculty {
         -webkit-backdrop-filter: blur(12px);
         background-color: rgba(0, 0, 0, 0.1);
     }
+    .language {
+        padding-top: 10px;
+        margin-bottom: 0px;
+        margin-right: 20px;
+    }
+
     .menu-schedules,
     .menu-more,
     .menu-changelog {
@@ -410,14 +422,52 @@ body.dropdown-open .verse:hover .faculty {
         width: auto;
     }
     .accordion-schedules a {
-        padding-bottom: 12px;
+        margin-bottom: 12px;
     }
     .accordion-changelog a {
-        padding-bottom: 12px;
+        margin-bottom: 12px;
     }
     .accordion-more a {
-        padding-bottom: 12px;
+        margin-bottom: 8px;
     }
+
+    .active .navigation .accordion-schedules a {
+        font-weight: 500;
+        font-size: 15px;
+        --bg: rgba(255, 255, 255, 0.06);
+        --text: white;
+        background: var(--bg);
+        border-radius: 1rem;
+        -webkit-backdrop-filter: blur(12px);
+        backdrop-filter: blur(12px);
+        padding: 4px 0px;
+        border-radius: 10px;
+    }
+    .active .navigation .accordion-changelog a {
+        font-weight: 500;
+        font-size: 15px;
+        --bg: rgba(255, 255, 255, 0.06);
+        --text: white;
+        background: var(--bg);
+        border-radius: 1rem;
+        -webkit-backdrop-filter: blur(12px);
+        backdrop-filter: blur(12px);
+        padding: 4px 0px;
+        border-radius: 10px;
+    }
+    .active .navigation .accordion-more a {
+        font-weight: 500;
+        font-size: 15px;
+        --bg: rgba(255, 255, 255, 0.06);
+        --text: white;
+        background: var(--bg);
+        border-radius: 1rem;
+        -webkit-backdrop-filter: blur(12px);
+        backdrop-filter: blur(12px);
+        padding: 4px 0px;
+        border-radius: 10px;
+    }
+
     nav .accordion-schedules,
     nav .accordion-changelog,
     nav .accordion-more {
@@ -440,7 +490,7 @@ body.dropdown-open .verse:hover .faculty {
         opacity: 1;
     }
     .dropdown-schedules.open ~.dropdown-changelog {
-        margin-top: 142px;
+        margin-top: 166px;
         transition: margin-top 0.4s cubic-bezier(.4,0,.2,1);
     }
     .dropdown-schedules ~.dropdown-changelog {
@@ -455,11 +505,12 @@ body.dropdown-open .verse:hover .faculty {
         margin-top: 0;
         transition: margin-top 0.4s cubic-bezier(.4,0,.2,1);
     }
-    .dropdown-more.open ~.feedback {
-        margin-top: 230px;
+    /* Move the language toggle when the 'More' dropdown is open (mobile) */
+    #topbar.active .dropdown-more.open ~ .desktop-language-container {
+        margin-top: 260px;
         transition: margin-top 0.4s cubic-bezier(.4,0,.2,1);
     }
-    .dropdown-more ~.feedback {
+    #topbar.active .dropdown-more ~ .desktop-language-container {
         margin-top: 0;
         transition: margin-top 0.4s cubic-bezier(.4,0,.2,1);
     }
@@ -469,10 +520,17 @@ body.dropdown-open .verse:hover .faculty {
         left: 4vw;
         transform: none; 
     }
+    #topbar .logo img {
+        margin-top: 0px;
+    }
+
+    #topbar .logo .decrypt-text {
+        margin-top: -6px;
+    }
     #topbar .menu {
         position: absolute;
         transform: none;
-        top: 7px;
+        top: 3px;
         right: 2vw;
     }
     nav .separator {
@@ -482,7 +540,7 @@ body.dropdown-open .verse:hover .faculty {
         padding-top: 2px;
         padding-left: 3vw;
         padding-right: 2vw;
-        height: 70px;
+        height: 60px;
         align-items: center;
         transition: height 0.3s ease, transform 0.25s cubic-bezier(.4,0,.2,1), opacity 0.2s ease;
     }
@@ -490,15 +548,19 @@ body.dropdown-open .verse:hover .faculty {
         display: flex;
         justify-content: center;
     }
+    #topbar .accordion-schedules .column1 {
+        margin-right: 10px;
+    }
     .navigation {
         display: flex;
         flex-direction: column;
         position: fixed;
         justify-content: flex-start;
         align-items: center;
-        top: 80px;
-        left: 50%;
-        transform: translateX(-50%) translateY(-100vh);
+        top: 40px;
+        right: 0;           /* anchor to the right edge */
+        left: auto;         /* no horizontal centering */
+        transform: translateX(100vw); /* hidden off-screen to the right */
         width: 100vw;
         height: calc(100vh - 80px);
         gap: 0.9rem;
@@ -510,7 +572,8 @@ body.dropdown-open .verse:hover .faculty {
         overflow-x: hidden;
         padding: 20px 0;
         box-sizing: border-box;
-        transition: opacity 0.05s ease, transform 0.3s ease;
+        transition: opacity 0.3s ease, transform 0.3s ease; /* smooth both open and close */
+        will-change: transform, opacity;
     }
     .line1 {
         position: flex;
@@ -518,7 +581,7 @@ body.dropdown-open .verse:hover .faculty {
         width: 100%;
         height: 1px;
         margin-bottom: 10px;
-        margin-top: -20px;
+        margin-top: 0px;
         background-color:rgba(255, 255, 255, 0.2);
     }
     .menu {
@@ -527,7 +590,7 @@ body.dropdown-open .verse:hover .faculty {
         display: flex;
         transform: translateY(-2px)
     }
-    .menu svg {
+    svg {
         display: flex;
         transition: transform 500ms cubic-bezier(0.4, 0, 0.2, 1);
     }
@@ -541,7 +604,7 @@ body.dropdown-open .verse:hover .faculty {
     }
     .active .navigation {
         opacity: 1;
-        transform: translateX(-50%) translateY(0);
+        transform: translateX(0); /* slide in from right to left */
         pointer-events: auto;
         transition: opacity 1s ease, transform 0.3s ease;
     }
@@ -550,14 +613,14 @@ body.dropdown-open .verse:hover .faculty {
         font-size: 16px;
     }
     .active .navigation .feedback img {
-        width: 35px;
-        height: 35px;
+        width: 30px;
+        height: 30px;
     }
     .active .navigation .feedback {
         display: flex;
         flex-direction: row;
         align-items: center;
-        padding: 15px;
+        padding: 0px;
         gap: 8px;
     }
     path {
@@ -603,13 +666,7 @@ body.dropdown-open .verse:hover .faculty {
     .active path:nth-child(6) {
         transform: translateX(9px) translateY(1px) rotate(45deg);
     }
-    #topbar .logo {
-        gap: 0;
-    }
-    #topbar .logo .decrypt-text {
-        max-width: 160px;
-    }
-    #topbar .logo .decrypt-text a {
-        font-size: 12px;
+    .logo {
+        gap: 0px;
     }
 }
