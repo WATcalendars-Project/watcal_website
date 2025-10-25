@@ -27,6 +27,16 @@
     width: 25px;
 }
 
+.installation img[alt="Debian"] {
+    width: 30px;
+    transform: translateY(6px);
+}
+
+.installation img[alt="Ubuntu"] {
+    width: 30px;
+    transform: translateY(6px);
+}
+
 .installation img[alt="Arch"] {
     width: 30px;
     transform: translateY(6px);

@@ -123,34 +123,74 @@
         If this changes in the future, this policy will be updated accordingly.
       `,
 
-        // Index page
-
+      // Index page
+      // title
       'hero.title.desktop': 'The WATcalendars for<br>.ICS Schedules',
-      'hero.desktop.text': 'Created to simplify access to academic<br>\nschedules and ensure continuous development<br>\nthrough openness and collaboration.',
+      'hero.desktop.text': `Created to simplify access to academic<br>
+        schedules and ensure continuous development<br>
+        through openness and collaboration.`,
+
       'hero.buttons.get-started': 'Get Started',
-      'hero.buttons.schedules': 'Schedules',
+      'hero.buttons.tutorial': 'Tutorial',
       'hero.buttons.github': 'GitHub',
-      'stats.faculties1': 'The calendars have been subscribed by ',
-      'stats.faculties2': ' users.',
+
       'hero.title.media': 'The WATcalendars for .ICS Schedules',
-      'hero.media.tablet': 'Created to simplify access to academic schedules and ensure\n                            continuous development through openness and\n                            collaboration.',
-      'hero.media.mobile': 'Created to simplify access to academic schedules\n                            and ensure continuous development through\n                            openness and collaboration.',
 
+      'hero.media.mobile': `Created to simplify access to academic schedules and ensure
+        continuous development through openness and
+        collaboration.`,
+
+      // three-items-description
       'three.detailed.title': 'Detailed View',
-      'three.detailed.text': "Full course information: the lecturer’s name,\n                            classroom and building, complete subject title,\n                            order of classes, and type of activity.",
+      'three.detailed.text': `Full course information: the lecturer’s name,
+        classroom and building, complete subject title,
+        order of classes, and type of activity.`,
       'three.oss.title': 'Open-Source',
-      'three.oss.text': 'Users can review and modify as needed.\n                            Active feedback and contributions keep the project reliable and future-proof.',
+      'three.oss.text': `Users can review and modify as needed.
+        Active feedback and contributions keep the project reliable.`,
       'three.auto.title': 'Automated Up-to-Date',
-      'three.auto.text': 'Scripts for scraping, parsing, fetching, and saving\n                            are run every day so schedules always stay current.',
+      'three.auto.text': `Scripts for scraping, parsing, fetching, and saving
+        are run every day so schedules always stay current.`,
 
-      'showcase.title': 'Showcase',
-
+      // tutorial
       'tutorial.title': 'Get Your Calendar',
-      'tutorial.step1': 'Open the <a href="/schedules/" class="schedules">Schedules</a> menu and choose your Faculty.',
-      'tutorial.step2': 'Select the group of your choice.',
-      'tutorial.step3': 'On <img src="/assets/images/logo/apple-logo.png" alt="apple-logo"> iPhone, the schedule will appear as a calendar subscription.',
-      'tutorial.step4': 'Once you confirm with the <strong>Find</strong> option, your group schedule will\n                        be available directly in your calendar app.',
+      'tutorial.footer': '<<Instruction>>',
+      'hero.buttons.schedules': 'Schedules',
+      'tutorial.iphone.step1': `Navigate to 
+        <a href="/schedules/" class="get-started" data-i18n="hero.buttons.schedules">Schedules</a>
+        selecting one of available buttons or links on website.`,
+      'tutorial.iphone.step2': 'Select your faculty from available options.',
+      'tutorial.iphone.step3': 'Once redirected to your faculty, select your group from the list.',
+      'tutorial.iphone.step4': 'After selecting your group, add the schedule by clicking apple "Subscribe Calendar" button.',
+      'tutorial.iphone.step5': `(Optional) If nothing happens, you can add it manually by copying the link under the subscribe button and
+        paste it in:<br>Calendar > Calendars > Add calendar > Add subscription calendar.<br><br><strong>Confirm the subscription in the pop-up window by clicking "Find".`,
+      'tutorial.iphone.step6': `Customize your calendar settings as needed and click confirm button at the right-top.`,
+      'tutorial.iphone.done': `You're all set! Your WATcalendar will now appear in the Apple Calendar app with all the latest schedule information. Enjoy!`,
 
+      'hero.buttons.schedules': 'Schedules',
+      'tutorial.google.step1': `Navigate to 
+        <a href="/schedules/" class="get-started" data-i18n="hero.buttons.schedules">Schedules</a>
+        selecting one of available buttons or links on website.`,
+      'tutorial.google.step2': 'Select your faculty from available options.',
+      'tutorial.google.step3': 'Once redirected to your faculty, select your group from the list.',
+      'tutorial.google.step4': `After selecting your group, copy the link above the Google button starting with https://<br>and redirect to Google Calendar Settings by hitting the button.`,
+      'tutorial.google.step5': `Log in to your Google account.`,
+      'tutorial.google.step6': `On Desktop you need to go for "+" in "Other calendars" section and select "From URL" like on the screenshot.`,
+      'tutorial.google.step7': `You will be redirected to Google Calendar subscription Settings.`,
+      'tutorial.google.step8': `!IMPORTANT<br>Paste the link into the "URL" field and <strong>select "Set calendar as public"</strong>`,
+      'tutorial.google.step9': `Once you subscribe the calendar, leave the Settings section and after few seconds you will see your schedule.`,
+      'tutorial.google.done': `You're all set! Your WATcalendar will now appear in the Google Calendar with all the latest schedule information. Enjoy!`,
+
+      'hero.buttons.schedules': 'Schedules',
+      'tutorial.manual.step1': `Navigate to 
+        <a href="/schedules/" class="get-started" data-i18n="hero.buttons.schedules">Schedules</a>
+        selecting one of available buttons or links on website.`,
+      'tutorial.manual.step2': 'Select your faculty from available options.',
+      'tutorial.manual.step3': 'Once redirected to your faculty, select your group from the list.',
+      'tutorial.manual.step4': `After selecting your group, download the .ics file by clicking "Download .ics" button.`,
+      'tutorial.manual.done': `Click the downloaded file and choose your preferred application. Enjoy!`,
+
+      // manual installation
       'install.title': 'Manual Installation',
       'install.p1': 'You can install the WATcalendars project available on Github that include <img src="/assets/images/icons/python-icon.png" alt="python-icon"> Python Scripts.',
       'install.p2': 'Clone the repository to your local machine.',
@@ -158,40 +198,40 @@
       'install.p4': 'Running following script will automaticaly install required dependencies.',
       'install.p5': 'After that, you can Use the scraping scripts, Change them, Customize them, Fix as needed.',
       'install.p6': 'In the repository check "help.txt" file for available options and useful informations or simply type cat help.txt:',
-      'install.p7': 'Setup script to install the required dependencies are included for\n                        <img src="/assets/images/distribution/arch.png" alt=Arch> <strong>Arch</strong>.\n                        <br>For other distros, please install <a href="/web/Dependencies.html">the dependencies</a> first.',
+      'install.p7': `Setup script to install the required dependencies are included for
+        <img src="/assets/images/distribution/debian.png" alt=Debian> <strong>Debian</strong>,
+        <img src="/assets/images/distribution/ubuntu.png" alt=Ubuntu> <strong>Ubuntu</strong>, or
+        <img src="/assets/images/distribution/arch.png" alt=Arch> <strong>Arch</strong>.
+        <br>For other distros, please install <a href="/dependencies/">the dependencies</a> first.`,
 
-      'footer.mit': 'Released under the MIT license',
-      'footer.copyright': 'Copyright © 2025 Dominik Serafin',
+      //  support
+      'support.title': 'Support My Project',
+      
+      // license page
+      'footer.license': 'License',
+      'license.text': `MIT License<br><br>
+        Copyright © 2025 Dominik Serafin<br><br>
+        Permission is hereby granted, free of charge, to any person obtaining a copy
+        of this software and associated documentation files (the "Software"), to deal
+        in the Software without restriction, including without limitation the rights
+        to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+        copies of the Software, and to permit persons to whom the Software is
+        furnished to do so, subject to the following conditions:<br><br>
+        The above copyright notice and this permission notice shall be included in all
+        copies or substantial portions of the Software.<br><br>
+        THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+        IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+        FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+        AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+        LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+        OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+        SOFTWARE.`,
 
 
-
-
-
-
-  // license page
-  'footer.license': 'License',
-  'license.text': `MIT License<br><br>
-Copyright © 2025 Dominik Serafin<br><br>
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:<br><br>
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.<br><br>
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.`,
-
-
-      // about page
-      'about.coming_soon': 'Coming Soon!',
+        // about page
+        'about.coming_soon': 'Coming Soon!',
     },
+
     pl: {
       // Feedback page
       'contact': 'Feedback & Kontakt',
@@ -309,45 +349,89 @@ SOFTWARE.`,
         Jeśli w przyszłości to się zmieni, polityka ta zostanie odpowiednio zaktualizowana.
       `,
 
-        // Index page
+      // Index page
+      // title
+      'hero.title.desktop': 'WATcalendars dla<br>kalendarzy .ICS',
+      'hero.desktop.text': `Stworzony, aby uprościć dostęp do akademickich<br>
+        harmonogramów zajęć, oraz zapewnić ciągły rozwój<br>
+        poprzez otwartość i współpracę.`,
 
-      'hero.title.desktop': 'WATcalendars dla<br>harmonogramów .ICS',
-      'hero.desktop.text': 'Utworzone, aby uprościć dostęp do planów zajęć<br>\noraz zapewnić ciągły rozwój dzięki otwartości\n<br>i współpracy.',
       'hero.buttons.get-started': 'Rozpocznij',
-      'hero.buttons.schedules': 'Rozkłady zajęć',
+      'hero.buttons.tutorial': 'Instrukcje',
       'hero.buttons.github': 'GitHub',
-      'stats.faculties1': 'Kalendarze wykorzystało już ',
-      'stats.faculties2': ' użytkowników.',
-      'hero.title.media': 'WATcalendars dla harmonogramów .ICS',
-      'hero.media.tablet': 'Utworzone, aby uprościć dostęp do planów zajęć oraz zapewnić\n                            ciągły rozwój dzięki otwartości i współpracy.',
-      'hero.media.mobile': 'Utworzone, aby uprościć dostęp do planów zajęć\n                            oraz zapewnić ciągły rozwój dzięki otwartości i współpracy.',
 
-      'three.detailed.title': 'Szczegółowy widok',
-      'three.detailed.text': 'Pełne informacje o zajęciach: prowadzący,\n                            sala i budynek, pełny tytuł przedmiotu, kolejność zajęć\n                            oraz rodzaj aktywności.',
+      'hero.title.media': 'WATcalendars dla kalendarzy .ICS',
+
+      'hero.media.mobile': `Stworzony, aby uprościć dostęp do akademickich
+        harmonogramów zajęć, oraz zapewnić ciągły rozwój
+        poprzez otwartość i współpracę.`,
+
+      // three-items-description
+      'three.detailed.title': 'Szczegółowy Widok',
+      'three.detailed.text': `Pełne informacje o kursie: nazwa prowadzącego,
+        sala i budynek, pełny tytuł przedmiotu,
+        porządek zajęć i rodzaj aktywności.`,
       'three.oss.title': 'Open-Source',
-      'three.oss.text': 'Użytkownicy mogą przeglądać i modyfikować według potrzeb.\n                            Aktywne opinie i kontrybucje utrzymują projekt niezawodnym i przyszłościowym.',
-      'three.auto.title': 'Automatycznie aktualne',
-      'three.auto.text': 'Skrypty do scrapowania, parsowania, pobierania i zapisywania\n                            uruchamiane są codziennie, więc plany są zawsze aktualne.',
+      'three.oss.text': `Użytkownicy mogą przeglądać i modyfikować według potrzeb.
+        Aktywne opinie i wkład utrzymują projekt.`,
+      'three.auto.title': 'Aktualne',
+      'three.auto.text': `Skrypty do skanowania, analizowania, pobierania i zapisywania
+        są uruchamiane codziennie, dzięki czemu harmonogramy zawsze pozostają aktualne.`,
 
-      'showcase.title': 'Prezentacja',
+      // tutorial
+      'tutorial.title': 'Ustaw swój plan zajęć w kalendarzu',
+      'tutorial.footer': '<<Instrukcja>>',
+      'hero.buttons.schedules': 'Plany zajęć',
+      'tutorial.iphone.step1': `Przejdź do
+        <a href="/schedules/" class="get-started" data-i18n="hero.buttons.schedules">Plany zajęć</a>
+        wybierając jeden z dostępnych przycisków lub linków na stronie.`,
+      'tutorial.iphone.step2': 'Wybierz swoją jednostkę z dostępnych opcji.',
+      'tutorial.iphone.step3': 'Po przekierowaniu do swojego wydziału wybierz swoją grupę z listy.',
+      'tutorial.iphone.step4': 'Po wybraniu grupy dodaj plan zajęć, klikając przycisk "Subskrybuj kalendarz".',
+      'tutorial.iphone.step5': `(Opcjonalnie) Jeśli nic się nie stanie, możesz dodać go ręcznie, kopiując link pod przyciskiem subskrypcji i
+        wklejając go w:<br>Kalendarz > Kalendarze > Dodaj kalendarz > Dodaj kalendarz subskrypcyjny.<br><br><strong>Potwierdź subskrypcję w wyskakującym oknie, klikając "Znajdź".`,
+      'tutorial.iphone.step6': `Dostosuj ustawienia kalendarza według potrzeb i kliknij przycisk potwierdzenia w prawym górnym rogu.`,
+      'tutorial.iphone.done': `Gotowe! Twój WATcalendar teraz pojawi się w aplikacji Kalendarz Apple z najnowszymi informacjami o planie zajęć. Miłej zabawy!`,
 
-      'tutorial.title': 'Zdobądź swój kalendarz',
-      'tutorial.step1': 'Otwórz menu <a href="/web/Schedules.html" class="schedules">Plany</a> i wybierz swoj Wydział.',
-      'tutorial.step2': 'Wybierz interesującą Cię grupę.',
-      'tutorial.step3': 'Na <img src="/assets/images/logo/apple-logo.png" alt="apple-logo"> iPhone, plan pojawi się jako subskrypcja kalendarza.',
-      'tutorial.step4': 'Po potwierdzeniu opcją <strong>Znajdź</strong>, plan grupy będzie\n                        dostępny bezpośrednio w aplikacji Kalendarz.',
+      'hero.buttons.schedules': 'Plany zajęć',
+      'tutorial.google.step1': `Przejdź do
+        <a href="/schedules/" class="get-started" data-i18n="hero.buttons.schedules">Plany zajęć</a>
+        wybierając jeden z dostępnych przycisków lub linków na stronie.`,
+      'tutorial.google.step2': 'Wybierz swoją jednostkę z dostępnych opcji.',
+      'tutorial.google.step3': 'Po przekierowaniu do swojego wydziału wybierz swoją grupę z listy.',
+      'tutorial.google.step4': `Po wybraniu grupy skopiuj link nad przyciskiem Google, zaczynający się od https://<br>i przejdź do ustawień Kalendarza Google, klikając przycisk.`,
+      'tutorial.google.step5': `Zaloguj się na swoje konto Google.`,
+      'tutorial.google.step6': `Na komputerze musisz kliknąć "+" w sekcji "Inne kalendarze" i wybrać "Z adresu URL" jak na zrzucie ekranu.`,
+      'tutorial.google.step7': `Zostaniesz przekierowany do ustawień subskrypcji Kalendarza Google.`,
+      'tutorial.google.step8': `!WAŻNE<br>Wklej wcześniej skopiowany link w pole "URL" i <strong>wybierz "Ustaw kalendarz jako dostępny publicznie"</strong>`,
+      'tutorial.google.step9': `Po zasubskrybowaniu kalendarza opuść sekcję Ustawienia, a po kilku sekundach zobaczysz swój plan zajęć.`,
+      'tutorial.google.done': `Wszystko gotowe! Twój Plan Zajęć teraz pojawi się w Kalendarzu Google z najnowszymi informacjami o planie zajęć. Miłej zabawy!`,
 
-      'install.title': 'Instalacja ręczna',
+      'hero.buttons.schedules': 'Plany zajęć',
+      'tutorial.manual.step1': `Przejdź do
+        <a href="/schedules/" class="get-started" data-i18n="hero.buttons.schedules">Plany zajęć</a>
+        wybierając jeden z dostępnych przycisków lub linków na stronie.`,
+      'tutorial.manual.step2': 'Wybierz swoją jednostkę z dostępnych opcji.',
+      'tutorial.manual.step3': 'Po przekierowaniu do swojego wydziału wybierz swoją grupę z listy.',
+      'tutorial.manual.step4': `Po wybraniu grupy pobierz plik .ics, klikając przycisk "Pobierz .ics".`,
+      'tutorial.manual.done': `Kliknij pobrany plik i wybierz preferowaną aplikację. Miłej zabawy!`,
+
+      // manual installation
+      'install.title': 'Instalacja ręczna projektu',
       'install.p1': 'Możesz zainstalować projekt WATcalendars dostępny na Githubie, który zawiera <img src="/assets/images/icons/python-icon.png" alt="python-icon"> skrypty Pythona.',
-      'install.p2': 'Sklonuj repozytorium na swój komputer.',
-      'install.p3': 'Następnie nadaj uprawnienia do skryptu instalacyjnego.',
+      'install.p2': 'Sklonuj repozytorium na swoją lokalną maszynę.',
+      'install.p3': 'Następnie dodaj uprawnienia do skryptu instalacyjnego.',
       'install.p4': 'Uruchomienie poniższego skryptu automatycznie zainstaluje wymagane zależności.',
-      'install.p5': 'Po tym możesz używać skryptów do scrapowania, zmieniać je, dostosowywać i poprawiać.',
-      'install.p6': 'W repozytorium sprawdź plik "help.txt" po dostępne opcje i informacje lub wpisz: cat help.txt:',
-      'install.p7': 'Skrypt instalacyjny instalujący wymagane zależności jest dostępny dla\n                        <img src="/assets/images/distribution/arch.png" alt=Arch> <strong>Arch</strong>.\n                        <br>Dla innych dystrybucji najpierw zainstaluj <a href="/web/Dependencies.html">zależności</a>.',
+      'install.p5': 'Po tym możesz używać skryptów do scrapowania, zmieniać je, dostosowywać, naprawiać w razie potrzeby.',
+      'install.p6': 'W repozytorium sprawdź plik "help.txt" w poszukiwaniu dostępnych opcji i przydatnych informacji lub po prostu wpisz cat help.txt:',
+      'install.p7': `Skrypt instalacyjny do zainstalowania wymaganych zależności jest dołączony dla
+        <img src="/assets/images/distribution/debian.png" alt=Debian> <strong>Debian</strong>,
+        <img src="/assets/images/distribution/ubuntu.png" alt=Ubuntu> <strong>Ubuntu</strong>, lub
+        <img src="/assets/images/distribution/arch.png" alt=Arch> <strong>Arch</strong>.
+        <br>Dla innych dystrybucji, proszę najpierw zainstalować <a href="/dependencies/">zależności</a>.`,
 
-      'footer.mit': 'Wydane na licencji MIT',
-      'footer.copyright': 'Copyright © 2025 Dominik Serafin',
+      //  support
+      'support.title': 'Wesprzyj mój projekt',
 
 
 
