@@ -1,16 +1,5 @@
 #Showcase {
-    margin-top: 200px;
-}
-
-.showcase-title h1 {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    color: white;
-    gap: 0px;
-    font-size: 24px;
-    margin-top: 20px;
+    margin-top: 0px;
 }
 
 .showcase {
@@ -51,9 +40,10 @@
 }
 
 .tutorial-slider {
-    margin-bottom: 100px;
+  margin: 0 auto 50px; /* wycentruj slider na stronie */
   position: relative;
   width: 90%;   /* dopasuj do swoich obrazków */
+  max-width: 1400px; /* opcjonalnie ogranicz maksymalną szerokość */
   height: 700px;  /* wysokość slidera */
   overflow: hidden;
   cursor: grab; /* podpowiedź, że można przewijać/przesuwać */
@@ -63,6 +53,35 @@
   /* Zablokuj domyślne przewijanie/gesty przeglądarki wewnątrz slidera na dotyku */
   touch-action: none;
   -ms-touch-action: none;
+}
+
+.tutorial-slider .slider-container {
+  background-image: radial-gradient(
+    ellipse at center, /* Kształt gradientu to prostokąt na środku */
+    rgb(47, 69, 65) 0%,     /* Twój kolor w samym centrum (0%) */
+    transparent 70%   /* Płynne przejście do przezroczystości w 70% promienia */
+  );
+  
+  /* border-radius zostaje, aby nadać kształt owalu */
+  /* Uwaga: 50% jest często pewniejszym wyborem dla idealnego owalu/koła */
+  /* border-radius: 50%; */ 
+  width: 90%;
+}
+
+.tutorial-slider img {
+  width: 1400px;
+}
+
+.tutorial-slider .slider-container img[alt="iphone-showcase"] {
+  width: 300px;
+  height: auto;
+  margin-top: 50px;
+}
+
+.tutorial-slider .slider-container img[alt="terminal-welcome"] {
+  width: 900px;
+  height: auto;
+  margin-top: 100px;
 }
 
 .tutorial-slider:active {
@@ -82,9 +101,11 @@
 .tutorial-slider .slider-container img {
   position: absolute;
   top: 0;
-  left: 0;
+  left: 50%;                 /* połowa kontenera */
+  transform: translateX(-50%);/* osiowe wycentrowanie obrazu */
   height: 100%;
-  object-fit: cover;
+  object-fit: cover;          /* zachowaj przycięcie bez zniekształceń */
+  object-position: center;    /* wyśrodkuj kadr */
   opacity: 0;
   transition: opacity 0.6s ease;
   pointer-events: none; /* zapobiega klikaniu w ukryte obrazki */
@@ -108,9 +129,87 @@
   pointer-events: auto; /* upewnij się, że kliknięcia trafiają w kropki */
 }
 
-@media (max-width: 1400px) {
+@media (max-width: 1600px) {
     .tutorial-slider .slider-dots {
         gap: 30px;
+    }
+    .tutorial-slider img {
+      width: 1200px;
+    }
+
+    .tutorial-slider .slider-container img[alt="iphone-showcase"] {
+      width: 250px;
+      height: auto;
+      margin-top: 50px;
+    }
+
+    .tutorial-slider .slider-container img[alt="terminal-welcome"] {
+      width: 700px;
+      height: auto;
+      margin-top: 100px;
+    }
+}
+
+@media (max-width: 1200px) {
+    .tutorial-slider .slider-dots {
+        gap: 30px;
+    }
+    .tutorial-slider img {
+      width: 900px;
+    }
+
+    .tutorial-slider .slider-container img[alt="iphone-showcase"] {
+      width: 200px;
+      height: auto;
+      margin-top: 60px;
+    }
+
+    .tutorial-slider .slider-container img[alt="terminal-welcome"] {
+      width: 600px;
+      height: auto;
+      margin-top: 80px;
+    }
+}
+
+@media (max-width: 900px) {
+    .tutorial-slider .slider-dots {
+        gap: 30px;
+    }
+    /* Na mniejszych ekranach obraz skaluj w obrębie kontenera bez przycięć i wycentruj */
+    .tutorial-slider .slider-container img {
+      top: 50%;
+      transform: translate(-50%, -50%);
+      height: auto;
+      max-height: 100%;
+      width: min(90vw, 800px);
+      object-fit: contain;
+    }
+    .tutorial-slider .slider-container img[alt="terminal-welcome"] {
+      margin-top: 0px;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      height: auto;
+      max-height: 100%;
+      width: min(90vw, 800px);
+      object-fit: contain;
+    }
+}
+  
+@media (max-width: 800px) {
+    /* Jeszcze bardziej responsywnie: dopasuj szerokość do viewportu i wyśrodkuj pionowo */
+    .tutorial-slider .slider-container img{
+      top: 50%;
+      transform: translate(-50%, -50%);
+      width: min(92vw, 560px);
+      height: auto;
+      max-height: 100%;
+      object-fit: contain;
+    }
+
+    .tutorial-slider .slider-container img[alt="iphone-showcase"] {
+      width: 180px;
+      height: auto;
+      margin-top: 0px;
     }
 }
 

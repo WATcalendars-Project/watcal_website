@@ -17,7 +17,7 @@
     gap: clamp(20px, 1vw, 40px);
     top: 0;
     z-index: 100;
-    padding-top: 150px; 
+    padding-top: 90px; 
 }
 
 .title .desktop-title h1 {
@@ -33,10 +33,11 @@
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+    height: 140px;
     color: transparent;
     flex-shrink: 0;
     max-width: fit-content;
-    line-height: 70px;
+    line-height: 65px;
     order: 1;
 }
 
@@ -61,19 +62,19 @@
 }
 
 .logo2 img {
-    margin-top: -80px;
-    width: 400px;
-    margin-right: -60px;
+    margin-top: 0px;
+    width: 350px;
+    margin-right: -40px;
+    margin-left: 60px;
 }
 
 .desktop-title .desktop-text {
-    margin-top: 10px;
-    font-size: 1.8rem;
-    font-weight: 500;
-    line-height: 40px;
+    margin-top: -30px;
+    font-size: 1.5rem;
+    font-weight: 510;
+    line-height: 35px;
     position: relative;
     display: flex;
-    justify-content: center;
     align-items: flex-start;
     top: 0;
     z-index: 100;
@@ -108,7 +109,7 @@
     border-radius: 33px;
     color: white;
     font-size: 1.2rem;
-    font-weight: 500;
+    font-weight: 600;
     background-color: rgba(55, 130, 84, 1);
     transition: all 0.3s;
 }
@@ -126,7 +127,7 @@
     border-radius: 33px;
     color: white;
     font-size: 1.2rem;
-    font-weight: 500;
+    font-weight: 600;
     transition: all 0.3s;
     z-index: 1;
     position: relative; 
@@ -182,7 +183,7 @@
     border-radius: 33px;
     color: white;
     font-size: 1.2rem;
-    font-weight: 500;
+    font-weight: 600;
     transition: all 0.3s;
     z-index: 1;
     position: relative; 

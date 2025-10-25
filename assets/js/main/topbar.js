@@ -130,7 +130,8 @@ function closeTopbar() {
      - Graceful fallback: if IntersectionObserver not supported, highlight by hash on load/click.
 */
 (function() {
-    const navLinks = Array.from(document.querySelectorAll('nav a'));
+    // Include anchors in nav AND in desktop dropdown menus so highlighting works everywhere
+    const navLinks = Array.from(document.querySelectorAll('nav a, .menu-schedules a, .menu-changelog a, .menu-more a'));
     if (!navLinks.length) return;
 
     function clearCurrent() {
@@ -150,20 +151,47 @@ function closeTopbar() {
         });
     });
 
-    // highlight based on pathname or href match (multi-page)
+    // normalize a path: strip /index.html, ensure leading slash, keep trailing slash if root/dir
+    const normalizePath = (p) => p.replace(/\/index\.html$/, '/');
+
+    // highlight based on best path match (exact, else deepest prefix)
     function matchByPath() {
-        const path = location.pathname.replace(/\/index\.html$/, '/');
+        const current = normalizePath(location.pathname);
+        let best = null;
+        let bestLen = -1;
         for (const a of navLinks) {
             try {
                 const url = new URL(a.href, location.origin);
-                const ahrefPath = url.pathname.replace(/\/index\.html$/, '/');
-                if (ahrefPath === path) {
-                    setCurrent(a);
-                    return true;
+                const ahrefPath = normalizePath(url.pathname);
+                if (!ahrefPath) continue;
+                // exact match preferred
+                if (ahrefPath === current) {
+                    best = a; bestLen = ahrefPath.length; break;
+                }
+                // else choose the longest prefix match (but ignore homepage '/')
+                if (ahrefPath !== '/' && current.startsWith(ahrefPath) && ahrefPath.length > bestLen) {
+                    best = a; bestLen = ahrefPath.length;
                 }
             } catch (e) { /* ignore invalid URLs */ }
         }
+        if (best) { setCurrent(best); return true; }
         return false;
+    }
+
+    // Add parent dropdown highlights: Schedules and More when visiting a child page
+    function highlightParents() {
+        const current = normalizePath(location.pathname);
+        // Schedules group
+        if (current === '/schedules/' || current.startsWith('/schedules/')) {
+            const schedTrigger = document.querySelector('nav .dropdown-schedules > a.dropdown-trigger');
+            if (schedTrigger) schedTrigger.classList.add('current');
+        }
+        // More group: dependencies, feedback, license
+        const morePaths = ['/dependencies/', '/feedback/', '/license/'];
+        if (morePaths.some(p => current === p || current.startsWith(p))) {
+            const moreTrigger = document.querySelector('nav .dropdown-more > a.dropdown-trigger');
+            if (moreTrigger) moreTrigger.classList.add('current');
+        }
     }
 
     // highlight by hash or id of section
@@ -223,6 +251,9 @@ function closeTopbar() {
         }
     }
 
+    // Ensure hierarchical highlights (parent groups) are applied
+    highlightParents();
+
     // update on hashchange/navigation
     window.addEventListener('hashchange', () => {
         highlightByHash();
@@ -230,6 +261,9 @@ function closeTopbar() {
 
     // update on popstate (back/forward navigation)
     window.addEventListener('popstate', () => {
+        // Re-apply on navigation changes
+        clearCurrent();
         matchByPath() || highlightByHash();
+        highlightParents();
     });
 })();

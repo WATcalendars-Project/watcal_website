@@ -13,9 +13,9 @@ body {
   background-image: linear-gradient(
       30deg,
     rgba(13, 17, 23, 1) 0%,
-    rgba(13, 17, 23, 1) 25%, 
-    rgba(25, 41, 40, 1) 50%, 
-    rgba(25, 41, 40, 1) 60%,
+    rgba(25, 41, 40, 1) 30%, 
+    rgba(25, 41, 40, 1) 40%, 
+    rgba(13, 17, 23, 1) 75%,
     rgba(13, 17, 23, 1) 100%
   );
   background-attachment: fixed;

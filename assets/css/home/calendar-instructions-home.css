@@ -113,40 +113,8 @@
     text-align: center;
     color: white;
     gap: 0px;
-    font-size: 18px;
-    margin-top: 50px;
-}
-
-.iphone-tutorial {
-  /* Zamiast background-color, użyj gradientu radialnego (promienistego) */
-  background-image: radial-gradient(
-    ellipse at center, /* Kształt gradientu to prostokąt na środku */
-    rgba(54, 59, 58, 0.684) 0%,     /* Twój kolor w samym centrum (0%) */
-    transparent 70%   /* Płynne przejście do przezroczystości w 70% promienia */
-  );
-  
-  /* border-radius zostaje, aby nadać kształt owalu */
-  /* Uwaga: 50% jest często pewniejszym wyborem dla idealnego owalu/koła */
-  /* border-radius: 50%; */ 
-  width: 90%;
-}
-
-.google-tutorial {
-  background-image: radial-gradient(
-    ellipse at center,
-    rgba(54, 71, 84, 0.684) 20%,
-    transparent 70%
-  );
-  width: 90%;
-}
-
-.manual-tutorial {
-  background-image: radial-gradient(
-    ellipse at center,
-    rgba(33, 67, 57, 0.684) 0%,
-    transparent 70%
-  );
-  width: 90%;
+    font-size: 12px;
+    margin-top: 100px;
 }
 
 /* Hide non-active tutorials by default; JS will toggle visibility */
