@@ -1,3 +1,16 @@
+#Tutorial .get-your-calendar h1 {
+  margin-top: 50px;
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+#Tutorial .get-your-calendar .tutorial-footer {
+    margin-top: -20px;
+    font-size: 1.5rem;
+    opacity: 0.8;
+    margin-bottom: 50px;
+}
+
 .glass-container {
     display: flex;
     justify-content: center;
