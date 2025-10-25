@@ -309,7 +309,7 @@
       'nav.home': 'Strona główna',
       'nav.about': 'O projekcie',
       'nav.schedules': 'Plany zajęć',
-      'nav.project': 'Projekt',
+      'nav.project': 'Projekt ',
       'nav.changelog': 'GitHub Actions',
       'nav.more': 'Więcej',
       'nav.more.tutorial': 'Instrukcje',
