@@ -2,6 +2,8 @@
 #support {
     margin-top: 200px;
     text-align: center;
+    margin-bottom: -300px;
+    z-index: 0;
 }
 
 #support .buttons-container {
