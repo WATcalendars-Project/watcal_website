@@ -205,7 +205,7 @@
         <br>For other distros, please install <a href="/dependencies/">the dependencies</a> first.`,
 
       //  support
-      'support.title': 'Support My Project',
+      'support.title': 'Give my Project a star on GitHub',
       
       // license page
       'footer.license': 'License',
@@ -431,7 +431,7 @@
         <br>Dla innych dystrybucji, proszę najpierw zainstalować <a href="/dependencies/">zależności</a>.`,
 
       //  support
-      'support.title': 'Wesprzyj mój projekt',
+      'support.title': 'Daj mojemu projektowi gwiazdkę na Githubie',
 
 
 

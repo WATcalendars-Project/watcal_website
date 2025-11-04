@@ -1,183 +1,175 @@
+// Modern tutorial slider: autoplay, looping, dots, arrows, drag/swipe
 document.addEventListener('DOMContentLoaded', () => {
-  const container = document.querySelector('.tutorial-slider .slider-container');
-  const images = document.querySelectorAll('.tutorial-slider .slider-container img');
-  const dotsContainer = document.querySelector('.tutorial-slider .slider-dots');
+  const root = document.querySelector('.tutorial-slider');
+  const track = root?.querySelector('.slider-container');
+  const dotsWrap = root?.querySelector('.slider-dots');
+  if (!root || !track || !dotsWrap) return;
 
-  if (!container || !images.length || !dotsContainer) return; // bezpieczeństwo
+  // Collect original slides (images)
+  const originals = Array.from(track.querySelectorAll('img'));
+  if (originals.length === 0) return;
 
-  // Tworzenie kropek
-  images.forEach((_, index) => {
-    const dot = document.createElement('button');
-    dot.addEventListener('click', () => showSlide(index));
-    dotsContainer.appendChild(dot);
+  // Config
+  const DURATION = 450; // ms, match CSS transition
+  const AUTOPLAY_MS = 2800;
+  const DRAG_THRESHOLD = 0.15; // fraction of width
+
+  // Clone heads/tails for seamless loop
+  const firstClone = originals[0].cloneNode(true);
+  const lastClone = originals[originals.length - 1].cloneNode(true);
+  track.insertBefore(lastClone, originals[0]);
+  track.appendChild(firstClone);
+
+  let slides = Array.from(track.children); // includes clones
+  // Ensure each slide occupies 100%
+  slides.forEach(el => { el.style.flex = '0 0 100%'; });
+
+  // Build dots
+  dotsWrap.innerHTML = '';
+  const dots = originals.map((_, i) => {
+    const b = document.createElement('button');
+    b.type = 'button';
+    b.setAttribute('aria-label', `Go to slide ${i + 1}`);
+    b.addEventListener('click', () => jumpTo(i));
+    dotsWrap.appendChild(b);
+    return b;
   });
 
-  const dots = dotsContainer.querySelectorAll('button');
+  // Inject nav arrows
+  const prevBtn = document.createElement('button');
+  prevBtn.className = 'nav-btn prev';
+  prevBtn.innerHTML = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15 18L9 12L15 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+  const nextBtn = document.createElement('button');
+  nextBtn.className = 'nav-btn next';
+  nextBtn.innerHTML = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9 6L15 12L9 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+  root.appendChild(prevBtn);
+  root.appendChild(nextBtn);
 
-  // Ustaw na -1, aby pierwsze showSlide(0) dodało klasy 'active'
-  let current = -1;
-  const clamp = (n) => Math.max(0, Math.min(n, images.length - 1));
-  const transitionMs = 600; // zgodne z CSS (opacity 0.6s)
-  let lastSwitch = 0;
-  const canSwitch = () => Date.now() - lastSwitch > transitionMs * 0.8;
-  const markSwitch = () => { lastSwitch = Date.now(); };
-  // Wykrywanie urządzenia dotykowego (telefon) – coarse pointer oznacza ekran dotykowy
-  const isTouchDevice = (typeof window !== 'undefined' && (
-    (window.matchMedia && window.matchMedia('(pointer: coarse)').matches) ||
-    ('ontouchstart' in window)
-  ));
+  let index = 1; // start on first real slide (after lastClone)
+  let width = root.clientWidth;
+  let animating = false;
+  let autoplayId = null;
 
-  // Feature flags: wyłączamy przewijanie/gesty dla slajdów (zostają tylko kropki/klawiatura)
-  const ENABLE_MOUSE_DRAG = false;
-  const ENABLE_WHEEL_SCROLL = false;
-  const ENABLE_TOUCH_SWIPE = false; // i tak domyślnie wyłączone na telefonach poniżej
-
-  function showSlide(index) {
-    const next = clamp(index);
-    if (images.length === 0) return;
-    if (next === current) return;
-    images.forEach(img => img.classList.remove('active'));
-    dots.forEach(dot => dot.classList.remove('active'));
-    images[next].classList.add('active');
-    dots[next].classList.add('active');
-    current = next;
-    // glider removed — opacity state managed via CSS ::before
+  function setTransform(noAnim = false) {
+    if (noAnim) track.style.transition = 'none';
+    const x = -index * width;
+    track.style.transform = `translate3d(${x}px,0,0)`;
+    if (noAnim) {
+      // force reflow to apply no-transition transforms without flicker
+      // eslint-disable-next-line @typescript-eslint/no-unused-expressions
+      track.offsetHeight;
+      track.style.transition = '';
+    }
   }
 
-  function nextSlide() { if (current < images.length - 1) { showSlide(current + 1); } }
-  function prevSlide() { if (current > 0) { showSlide(current - 1); } }
-
-  // Drag myszką – zmiana slajdów po przeciągnięciu (wyłączone)
-  if (ENABLE_MOUSE_DRAG) {
-    let isMouseDown = false;
-    let dragStartX = 0;
-    let dragStartY = 0;
-    let dragging = false;
-    const dragThreshold = 40; // minimalna odległość, by uznać gest
-
-    container.addEventListener('mousedown', (e) => {
-      isMouseDown = true;
-      dragging = false;
-      dragStartX = e.clientX;
-      dragStartY = e.clientY;
-      // Fokus do klawiatury
-      const tutorialRoot = document.querySelector('.tutorial-slider');
-      if (tutorialRoot) tutorialRoot.focus();
-    });
-
-    document.addEventListener('mousemove', (e) => {
-      if (!isMouseDown || !canSwitch()) return;
-      const dx = e.clientX - dragStartX;
-      const dy = e.clientY - dragStartY;
-      const absX = Math.abs(dx);
-      const absY = Math.abs(dy);
-      if (!dragging && (absX > dragThreshold || absY > dragThreshold)) {
-        dragging = true;
-        // Wybierz dominującą oś na podstawie większego odchylenia
-        if (absX >= absY) {
-          if (dx < 0) nextSlide(); else prevSlide();
-        } else {
-          if (dy < 0) nextSlide(); else prevSlide();
-        }
-        markSwitch();
-        // Po przełączeniu zresetuj punkt startowy, by ewentualnie wykrywać kolejne przeciągnięcia
-        dragStartX = e.clientX;
-        dragStartY = e.clientY;
-      }
-    });
-
-    document.addEventListener('mouseup', () => {
-      isMouseDown = false;
-      dragging = false;
-    });
+  function updateDots() {
+    const active = ((index - 1) % originals.length + originals.length) % originals.length;
+    dots.forEach((d, i) => d.classList.toggle('active', i === active));
   }
 
-  // Wheel scroll na sliderze – wyłączone
-  if (ENABLE_WHEEL_SCROLL) {
-    // Jeśli kiedyś włączysz, przenieś tu poprzednie listenery 'wheel'
+  function goTo(next) {
+    if (animating) return;
+    animating = true;
+    index = next;
+    // Update dots immediately so they change faster than the slide animation
+    updateDots();
+    track.style.transition = `transform ${DURATION}ms cubic-bezier(0.22, 0.72, 0, 1)`;
+    setTransform();
   }
 
-  // Swipe na dotyku – wyłączony
-  if (!isTouchDevice && ENABLE_TOUCH_SWIPE) {
-    let touchStartX = 0;
-    let touchStartY = 0;
-    let touchHandled = false; // żeby nie wywoływać podwójnie w touchend
-    const touchThreshold = 40;
-
-    container.addEventListener('touchstart', (e) => {
-      if (!e.touches || !e.touches.length) return;
-      const t = e.touches[0];
-      touchStartX = t.clientX;
-      touchStartY = t.clientY;
-      touchHandled = false;
-    }, { passive: true });
-
-    // Reaguj już w trakcie ruchu, by zablokować scroll strony przy poziomym geście
-    container.addEventListener('touchmove', (e) => {
-      const t = e.touches && e.touches[0];
-      if (!t) return;
-      const dx = t.clientX - touchStartX;
-      const dy = t.clientY - touchStartY;
-      const absX = Math.abs(dx);
-      const absY = Math.abs(dy);
-
-      // Zawsze blokuj scroll strony nad sliderem; sterujemy tylko slajdem
-      e.preventDefault();
-
-      // Przy przekroczeniu progu i dominacji osi poziomej przeskakuj slajdy
-      if (!touchHandled && absX >= absY && absX > touchThreshold && canSwitch()) {
-        if (dx < 0) nextSlide(); else prevSlide();
-        markSwitch();
-        touchHandled = true;
-        // Resetuj punkt odniesienia, by umożliwić kolejne przełączenia w ramach jednego długiego przeciągnięcia
-        touchStartX = t.clientX;
-        touchStartY = t.clientY;
-      }
-    }, { passive: false });
-
-    container.addEventListener('touchend', (e) => {
-      // Jeżeli już obsłużyliśmy w touchmove, nic nie rób
-      if (touchHandled) return;
-      if (!canSwitch()) return;
-      const t = e.changedTouches && e.changedTouches[0];
-      if (!t) return;
-      const dx = t.clientX - touchStartX;
-      const dy = t.clientY - touchStartY;
-      const absX = Math.abs(dx);
-      const absY = Math.abs(dy);
-
-      if (absX < touchThreshold && absY < touchThreshold) return;
-      // Kierunek – wybierz dominującą oś
-      if (absY >= absX) {
-        // Gest w pionie
-        if (dy < 0) nextSlide(); else prevSlide();
-      } else {
-        // Gest w poziomie
-        if (dx < 0) nextSlide(); else prevSlide();
-      }
-      markSwitch();
-    }, { passive: true });
+  function jumpToRealIfClone() {
+    // After animation, if we are on a clone, jump without animation to the real one
+    if (index === 0) { // landed on lastClone -> jump to last real
+      index = originals.length;
+      setTransform(true);
+    } else if (index === originals.length + 1) { // landed on firstClone -> jump to first real
+      index = 1;
+      setTransform(true);
+    }
+    animating = false;
+    updateDots();
   }
 
-  // Dostępność – strzałki na klawiaturze
-  // Umożliw fokus, by przechwycić klawisze
-  const tutorialRoot = document.querySelector('.tutorial-slider');
-  if (tutorialRoot) {
-    tutorialRoot.setAttribute('tabindex', '0');
-    tutorialRoot.addEventListener('keydown', (e) => {
-      if (!canSwitch()) return;
-      if (e.key === 'ArrowRight' || e.key === 'ArrowDown') { e.preventDefault(); nextSlide(); markSwitch(); }
-      else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') { e.preventDefault(); prevSlide(); markSwitch(); }
-      else if (e.key === 'Home') { e.preventDefault(); showSlide(0); markSwitch(); }
-      else if (e.key === 'End') { e.preventDefault(); showSlide(images.length - 1); markSwitch(); }
-    });
-  }
+  function next() { goTo(index + 1); }
+  function prev() { goTo(index - 1); }
+  function jumpTo(realIdx) { goTo(realIdx + 1); }
 
-  // Start – pierwszy slajd
-  // Ustaw aktywne elementy zanim użytkownik zacznie przewijać
-  showSlide(0);
+  track.addEventListener('transitionend', jumpToRealIfClone);
 
-  // Oznacz, że slider został zainicjowany (wyłącza CSS fallback)
-  document.body.classList.add('slider-init');
-  // glider removed — no positioning required
+  // Resize handling
+  const onResize = () => {
+    width = root.clientWidth;
+    setTransform(true);
+  };
+  window.addEventListener('resize', onResize);
+
+  // Autoplay
+  const startAutoplay = () => {
+    stopAutoplay();
+    autoplayId = window.setInterval(next, AUTOPLAY_MS);
+  };
+  const stopAutoplay = () => { if (autoplayId) { clearInterval(autoplayId); autoplayId = null; } };
+  root.addEventListener('mouseenter', stopAutoplay);
+  root.addEventListener('mouseleave', startAutoplay);
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) stopAutoplay(); else startAutoplay();
+  });
+
+  // Keyboard
+  root.setAttribute('tabindex', '0');
+  root.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowRight' || e.key === 'ArrowDown') { e.preventDefault(); next(); }
+    else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') { e.preventDefault(); prev(); }
+    else if (e.key === 'Home') { e.preventDefault(); goTo(1); }
+    else if (e.key === 'End') { e.preventDefault(); goTo(originals.length); }
+  });
+
+  // Pointer drag/swipe
+  let startX = 0;
+  let currentX = 0;
+  let dragging = false;
+
+  const onPointerDown = (e) => {
+    if (animating) return;
+    dragging = true;
+    startX = currentX = (e.touches ? e.touches[0].clientX : e.clientX);
+    track.style.transition = 'none';
+    stopAutoplay();
+  };
+  const onPointerMove = (e) => {
+    if (!dragging) return;
+    const x = (e.touches ? e.touches[0].clientX : e.clientX);
+    currentX = x;
+    const dx = x - startX;
+    const base = -index * width;
+    track.style.transform = `translate3d(${base + dx}px,0,0)`;
+  };
+  const onPointerUp = () => {
+    if (!dragging) return;
+    dragging = false;
+    const dx = currentX - startX;
+    const frac = Math.abs(dx) / width;
+    track.style.transition = `transform ${DURATION}ms cubic-bezier(0.22, 0.72, 0, 1)`;
+    if (frac > DRAG_THRESHOLD) {
+      if (dx < 0) next(); else prev();
+    } else {
+      setTransform();
+    }
+    startAutoplay();
+  };
+  root.addEventListener('mousedown', onPointerDown);
+  window.addEventListener('mousemove', onPointerMove);
+  window.addEventListener('mouseup', onPointerUp);
+  root.addEventListener('touchstart', onPointerDown, { passive: true });
+  root.addEventListener('touchmove', onPointerMove, { passive: true });
+  root.addEventListener('touchend', onPointerUp, { passive: true });
+
+  // Nav buttons
+  prevBtn.addEventListener('click', prev);
+  nextBtn.addEventListener('click', next);
+
+  // Init position and UI
+  setTransform(true);
+  updateDots();
+  startAutoplay();
 });

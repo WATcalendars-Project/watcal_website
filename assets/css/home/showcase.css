@@ -13,6 +13,20 @@
     -webkit-perspective: 1000;
     perspective: 1000;
     backface-visibility: hidden;
+    margin-top: 50px;
+}
+
+.showcase-footer h1 {
+    font-size: 1.2rem;
+    font-weight: 510;
+    margin: 0 0 20px;
+    position: relative;
+    z-index: 100;
+    text-align: center;
+    background: none; 
+    -webkit-background-clip: initial; 
+    -webkit-text-fill-color: rgba(214, 214, 214, 0.7); 
+    background-clip: initial; 
 }
 
 .showcase.active {
@@ -39,213 +53,198 @@
     }
 }
 
+/* Tutorial slider — redesigned */
 .tutorial-slider {
-  margin: 0 auto 50px; /* wycentruj slider na stronie */
+  margin: 0 auto 60px;
   position: relative;
-  width: 90%;   /* dopasuj do swoich obrazków */
-  max-width: 1400px; /* opcjonalnie ogranicz maksymalną szerokość */
-  height: 700px;  /* wysokość slidera */
+  width: min(92%, 1200px);
+  aspect-ratio: 16 / 9;
+  border-radius: 16px;
   overflow: hidden;
-  cursor: grab; /* podpowiedź, że można przewijać/przesuwać */
-  -webkit-user-select: none;
-  -ms-user-select: none;
+  /* Keep gestures smooth, allow vertical page scroll */
+  touch-action: pan-y;
   user-select: none;
-  /* Zablokuj domyślne przewijanie/gesty przeglądarki wewnątrz slidera na dotyku */
-  touch-action: none;
-  -ms-touch-action: none;
+  -webkit-user-select: none;
+  /* Subtle glassy backdrop without frames */
+  background: rgba(255, 255, 255, 0.02);
+  backdrop-filter: blur(6px) saturate(115%);
+  -webkit-backdrop-filter: blur(6px) saturate(115%);
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.28);
 }
+
+.tutorial-slider::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(120% 100% at 50% 0%, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0.02) 50%, rgba(255,255,255,0) 70%);
+}
+
+.tutorial-slider:active { cursor: grabbing; }
 
 .tutorial-slider .slider-container {
-  background-image: radial-gradient(
-    ellipse at center, /* Kształt gradientu to prostokąt na środku */
-    rgb(47, 69, 65) 0%,     /* Twój kolor w samym centrum (0%) */
-    transparent 70%   /* Płynne przejście do przezroczystości w 70% promienia */
-  );
-  
-  /* border-radius zostaje, aby nadać kształt owalu */
-  /* Uwaga: 50% jest często pewniejszym wyborem dla idealnego owalu/koła */
-  /* border-radius: 50%; */ 
-  width: 90%;
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  height: 100%;
+  will-change: transform;
+  transition: transform 0.45s cubic-bezier(0.22, 0.72, 0, 1);
 }
 
-.tutorial-slider img {
-  width: 1400px;
-}
-
-.tutorial-slider .slider-container img[alt="iphone-showcase"] {
-  width: 300px;
-  height: auto;
-  margin-top: 50px;
-}
-
-.tutorial-slider .slider-container img[alt="terminal-welcome"] {
-  width: 900px;
-  height: auto;
-  margin-top: 100px;
-}
-
-.tutorial-slider:active {
-  cursor: grabbing;
-}
-
-.tutorial-slider .slider-container {
-  position: relative;
+.tutorial-slider .slider-container > img {
+  flex: 0 0 100%;
   width: 100%;
   height: 100%;
-  /* Dodatkowe zabezpieczenie dla wnętrza kontenera */
-  touch-action: none;
-  -ms-touch-action: none;
-
+  object-fit: contain; /* keep content fully visible */
+  object-position: center;
+  /* background: linear-gradient(180deg, rgba(0,0,0,0.16), rgba(0,0,0,0.12)); */
+  /* Visual size tuning per asset type */
+  transform: scale(var(--slide-zoom, 1));
+  transition: transform 0.45s ease; /* decoupled from track move */
+  backface-visibility: hidden;
 }
 
-.tutorial-slider .slider-container img {
-  position: absolute;
-  top: 0;
-  left: 50%;                 /* połowa kontenera */
-  transform: translateX(-50%);/* osiowe wycentrowanie obrazu */
-  height: 100%;
-  object-fit: cover;          /* zachowaj przycięcie bez zniekształceń */
-  object-position: center;    /* wyśrodkuj kadr */
-  opacity: 0;
-  transition: opacity 0.6s ease;
-  pointer-events: none; /* zapobiega klikaniu w ukryte obrazki */
+/* Per-image adjustments to better balance perceived size */
+.tutorial-slider .slider-container > img[alt^="iphone-"] {
+  /* Tall iPhone shots tend to look smaller; gently upscale */
+  --slide-zoom: 1;
 }
 
-.tutorial-slider .slider-container img.active {
-  opacity: 1;
-  pointer-events: auto;
-  z-index: 1;
+/* Fine-tune per iPhone mockup */
+.tutorial-slider .slider-container > img[alt="iphone-detailed-view"] { --slide-zoom: 1.20; }
+.tutorial-slider .slider-container > img[alt="iphone-day"]           { --slide-zoom: 1.16; }
+.tutorial-slider .slider-container > img[alt="iphone-month"]         { --slide-zoom: 1.12; }
+
+.tutorial-slider .slider-container > img[alt="terminal-welcome"] {
+  /* Very wide screenshot; give it a touch more breathing room */
+  --slide-zoom: 0.85;
 }
 
+.tutorial-slider .slider-container > img[alt^="google-calendar-showcase-"] { --slide-zoom: 1.0; }
+/* Fine-tune per calendar view */
+.tutorial-slider .slider-container > img[alt="google-calendar-showcase-week"]  { --slide-zoom: 1.55; }
+.tutorial-slider .slider-container > img[alt="google-calendar-showcase-day"]   { --slide-zoom: 1.55; }
+.tutorial-slider .slider-container > img[alt="google-calendar-showcase-month"] { --slide-zoom: 1.55; }
+
+/* Responsive tweaks: reduce extremes on smaller screens */
+@media (max-width: 1200px) {
+  .tutorial-slider .slider-container > img[alt^="iphone-"] { --slide-zoom: 1.10; }
+  .tutorial-slider .slider-container > img[alt="iphone-detailed-view"] { --slide-zoom: 1.14; }
+  .tutorial-slider .slider-container > img[alt="iphone-day"]           { --slide-zoom: 1.10; }
+  .tutorial-slider .slider-container > img[alt="iphone-month"]         { --slide-zoom: 1.08; }
+  .tutorial-slider .slider-container > img[alt="terminal-welcome"]     { --slide-zoom: 0.96; }
+  .tutorial-slider .slider-container > img[alt^="google-calendar-showcase-"] { --slide-zoom: 1.02; }
+  .tutorial-slider .slider-container > img[alt="google-calendar-showcase-week"]  { --slide-zoom: 1.04; }
+  .tutorial-slider .slider-container > img[alt="google-calendar-showcase-day"]   { --slide-zoom: 1.03; }
+}
+
+@media (max-width: 800px) {
+  .tutorial-slider .slider-container > img[alt^="iphone-"] { --slide-zoom: 1.06; }
+  .tutorial-slider .slider-container > img[alt^="google-calendar-showcase-"] { --slide-zoom: 1.00; }
+}
+
+/* Pagination dots */
 .tutorial-slider .slider-dots {
   position: absolute;
-  right: 10px;
-  top: 50%;
-  transform: translateY(-50%);
+  left: 50%;
+  bottom: 14px;
+  transform: translateX(-50%);
   display: flex;
-  flex-direction: column;
-  gap: 40px; /* większe odstępy między kropkami */
-  z-index: 5; /* zawsze nad obrazkami (active img ma z-index:1) */
-  pointer-events: auto; /* upewnij się, że kliknięcia trafiają w kropki */
+  gap: 10px;
+  z-index: 3;
+}
+.tutorial-slider .slider-dots button {
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.35);
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+.tutorial-slider .slider-dots button.active {
+  width: 24px;
+  background: rgba(255, 255, 255, 0.9);
 }
 
+/* Nav arrows injected via JS */
+.tutorial-slider .nav-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 3;
+  width: 40px;
+  height: 40px;
+  border-radius: 999px;
+  border: none;
+  background: rgba(255,255,255,0.12);
+  color: rgba(255,255,255,0.9);
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+.tutorial-slider .nav-btn:hover { background: rgba(255,255,255,0.22); transform: translateY(-50%) scale(1.05); }
+.tutorial-slider .nav-btn:active { transform: translateY(-50%) scale(0.97); }
+.tutorial-slider .nav-btn.prev { left: 10px; }
+.tutorial-slider .nav-btn.next { right: 10px; }
+
 @media (max-width: 1600px) {
-    .tutorial-slider .slider-dots {
-        gap: 30px;
-    }
-    .tutorial-slider img {
-      width: 1200px;
-    }
-
-    .tutorial-slider .slider-container img[alt="iphone-showcase"] {
-      width: 250px;
-      height: auto;
-      margin-top: 50px;
-    }
-
-    .tutorial-slider .slider-container img[alt="terminal-welcome"] {
-      width: 700px;
-      height: auto;
-      margin-top: 100px;
-    }
+  .tutorial-slider { aspect-ratio: 16/9; }
 }
 
 @media (max-width: 1200px) {
-    .tutorial-slider .slider-dots {
-        gap: 30px;
-    }
-    .tutorial-slider img {
-      width: 900px;
-    }
-
-    .tutorial-slider .slider-container img[alt="iphone-showcase"] {
-      width: 200px;
-      height: auto;
-      margin-top: 60px;
-    }
-
-    .tutorial-slider .slider-container img[alt="terminal-welcome"] {
-      width: 600px;
-      height: auto;
-      margin-top: 80px;
-    }
+  .tutorial-slider { aspect-ratio: 16/9; }
 }
 
 @media (max-width: 900px) {
-    .tutorial-slider .slider-dots {
-        gap: 30px;
-    }
-    /* Na mniejszych ekranach obraz skaluj w obrębie kontenera bez przycięć i wycentruj */
-    .tutorial-slider .slider-container img {
-      top: 50%;
-      transform: translate(-50%, -50%);
-      height: auto;
-      max-height: 100%;
-      width: min(90vw, 800px);
-      object-fit: contain;
-    }
-    .tutorial-slider .slider-container img[alt="terminal-welcome"] {
-      margin-top: 0px;
-      top: 50%;
-      transform: translate(-50%, -50%);
-      height: auto;
-      max-height: 100%;
-      width: min(90vw, 800px);
-      object-fit: contain;
-    }
+  .tutorial-slider { aspect-ratio: 16/9; }
 }
   
 @media (max-width: 800px) {
-    /* Jeszcze bardziej responsywnie: dopasuj szerokość do viewportu i wyśrodkuj pionowo */
-    .tutorial-slider .slider-container img{
-      top: 50%;
-      transform: translate(-50%, -50%);
-      width: min(92vw, 560px);
-      height: auto;
-      max-height: 100%;
-      object-fit: contain;
-    }
-
-    .tutorial-slider .slider-container img[alt="iphone-showcase"] {
-      width: 180px;
-      height: auto;
-      margin-top: 0px;
-    }
+  .tutorial-slider { aspect-ratio: 4/3; }
 }
 
 @media (max-width: 600px) {
-    .tutorial-slider .slider-dots {
-        gap: 15px;
-    }
+  .tutorial-slider { aspect-ratio: 1; border-radius: 12px; }
+  .tutorial-slider .nav-btn { width: 36px; height: 36px; }
 }
 
 .tutorial-slider .slider-dots button {
-  /* Większy hitbox (klikalny obszar), mała kropka narysowana pseudo-elementem */
-  width: 24px;
-  height: 24px;
+  /* Glassy dot: same motif as slider background */
+  width: 22px;
+  height: 22px;
+  border-radius: 999px;
   border: none;
-  background: transparent;
-  cursor: pointer;
-  position: relative;
   padding: 0;
+  cursor: pointer;
+  background: rgba(255, 255, 255, 0.10);
+  backdrop-filter: blur(6px) saturate(115%);
+  -webkit-backdrop-filter: blur(6px) saturate(115%);
+  box-shadow:
+    0 3px 10px rgba(0, 0, 0, 0.25),
+    inset 1px 1px 1px rgba(255, 255, 255, 0.35),
+    inset -1px -1px 2px rgba(0, 0, 0, 0.15);
+  transition: background 0.25s ease, width 0.25s ease, transform 0.2s ease, box-shadow 0.25s ease;
 }
 
-.tutorial-slider .slider-dots button::before {
-  content: '';
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 8.5px;  /* widoczna kropka */
-  height: 8.5px;
-  border-radius: 50%;
-  transform: translate(-50%, -50%);
-  background-color: #ccc;
-  opacity: 0.45;               /* nieaktywne kropki przygaszone */
-  transition: all 0.4s ease;
+.tutorial-slider .slider-dots button:hover {
+  background: rgba(255, 255, 255, 0.16);
+  transform: translateY(-1px);
 }
 
-.tutorial-slider .slider-dots button:hover::before { opacity: 0.7; }
-.tutorial-slider .slider-dots button.active::before { opacity: 1; background-color: white; box-shadow: 0 0 12px rgba(255, 255, 255, 0.4); }
+.tutorial-slider .slider-dots button.active {
+  width: 44px; /* pill shape when active */
+  background: rgba(255, 255, 255, 0.22);
+  box-shadow:
+    0 4px 12px rgba(0, 0, 0, 0.28),
+    inset 1px 1px 1px rgba(255, 255, 255, 0.45),
+    inset -1px -1px 2px rgba(0, 0, 0, 0.18);
+}
 
 /* Responsive tweaks */
 @media (max-width: 1600px) {
@@ -264,9 +263,10 @@
     height: 420px;
   }
   .tutorial-slider .slider-dots button {
-    width: 28px;  /* większy hitbox na dotyku */
-    height: 28px;
+    width: 26px;  /* większy hitbox na dotyku */
+    height: 26px;
   }
+  .tutorial-slider .slider-dots button.active { width: 52px; }
 }
 
 /* Na urządzeniach dotykowych (telefony) pozwól na pionowe przewijanie strony nad sliderem */

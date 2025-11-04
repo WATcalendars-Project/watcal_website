@@ -1,16 +1,47 @@
 .slider {
-    margin-top: 60px;
-    margin-left: auto;
-    margin-right: auto;
-    height: 85px;
-    overflow: hidden;
+        margin-top: 0px;
+        margin-bottom: 80px;
+        margin-left: auto;
+        margin-right: auto;
+        height: 85px;
+        overflow: hidden;
+        position: relative;
+        width: clamp(300px, 85%, 1600px);
+
+
+
+        /* Soft edge fade without color overlays */
+        -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 60px, #000 calc(100% - 60px), transparent 100%);
+        mask-image: linear-gradient(90deg, transparent 0, #000 60px, #000 calc(100% - 60px), transparent 100%);
+
+        transition: box-shadow 0.35s cubic-bezier(0.2, 0.8, 0.2, 1),
+                                backdrop-filter 0.35s cubic-bezier(0.2, 0.8, 0.2, 1),
+                                -webkit-backdrop-filter 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.slider-header h1 {
+    font-size: 1.2rem;
+    font-weight: 510;
+    margin: 0 0 20px;
     position: relative;
-    width: clamp(300px, 85%, 1600px);
+    z-index: 100;
+    text-align: center;
+    background: none; 
+    -webkit-background-clip: initial; 
+    -webkit-text-fill-color: rgba(214, 214, 214, 0.7); 
+    background-clip: initial; 
 }
 
 .slider img {
-  filter: grayscale(100%) brightness(1.2);
-  opacity: 0.3;
+    filter: grayscale(100%) brightness(1.05);
+    opacity: 0.4;
+    transform: translateZ(0);
+    transition: filter 0.35s cubic-bezier(0.2, 0.8, 0.2, 1),
+                            opacity 0.35s cubic-bezier(0.2, 0.8, 0.2, 1),
+                            transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1),
+                            box-shadow 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
+    will-change: transform, filter, opacity;
+    transform: scale(0.95);
 }
 
 .slider::before,
@@ -21,6 +52,7 @@
     width: 50px;
     z-index: 2;
     top: 0;
+    pointer-events: none;
 }
 .slider::after {
     right: 0;
@@ -37,10 +69,20 @@
 
 .slide {
     height: 85px;
-    flex: 0 0 130px;
+        flex: 0 0 130px;
+        padding: 0 10px; /* breathing space around logos */
+        box-sizing: border-box;
 }
 
 .slide img { display: block; width: 100%; height: 100%; object-fit: contain; }
+
+/* Logo hover focus states */
+.slide img:hover,
+.slide img:focus-visible {
+    opacity: 0.95;
+    filter: grayscale(0) brightness(1.0) drop-shadow(0 8px 20px rgba(0, 0, 0, 0.35));
+    transform: scale(1);
+}
 
 @media(max-width: 1600px) {
     .slider { 
@@ -62,5 +104,28 @@
     .slide {
         height: 80px;
         flex: 0 0 100px;
+    }
+}
+
+@media (max-width: 600px) {
+    .slider {
+        border-radius: 12px;
+        -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 36px, #000 calc(100% - 36px), transparent 100%);
+        mask-image: linear-gradient(90deg, transparent 0, #000 36px, #000 calc(100% - 36px), transparent 100%);
+    }
+    .slide {
+        height: 72px;
+        flex: 0 0 90px;
+        padding: 0 8px;
+    }
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+    .slider img,
+    .slider,
+    .slide img:hover,
+    .slide img:focus-visible {
+        transition: none;
     }
 }
