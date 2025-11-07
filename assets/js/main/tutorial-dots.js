@@ -31,6 +31,8 @@ document.addEventListener('DOMContentLoaded', () => {
     b.type = 'button';
     b.setAttribute('aria-label', `Go to slide ${i + 1}`);
     b.addEventListener('click', () => jumpTo(i));
+    // Domyślnie pusta zawartość; numer dodamy tylko dla aktywnej kropki w updateDots()
+    b.textContent = '';
     dotsWrap.appendChild(b);
     return b;
   });
@@ -64,7 +66,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function updateDots() {
     const active = ((index - 1) % originals.length + originals.length) % originals.length;
-    dots.forEach((d, i) => d.classList.toggle('active', i === active));
+    dots.forEach((d, i) => {
+      const isActive = i === active;
+      d.classList.toggle('active', isActive);
+      // Pokazujemy numer (1-based) tylko na aktywnej kropce, reszta pusta
+      d.textContent = isActive ? String(active + 1) : '';
+    });
   }
 
   function goTo(next) {

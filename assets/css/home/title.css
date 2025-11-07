@@ -94,80 +94,196 @@
 
 .desktop-buttons {
     display: flex;
-    gap: 16px; 
+    gap: 25px; 
     margin-top: 40px;
-    background: none; 
-    -webkit-background-clip: initial; 
-    -webkit-text-fill-color: white; 
-    background-clip: initial;
-}
-
-.desktop-buttons .get-started {
-    text-decoration: none;
-    border: 2px solid rgba(55, 130, 84, 1);
-    padding: 13px 33px;
-    border-radius: 33px;
-    color: white;
-    font-size: 1.2rem;
-    font-weight: 600;
-    background-color: rgba(55, 130, 84, 1);
-    transition: all 0.3s;
-}
-
-.desktop-buttons .get-started:hover {
-    background-color: rgb(69, 164, 106);
-    box-shadow: 0 1px 8px rgba(69, 164, 106, 0.6);
-    text-shadow: 0 0 5px rgba(255, 255, 255, 0.7);
-}
-
-.desktop-buttons .schedules {
-    text-decoration: none;
-    border: 2px solid rgba(214, 214, 214, 0.7);
-    padding: 13px 33px;
-    border-radius: 33px;
-    color: white;
-    font-size: 1.2rem;
-    font-weight: 600;
-    transition: all 0.3s;
-    z-index: 1;
     position: relative; 
-    overflow: hidden;
-    background-color: transparent;
+    text-decoration: none;
 }
 
-.desktop-buttons .schedules:after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: transparent;
-    border-radius: 33px;
-    z-index: -2;
+/* Remove underline from direct anchor children (including the one wrapping the button) */
+.desktop-buttons > a:link,
+.desktop-buttons > a:visited,
+.desktop-buttons > a:hover,
+.desktop-buttons > a:focus,
+.desktop-buttons > a:active {
+    text-decoration: none;
 }
 
-.desktop-buttons .schedules:before {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 0%;
-    height: 100%;
-    background-color: rgba(161, 161, 161, 0.7);
-    border-radius: 33px;
-    z-index: -1;
-    transition: all 0.3s;
+.desktop-buttons a .getstarted-button {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 13px 33px;
+  border: 3px solid;
+  border-color: transparent;
+  font-size: 16px;
+  background-color: inherit;
+  border-radius: 100px;
+  font-weight: 600;
+  color: rgb(19, 221, 143);
+  box-shadow: 0 0 0 2px rgb(19, 221, 143);
+  cursor: pointer;
+  overflow: hidden;
+  transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
 }
 
-.desktop-buttons .schedules:hover {
-    color: white;
-    text-shadow: 0 0 5px rgba(255, 255, 255, 0.7);
-    box-shadow: 0 1px 8px rgba(97, 97, 97, 0.7);
+.desktop-buttons a .getstarted-button svg {
+    display: flex;
+  position: absolute;
+  width: 24px;
+  fill: rgb(19, 221, 143);
+  z-index: 9;
+  transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
 }
 
-.desktop-buttons .schedules:hover:before {
-    width: 100%;
+.desktop-buttons a .getstarted-button .arr-1 {
+  right: 16px;
+}
+
+.desktop-buttons a .getstarted-button .arr-2 {
+  left: -25%;
+}
+
+.desktop-buttons a .getstarted-button .circle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 20px;
+  height: 20px;
+  background-color: rgb(19, 221, 143);
+  border-radius: 50%;
+  opacity: 0;
+  transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.desktop-buttons a .getstarted-button .text {
+  position: relative;
+  z-index: 1;
+  transform: translateX(-12px);
+  transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.desktop-buttons a .getstarted-button:hover {
+  box-shadow: 0 0 0 12px transparent;
+  color: #212121;
+  border-radius: 12px;
+}
+
+.desktop-buttons a .getstarted-button:hover .arr-1 {
+  right: -25%;
+}
+
+.desktop-buttons a .getstarted-button:hover .arr-2 {
+  left: 16px;
+}
+
+.desktop-buttons a .getstarted-button:hover .text {
+  transform: translateX(12px);
+}
+
+.desktop-buttons a .getstarted-button:hover svg {
+  fill: #212121;
+}
+
+.desktop-buttons a .getstarted-button:active {
+  scale: 0.95;
+  box-shadow: 0 0 0 4px rgb(19, 221, 143);
+}
+
+.desktop-buttons a .getstarted-button:hover .circle {
+  width: 220px;
+  height: 220px;
+  opacity: 1;
+}
+
+.desktop-buttons a .tutorial-button {
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: 13px 33px;
+  border: 3px solid;
+  border-color: transparent;
+  font-size: 16px;
+  background-color: inherit;
+  border-radius: 100px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.864);
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.959);
+  cursor: pointer;
+  overflow: hidden;
+  transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.desktop-buttons a .tutorial-button svg {
+    display: flex;
+  position: absolute;
+  width: 24px;
+  fill: rgba(255, 255, 255, 0.864);
+  z-index: 9;
+  transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.desktop-buttons a .tutorial-button .arr-1 {
+  right: 16px;
+}
+
+.desktop-buttons a .tutorial-button .arr-2 {
+  left: -25%;
+}
+
+.desktop-buttons a .tutorial-button .circle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 20px;
+  height: 20px;
+  background-color: rgba(255, 255, 255, 0.864);
+  border-radius: 50%;
+  opacity: 0;
+  transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.desktop-buttons a .tutorial-button .text {
+  position: relative;
+  z-index: 1;
+  transform: translateX(-12px);
+  transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.desktop-buttons a .tutorial-button:hover {
+  box-shadow: 0 0 0 12px transparent;
+  color: #212121;
+  border-radius: 12px;
+}
+
+.desktop-buttons a .tutorial-button:hover .arr-1 {
+  right: -25%;
+}
+
+.desktop-buttons a .tutorial-button:hover .arr-2 {
+  left: 16px;
+}
+
+.desktop-buttons a .tutorial-button:hover .text {
+  transform: translateX(12px);
+}
+
+.desktop-buttons a .tutorial-button:hover svg {
+  fill: #212121;
+}
+
+.desktop-buttons a .tutorial-button:active {
+  scale: 0.95;
+  box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.864);
+}
+
+.desktop-buttons a .tutorial-button:hover .circle {
+  width: 220px;
+  height: 220px;
+  opacity: 1;
 }
 
 .desktop-buttons .arrow img {
@@ -175,57 +291,6 @@
     width: 12px;
     height: 12px;
 }
-
-.desktop-buttons .github {
-    text-decoration: none;
-    border: 2px solid rgba(214, 214, 214, 0.7);
-    padding: 12px 33px;
-    border-radius: 33px;
-    color: white;
-    font-size: 1.2rem;
-    font-weight: 600;
-    transition: all 0.3s;
-    z-index: 1;
-    position: relative; 
-    overflow: hidden;
-    background-color: transparent;
-}
-
-.desktop-buttons .github:after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: transparent;
-    border-radius: 33px;
-    z-index: -2;
-}
-
-.desktop-buttons .github:before {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 0%;
-    height: 100%;
-    background-color: rgba(161, 161, 161, 0.7);
-    border-radius: 33px;
-    z-index: -1;
-    transition: all 0.3s;
-}
-
-.desktop-buttons .github:hover {
-    color: white;
-    text-shadow: 0 0 5px rgba(255, 255, 255, 0.7);
-    box-shadow: 0 1px 8px rgba(97, 97, 97, 0.7);
-}
-
-.desktop-buttons .github:hover:before {
-    width: 100%;
-}
-
 
 @media (max-width: 1100px) {
     .title {
