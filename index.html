@@ -29,6 +29,7 @@
     <script src="/assets/js/main/tutorial-toggle.js?v=0.4.0" defer></script>
     <script src="/assets/js/main/tutorial-dots.js?v=0.4.0" defer></script>
     <script src="/assets/js/main/star.js?v=0.4.0" defer></script>
+    <script src="/assets/js/main/lightbox.js" defer></script>
 </head>
 
 <body>
@@ -118,7 +119,7 @@
                 <div class="dropdown-more">
                     <a href="#" class="dropdown-trigger"><span data-i18n="nav.more">More</span> <span class="down_arrow"><img src="/assets/images/icons/down-arrow.svg" alt="arrow"></span></a>
                     <div class="accordion-more">
-                        <a href="/#Tutorial"><span data-i18n="nav.more.tutorial">Get Started</span></a>
+                        <a href="/tutorials/"><span data-i18n="nav.more.tutorial">Instructions</span></a>
                         <a href="/#support"><span data-i18n="nav.more.support">Donate</span></a>
                         <a href="/#Installer"><span data-i18n="nav.more.installer">Local Installation</span></a>
                         <a href="/dependencies/"><span data-i18n="nav.more.dependencies">Dependencies</span></a>
@@ -128,6 +129,12 @@
                     </div>
                 </div>
                 <div class="separator"></div>
+                <div class="getstarted-topbar">
+                    <a href="/schedules/" class="getstarted-button" data-i18n="hero.buttons.get-started">Get Started</a>
+                </div>
+                <div class="tutorial-topbar">
+                    <a href="/tutorials/" class="tutorial-button" data-i18n="hero.button-topbar.tutorial">Tutorial For All</a>
+                </div>
                 <div class="desktop-language-container">
                     <div class="language">
                         <label for="checkbox">
@@ -139,7 +146,6 @@
                         </label>
                     </div>
                 </div>
-                <div class="separator"></div>
                 <div class="feedback">
                     <a href="https://github.com/dominikx2002/WATcalendars" target="_blank">
                         <img src="/assets/images/logo/github-mark-white.svg" alt="Github">
@@ -165,7 +171,7 @@
         <a href="https://github.com/dominikx2002/WATcalendars/activity" target="_blank"><span data-i18n="nav.changelog">GitHub Actions</span> <span class="arrow"><img src="/assets/images/icons/right-arrow.svg" alt="arrow"></span></a>
     </div>
     <div class="menu-more">
-        <a href="/#Tutorial"><span data-i18n="nav.more.tutorial">Get Started</span></a>
+        <a href="/tutorials/"><span data-i18n="nav.more.tutorial">Instructions</span></a>
         <a href="/#support"><span data-i18n="nav.more.support">Donate</span></a>
         <a href="/#Installer"><span data-i18n="nav.more.installer">Local Installation</span></a>
         <a href="/dependencies/"><span data-i18n="nav.more.dependencies">Dependencies</span> <span class="arrow"><img src="/assets/images/icons/right-arrow.svg" alt="arrow"></span></a>
@@ -188,32 +194,17 @@
                     through openness and collaboration.</span>
                 </span>
                 <div class="desktop-buttons">
-                    <a href="/schedules/">
-                        <button class="getstarted-button">
-                            <svg viewBox="0 0 24 24" class="arr-2" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"
-                                ></path>
-                            </svg>
-                            <span class="text">Get Started</span>
-                            <span class="circle"></span>
-                            <svg viewBox="0 0 24 24" class="arr-1" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"
-                                ></path>
-                            </svg>
-                        </button>
-                    </a>
-                    <a href="/#Tutorial">
+                    <a href="/schedules/" class="get-started" data-i18n="hero.buttons.get-started">Get Started</a>
+                    <a href="/tutorials/">
                         <button class="tutorial-button">
                             <svg viewBox="0 0 24 24" class="arr-2" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"
-                                transform="rotate(90 12 12)"
                                 ></path>
                             </svg>
                             <span class="text">Tutorial</span>
                             <span class="circle"></span>
                             <svg viewBox="0 0 24 24" class="arr-1" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"
-                                transform="rotate(90 12 12)"
                                 ></path>
                             </svg>
                         </button>
@@ -222,12 +213,14 @@
                         <button class="tutorial-button">
                             <svg viewBox="0 0 24 24" class="arr-2" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"
+                                transform="rotate(270 12 12)"
                                 ></path>
                             </svg>
                             <span class="text">GitHub</span>
                             <span class="circle"></span>
                             <svg viewBox="0 0 24 24" class="arr-1" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"
+                                transform="rotate(270 12 12)"
                                 ></path>
                             </svg>
                         </button>
@@ -250,7 +243,7 @@
                 </div>
                 <div class="buttons">
                     <a href="/schedules/" class="get-started" data-i18n="hero.buttons.get-started">Get Started</a>
-                    <a href="/#Tutorial" class="schedules" data-i18n="hero.buttons.tutorial">Tutorial</a>
+                    <a href="/tutorials/" class="schedules" data-i18n="hero.buttons.tutorial">Tutorial</a>
                     <a href="https://github.com/dominikx2002/WATcalendars" class="github" target="_blank"><span data-i18n="hero.buttons.github">GitHub</span><span class="arrow"><img src="/assets/images/icons/right-arrow.svg" alt="arrow"></span></a>
                 </div>
             </div>
@@ -323,221 +316,34 @@
 
     <!-- Showcase -->
     <section id="Showcase">
+        <div class="showcase">
+            <div class="showcase-slider">
+                <img src="/assets/images/mockups/iphone-day.png" alt="iphone-day">
+                <img src="/assets/images/mockups/iphone-detailed-view.png" alt="iphone-detailed-view">
+                <img src="/assets/images/mockups/iphone-month.png" alt="iphone-month">
+                <img src="/assets/images/mockups/iphone-subscription.png" alt="iphone-subscription">
+                <img src="/assets/images/mockups/iphone-day.png" alt="iphone-day">
+                <img src="/assets/images/mockups/iphone-detailed-view.png" alt="iphone-detailed-view">
+                <img src="/assets/images/mockups/iphone-month.png" alt="iphone-month">
+                <img src="/assets/images/mockups/iphone-subscription.png" alt="iphone-subscription">
+            </div>
+        </div>
+        <div class="showcase-footer">
+            <h1>&lt;Slide left or right to see more&gt;</h1>
+        </div>
         <!-- Tutorial slider moved into Showcase section -->
-        <div class="tutorial-slider">
-            <div class="slider-container">
-                <img src="/assets/images/mockups/google-calendar-showcase-week.png" alt="google-calendar-showcase-week">
-                <img src="/assets/images/mockups/google-calendar-showcase-month.png" alt="google-calendar-showcase-month">
-                <img src="/assets/images/mockups/google-calendar-showcase-day.png" alt="google-calendar-showcase-day">
-                <img src="/assets/images/mockups/iphone-day.png" alt="iphone-showcase">
-                <img src="/assets/images/mockups/iphone-detailed-view.png" alt="iphone-showcase">
-                <img src="/assets/images/mockups/iphone-month.png" alt="iphone-showcase">
-                <img src="/assets/images/mockups/terminal-welcome.png" alt="terminal-welcome">
-            </div>
-            <div class="slider-dots"></div>
-        </div>
-    </section>
-
-    <!-- Calendar Instruction -->
-    <section id="Tutorial">
-        <div class="get-your-calendar">
-            <h1 data-i18n="tutorial.title">Get Your Calendar</h1>
-            <div class="glass-container">
-                <div class="glass-radio-group">
-                    <input type="radio" name="instruction" id="glass-iphone" checked="" />
-                    <label for="glass-iphone"><img src="/assets/images/icons/apple-white.svg" alt="apple-logo">iPhone</label>
-                    <input type="radio" name="instruction" id="glass-google" />
-                    <label for="glass-google"><img src="/assets/images/icons/google.svg">Google</label>
-                    <input type="radio" name="instruction" id="glass-manual" />
-                    <label for="glass-manual"><img src="/assets/images/icons/manual.svg">Manual</label>
-                    <div class="glass-glider"></div>
-                </div>
-            </div>
-            <div class="iphone-tutorial">
-                <div class="desktop-layout">
-                    <div class="left">
-                        <p data-i18n-html="tutorial.iphone.step1">Navigate to 
-                            <a href="/schedules/" class="get-started" data-i18n="hero.buttons.schedules">Schedules</a>
-                            selecting one of available buttons or links on website.
-                        </p>
-                        <img src="/assets/images/mockups/iphone-tutorial/iphone-getstarted.png" alt="iphone-getstarted">
-                    </div>
-                    <div class="right">
-                        <img src="/assets/images/mockups/iphone-tutorial/iphone-schedules.png" alt="iphone-select-faculty">
-                        <p data-i18n="tutorial.iphone.step2">Select your faculty from available options.</p>
-                    </div>
-                    <div class="left">
-                        <p data-i18n="tutorial.iphone.step3">Once redirected to your faculty, select your group from the list.</p>
-                        <img src="/assets/images/mockups/iphone-tutorial/iphone-selector.png" alt="iphone-select-group">
-                        <img src="/assets/images/mockups/iphone-tutorial/iphone-group.png" alt="iphone-group">
-                    </div>
-                    <div class="right">
-                        <img src="/assets/images/mockups/iphone-tutorial/iphone-selected-group.png" alt="iphone-selected-group">
-                        <p data-i18n="tutorial.iphone.step4">After selecting your group, add the schedule by clicking apple "Subscribe Calendar" button.</p>
-                    </div>
-                    <div class="left">
-                        <p data-i18n-html="tutorial.iphone.step5">(Optional) If nothing happens, you can add it manually by copying the link under the subscribe button and
-                            paste it in:<br>Calendar > Calendars > Add calendar > Add subscription calendar.<br><br><strong>Confirm the subscription in the pop-up window by clicking "Find".</strong></p>
-                        <img src="/assets/images/mockups/iphone-tutorial/iphone-subscription.png" alt="iphone-subscription">
-                    </div>
-                    <div class="right">
-                        <img src="/assets/images/mockups/iphone-tutorial/iphone-subscription-confirm.png" alt="iphone-confirm-subscription">
-                        <p data-i18n="tutorial.iphone.step6">Customize your calendar settings as needed and click confirm button at the right-top.</p>
-                    </div>
-                    <p data-i18n="tutorial.iphone.done">You're all set! Your WATcalendar will now appear in the Apple Calendar app with all the latest schedule information. Enjoy!</p>
-                </div>
-                <div class="media-layout">
-                    <p data-i18n="tutorial.iphone.step1">Navigate to 
-                        <a href="/schedules/" class="get-started" data-i18n="hero.buttons.schedules">Schedules</a>
-                        selecting one of available buttons or links on website.
-                    </p>
-                    <img src="/assets/images/mockups/iphone-tutorial/iphone-getstarted.png" alt="iphone-getstarted">
-                    <p data-i18n="tutorial.iphone.step2">Select your faculty from available options.</p>
-                    <img src="/assets/images/mockups/iphone-tutorial/iphone-schedules.png" alt="iphone-select-faculty">
-                    <img src="/assets/images/mockups/iphone-tutorial/iphone-selector.png" alt="iphone-select-group">
-                    <p data-i18n="tutorial.iphone.step3">Once redirected to your faculty, select your group from the list.</p>
-                    <img src="/assets/images/mockups/iphone-tutorial/iphone-group.png" alt="iphone-group">
-                    <p data-i18n="tutorial.iphone.step4">After selecting your group, add the schedule by clicking apple "Subscribe Calendar" button.</p>
-                    <img src="/assets/images/mockups/iphone-tutorial/iphone-selected-group.png" alt="iphone-selected-group">
-                    <p data-i18n-html="tutorial.iphone.step5">(Optional) If nothing happens, you can add it manually by copying the link under the subscribe button and
-                        paste it in:<br>Calendar > Calendars > Add calendar > Add subscription calendar.<br><br><strong>Confirm the subscription in the pop-up window by clicking "Find".</strong></p>
-                    <img src="/assets/images/mockups/iphone-tutorial/iphone-subscription.png" alt="iphone-subscription">
-                    <p data-i18n="tutorial.iphone.step6">Customize your calendar settings as needed and click confirm button at the right-top.</p>
-                    <img src="/assets/images/mockups/iphone-tutorial/iphone-subscription-confirm.png" alt="iphone-confirm-subscription">
-                    <p data-i18n="tutorial.iphone.done">You're all set! Your WATcalendar will now appear in the Apple Calendar app with all the latest schedule information. Enjoy!</p>
-                </div>
-            </div>
-            <div class="google-tutorial">
-                <div class="desktop-layout">
-                    <div class="left">
-                        <p data-i18n-html="tutorial.google.step1">Navigate to 
-                            <a href="/schedules/" class="get-started" data-i18n="hero.buttons.schedules">Schedules</a>
-                            selecting one of available buttons or links on website.
-                        </p>
-                        <img src="/assets/images/mockups/desktop-tutorial/desktop-getstarted.png" alt="desktop">
-                        <img src="/assets/images/mockups/iphone-tutorial/iphone-getstarted.png" alt="iphone-getstarted">
-                    </div>
-                    <div class="right">
-                        <img src="/assets/images/mockups/iphone-tutorial/iphone-schedules.png" alt="iphone-select-faculty">
-                        <img src="/assets/images/mockups/desktop-tutorial/desktop-schedules.png" alt="desktop">
-                        <p data-i18n="tutorial.google.step2">Select your faculty from available options.</p>
-                    </div>
-                    <div class="left">
-                        <p data-i18n="tutorial.google.step3">Once redirected to your faculty, select your group from the list.</p>
-                        <img src="/assets/images/mockups/desktop-tutorial/desktop-group.png" alt="desktop">
-                        <img src="/assets/images/mockups/iphone-tutorial/iphone-group.png" alt="iphone-group">
-                    </div>
-                    <div class="right">
-                        <img src="/assets/images/mockups/iphone-tutorial/iphone-google.png" alt="iphone-google">
-                        <img src="/assets/images/mockups/desktop-tutorial/desktop-google.png" alt="desktop">
-                        <p data-i18n-html="tutorial.google.step4">After selecting your group, copy the link above the Google button starting with https://<br>and redirect to Google Calendar Settings by hitting the button.</p>
-                    </div>
-                    <div class="left-google">
-                        <p data-i18n="tutorial.google.step5">Log in to your Google account.</p>
-                        <img src="/assets/images/mockups/iphone-tutorial/iphone-google-login.png" alt="iphone-google-login">
-                        <img src="/assets/images/mockups/desktop-tutorial/desktop-google-login.png" alt="desktop-google">
-                    </div>
-                    <div class="right-google">
-                        <img src="/assets/images/mockups/desktop-tutorial/desktop-google-select.png" alt="desktop-google">
-                        <p data-i18n="tutorial.google.step6">On Desktop you need to go for "+" in "Other calendars" section and select "From URL" like on the screenshot.</p>
-                    </div>
-                    <div class="left-google">
-                        <p data-i18n="tutorial.google.step7">You will be redirected to Google Calendar subscription Settings.</p>
-                        <img src="/assets/images/mockups/iphone-tutorial/iphone-google-fromurl.png" alt="iphone-google-fromurl">
-                        <img src="/assets/images/mockups/desktop-tutorial/desktop-google-fromurl.png" alt="desktop-google">
-                    </div>
-                    <div class="right-google">
-                        <img src="/assets/images/mockups/desktop-tutorial/desktop-google-fromurlfilled.png" alt="desktop-google">
-                        <img src="/assets/images/mockups/iphone-tutorial/iphone-google-fromurlfilled.png" alt="iphone-google-fromurlfilled">
-                        <p data-i18n-html="tutorial.google.step8">!IMPORTANT<br>Paste the link into the "URL" field and <strong>select "Set calendar as public"</strong></p>
-                    </div>
-                    <div class="left-google">
-                        <p data-i18n="tutorial.google.step9">Once you subscribe the calendar, leave the Settings section and after few seconds you will see your schedule.</p>
-                        <img src="/assets/images/mockups/iphone-tutorial/iphone-google-calendar.png" alt="iphone-google-calendar">
-                        <img src="/assets/images/mockups/desktop-tutorial/desktop-google-calendar.png" alt="desktop-google">
-                    </div>
-                    <p data-i18n="tutorial.google.done">You're all set! Your WATcalendar will now appear in the Google Calendar with all the latest schedule information. Enjoy!</p>
-                </div>
-                <div class="media-layout">
-                    <p data-i18n-html="tutorial.iphone.step1">Navigate to 
-                        <a href="/schedules/" class="get-started" data-i18n="hero.buttons.schedules">Schedules</a>
-                        selecting one of available buttons or links on website.
-                    </p>
-                    <img src="/assets/images/mockups/iphone-tutorial/iphone-getstarted.png" alt="iphone-getstarted">
-                    <p data-i18n="tutorial.iphone.step2">Select your faculty from available options.</p>
-                    <img src="/assets/images/mockups/iphone-tutorial/iphone-schedules.png" alt="iphone-select-faculty">
-                    <img src="/assets/images/mockups/iphone-tutorial/iphone-selector.png" alt="iphone-select-group">
-                    <p data-i18n="tutorial.iphone.step3">Once redirected to your faculty, select your group from the list.</p>
-                    <img src="/assets/images/mockups/iphone-tutorial/iphone-group.png" alt="iphone-group">
-                    <p data-i18n="tutorial.iphone.step4">After selecting your group, copy the link above the Google button starting with https://<br>and redirect to Google Calendar Settings by hitting the button.</p>
-                    <img src="/assets/images/mockups/iphone-tutorial/iphone-google.png" alt="iphone-google">
-                    <p data-i18n="tutorial.google.step5">Log in to your Google account.</p>
-                    <img src="/assets/images/mockups/iphone-tutorial/iphone-google-login.png" alt="iphone-google-login">
-                    <p data-i18n="tutorial.google.step6">You will be redirected to Google Calendar subscription Settings.</p>
-                    <img src="/assets/images/mockups/iphone-tutorial/iphone-google-fromurl.png" alt="iphone-google-fromurl">
-                    <p data-i18n-html="tutorial.google.step7">!IMPORTANT<br>Paste the link into the "URL" field and <strong>select "Set calendar as public"</strong></p>
-                    <img src="/assets/images/mockups/iphone-tutorial/iphone-google-fromurlfilled.png" alt="iphone-google-fromurlfilled">
-                    <p data-i18n="tutorial.google.step8">Once you subscribe the calendar, leave the Settings section and after few seconds you will see your schedule.</p>
-                    <img src="/assets/images/mockups/iphone-tutorial/iphone-google-calendar.png" alt="iphone-google-calendar">
-                    <p data-i18n="tutorial.google.done">You're all set! Your WATcalendar will now appear in the Google Calendar with all the latest schedule information. Enjoy!</p>
-                </div>
-            </div>
-            <div class="manual-tutorial">
-                <div class="desktop-layout">
-                    <div class="left">
-                        <p data-i18n-html="tutorial.manual.step1">Navigate to 
-                            <a href="/schedules/" class="get-started" data-i18n="hero.buttons.schedules">Schedules</a>
-                            selecting one of available buttons or links on website.
-                        </p>
-                        <img src="/assets/images/mockups/desktop-tutorial/desktop-getstarted.png" alt="desktop">
-                    </div>
-                    <div class="right">
-                        <img src="/assets/images/mockups/desktop-tutorial/desktop-schedules.png" alt="desktop">
-                        <p data-i18n="tutorial.manual.step2">Select your faculty from available options.</p>
-                    </div>
-                    <div class="left">
-                        <p data-i18n="tutorial.manual.step3">Once redirected to your faculty, select your group from the list.</p>
-                        <img src="/assets/images/mockups/desktop-tutorial/desktop-group.png" alt="desktop">
-                    </div>
-                    <div class="right">
-                        <img src="/assets/images/mockups/desktop-tutorial/desktop-manual-download.png" alt="desktop-manual">
-                        <p data-i18n="tutorial.manual.step4">After selecting your group, download the .ics file by clicking "Download .ics" button.</p>
-                    </div>
-                    <p data-i18n="tutorial.manual.done">Click the downloaded file and choose your preferred application. Enjoy!</p>
-                </div>
-                <div class="media-layout">
-                    <p data-i18n-html="tutorial.manual.step1">Navigate to 
-                        <a href="/schedules/" class="get-started" data-i18n="hero.buttons.schedules">Schedules</a>
-                        selecting one of available buttons or links on website.
-                    </p>
-                    <img src="/assets/images/mockups/desktop-tutorial/desktop-getstarted.png" alt="desktop">
-                    <p data-i18n="tutorial.manual.step2">Select your faculty from available options.</p>
-                    <img src="/assets/images/mockups/desktop-tutorial/desktop-schedules.png" alt="desktop">
-                    <img src="/assets/images/mockups/desktop-tutorial/desktop-group.png" alt="desktop">
-                    <p data-i18n="tutorial.manual.step3">Once redirected to your group, select it from the list.</p>
-                    <img src="/assets/images/mockups/desktop-tutorial/desktop-manual-download.png" alt="desktop-manual">
-                    <p data-i18n="tutorial.manual.step4">After selecting your group, download the .ics file by clicking "Download .ics" button.</p>
-                    <p data-i18n="tutorial.manual.done">Click the downloaded file and choose your preferred application. Enjoy!</p>
-                </div>
+        <div class="images-showcase">
+            <div class="images-container">
+                <img src="/assets/images/mockups/google-calendar-showcase-week.png" alt="desktop">
+                <img src="/assets/images/mockups/google-calendar-showcase-month.png" alt="desktop">
+                <img src="/assets/images/mockups/google-calendar-showcase-day.png" alt="desktop">
+                <img src="/assets/images/mockups/iphone-day.png" alt="iphone">
+                <img src="/assets/images/mockups/iphone-detailed-view.png" alt="iphone">
+                <img src="/assets/images/mockups/iphone-month.png" alt="iphone">
+                <img src="/assets/images/mockups/terminal-welcome.png" alt="terminal">
             </div>
         </div>
     </section>
-
-    <div class="showcase">
-        <div class="showcase-slider">
-            <img src="/assets/images/mockups/iphone-day.png" alt="iphone-day">
-            <img src="/assets/images/mockups/iphone-detailed-view.png" alt="iphone-detailed-view">
-            <img src="/assets/images/mockups/iphone-month.png" alt="iphone-month">
-            <img src="/assets/images/mockups/iphone-subscription.png" alt="iphone-subscription">
-            <img src="/assets/images/mockups/iphone-day.png" alt="iphone-day">
-            <img src="/assets/images/mockups/iphone-detailed-view.png" alt="iphone-detailed-view">
-            <img src="/assets/images/mockups/iphone-month.png" alt="iphone-month">
-            <img src="/assets/images/mockups/iphone-subscription.png" alt="iphone-subscription">
-        </div>
-    </div>
-    <div class="showcase-footer">
-        <h1>&lt;Slide left or right to see more&gt;</h1>
-    </div>
 
     <!-- Installation Instructions -->
     <section id="Installer">
@@ -622,7 +428,7 @@
             <div class="home">
                 <a href="/" data-i18n="footer.home" alt="title">HOME</a>
                 <span class="separator"></span>
-                <a href="/#Tutorial" alt="normal">Instructions</a>
+                <a href="/tutorials" alt="normal">Instructions</a>
                 <a href="/#Showcase" alt="normal">Showcase</a>
                 <a href="/#Installer" alt="normal">Local Installation</a>
                 <a href="/#support" alt="normal">Donate</a>

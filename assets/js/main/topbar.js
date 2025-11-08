@@ -5,6 +5,11 @@ document.addEventListener("DOMContentLoaded", () => {
     const DEBUG = false; // set true to see logs
     const log = (...a) => DEBUG && console.log('[topbar]', ...a);
 
+    // Mobile-only auto-hide: we restrict the hide/show behavior to handheld widths.
+    // Assumed breakpoint: <= 768px (can be adjusted). Above this width the topbar never hides.
+    const MOBILE_MAX_WIDTH = 768;
+    const isMobileViewport = () => window.innerWidth <= MOBILE_MAX_WIDTH;
+
     // Robust getter for vertical scroll position
     const getY = () => {
         // Prefer scrollingElement, then documentElement/body, then window
@@ -40,6 +45,13 @@ document.addEventListener("DOMContentLoaded", () => {
             const y = getY();
             log('scroll y=', y);
 
+            // Desktop: always visible; abort hide logic
+            if (!isMobileViewport()) {
+                header.classList.remove('hide');
+                lastY = y;
+                return;
+            }
+
             // don't hide when menus are open / interaction overlays
             if (isInteractionOpen()) {
                 header.classList.remove('hide');
@@ -73,6 +85,8 @@ document.addEventListener("DOMContentLoaded", () => {
         // Wheel hint: when components prevent page scroll (e.g., tutorial slider),
         // still infer intent to hide/show the topbar from wheel direction.
         const onWheel = (e) => {
+            // Only consider wheel-driven hide/show on mobile widths
+            if (!isMobileViewport()) return;
             // Ignore if overlays/menus are open
             if (isInteractionOpen()) return;
             const y = getY();
@@ -97,7 +111,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
         window.addEventListener('resize', () => {
             lastY = getY();
-            if (getY() <= topClamp) header.classList.remove('hide');
+            // On resize to desktop width, ensure bar is shown.
+            if (!isMobileViewport() || getY() <= topClamp) header.classList.remove('hide');
         });
 
         // When visibility changes (tab switch), reset baseline

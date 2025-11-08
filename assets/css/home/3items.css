@@ -22,23 +22,13 @@
     align-items: flex-start;
     text-align: center;
     /* Match tutorial slider background */
-    --bg: rgba(255, 255, 255, 0.02);
+    --bg: rgba(58, 58, 58, 0.313);
     --text: #e5e5e5;
     background: var(--bg);
     border-radius: 1rem;
-    /* Same blur/saturation as slider; no border frames */
-    backdrop-filter: blur(6px) saturate(115%);
-    -webkit-backdrop-filter: blur(6px) saturate(115%);
-    border: none;
-    /* Same outer shadow feel as slider */
-    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.28);
     overflow: hidden;
     width: fit-content;
     padding: 30px 30px;
-    transition: all 0.35s cubic-bezier(0.175, 0.885, 0.32, 2.2);
-    position: relative; /* needed for overlay layers */
-    isolation: isolate; /* keep effects self-contained */
-    will-change: transform, backdrop-filter;
 }
 
 .desktop-threeitems-description h1 {
@@ -62,50 +52,6 @@
     background-color: rgba(166, 166, 166, 0.117);
     border-radius: 6px;
     padding: 6px 6px;
-}
-
-.desktop-threeitems-description .item1::after,
-.desktop-threeitems-description .item2::after,
-.desktop-threeitems-description .item3::after {
-    /* Shine + soft caustics */
-    content: "";
-    position: absolute;
-    inset: -20% -20% -40% -20%; /* extend to allow motion */
-    z-index: 1;
-    pointer-events: none;
-    background:
-        radial-gradient(120px 60px at 0% -10%, rgba(255, 255, 255, 0.20), rgba(255, 255, 255, 0) 60%),
-        linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0) 60%);
-    mix-blend-mode: screen;
-    transform: translate3d(-5%, -5%, 0) rotate(0.001deg);
-    transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
-}
-
-/* Ensure content sits above overlays */
-.desktop-threeitems-description .item1 > *,
-.desktop-threeitems-description .item2 > *,
-.desktop-threeitems-description .item3 > * {
-    position: relative;
-    z-index: 2;
-}
-
-/* Hover interactions to enhance the liquid feel */
-@media (hover: hover) {
-    .desktop-threeitems-description .item1:hover,
-    .desktop-threeitems-description .item2:hover,
-    .desktop-threeitems-description .item3:hover {
-        transform: translateY(-2px) scale(1.01);
-        backdrop-filter: blur(8px) saturate(125%);
-        -webkit-backdrop-filter: blur(8px) saturate(125%);
-        /* Keep only outer shadow like the slider */
-        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.30);
-    }
-
-    .desktop-threeitems-description .item1:hover::after,
-    .desktop-threeitems-description .item2:hover::after,
-    .desktop-threeitems-description .item3:hover::after {
-        transform: translate3d(8%, 6%, 0) rotate(0.001deg);
-    }
 }
 
 @media (max-width: 1200px) {

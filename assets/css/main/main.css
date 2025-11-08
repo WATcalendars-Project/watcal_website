@@ -26,6 +26,11 @@ body {
   overflow-x: hidden;
 }
 
+/* Ensure form controls inherit the site's typography (prevents native button font) */
+button, input, select, textarea {
+  font: inherit;
+}
+
 /* .noscroll {
   overflow: hidden !important;
   position: fixed !important;

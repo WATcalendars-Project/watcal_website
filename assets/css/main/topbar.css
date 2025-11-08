@@ -2,18 +2,16 @@
     position: fixed;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
     top: 0;
     left: 0;
     width: 100%;
     box-sizing: border-box;
-    padding-left: 4vw;
-    padding-right: 4vw;
     z-index: 99998;
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     background-color: rgba(0, 0, 0, 0.1);
-    height: 60px;
+    height: 75px;
     transition: min-height 0.3s, transform 0.25s cubic-bezier(.4,0,.2,1), opacity 0.2s ease;
     will-change: transform, opacity;
 }
@@ -26,9 +24,9 @@
 
 .logo {
     display: flex;
+    position: relative;
     align-items: center;
     gap: 5px;
-    
 }
 
 .logo img {
@@ -58,7 +56,7 @@
 .navigation {
     display: flex;
     align-items: center;
-    gap: clamp(1rem, 4vw, 2.2rem);
+    gap: clamp(1rem, 4vw, 1.8rem);
     flex-wrap: wrap;
     margin: 0;
 }
@@ -80,12 +78,64 @@ nav .separator {
     background-color: rgba(255, 255, 255, 0.068);
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
-    margin-right: -10px;
+    margin-right: 0px;
+}
+
+.getstarted-topbar {
+    margin-right: 0px;
+}
+
+.getstarted-topbar .getstarted-button {
+    opacity: 0.8;
+    padding: 7px 17px;
+    background: rgba(69, 164, 106, 1);
+    border-radius: 8px;
+    color: white;
+    font-weight: 600;
+    font-size: 14px;
+    text-decoration: none;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: background 0.3s ease, box-shadow 0.3s ease;
+}
+
+.getstarted-topbar .getstarted-button:hover {
+    opacity: 1;
+    background: rgb(77, 181, 117);
+}
+
+.tutorial-topbar {
+    margin-right: 5px;
+    margin-left: -20px;
+}
+
+.tutorial-topbar .tutorial-button {
+    opacity: 0.8;
+    padding: 7px 17px;
+    border-radius: 8px;
+    background: rgb(210, 210, 210);
+    border: 1px solid rgb(180, 180, 180);
+    color: black;
+    font-weight: 600;
+    font-size: 14px;
+    text-decoration: none;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: background 0.3s ease, box-shadow 0.3s ease;
+}
+
+.tutorial-topbar .tutorial-button:hover {
+    opacity: 1;
+    background: rgb(229, 229, 229);
 }
 
 nav img {
     height: 22px;
+    width: auto;
+}
+
+nav .feedback img {
+    height: 22px;
     margin-top: 4px;
+    margin-left: 20px;
     width: auto;
 }
 
@@ -371,17 +421,27 @@ svg {
     display: none;
 }
 
-@media(max-width: 1100px) {
-    #topbar {
-        padding-left: 2vw;
-        padding-right: 3vw;
+@media(max-width: 1400px) {
+    nav a {
+        font-size: 13px;
     }
-    svg {
-        display: none;
+    .getstarted-topbar .getstarted-button {
+        font-size: 13px;
+        padding: 6px 15px;
+    }
+    .tutorial-topbar .tutorial-button {
+        font-size: 13px;
+        padding: 6px 15px;
     }
 }
 
-@media(max-width: 1000px) {
+@media(max-width: 1250px) {
+    nav .feedback img {
+        height: 22px;
+        margin-top: 4px;
+        margin-left: 0px;
+        width: auto;
+    }
     svg {
         margin-top: -3px;
         width: 50px;
