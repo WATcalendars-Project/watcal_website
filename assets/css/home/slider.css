@@ -1,28 +1,23 @@
 .slider {
-        margin-top: 0px;
-        margin-bottom: 80px;
-        margin-left: auto;
-        margin-right: auto;
-        height: 85px;
-        overflow: hidden;
-        position: relative;
-        width: clamp(300px, 85%, 1600px);
-
-
-
-        /* Soft edge fade without color overlays */
-        -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 60px, #000 calc(100% - 60px), transparent 100%);
-        mask-image: linear-gradient(90deg, transparent 0, #000 60px, #000 calc(100% - 60px), transparent 100%);
-
-        transition: box-shadow 0.35s cubic-bezier(0.2, 0.8, 0.2, 1),
-                                backdrop-filter 0.35s cubic-bezier(0.2, 0.8, 0.2, 1),
-                                -webkit-backdrop-filter 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
+    margin-top: 0px;
+    margin-bottom: 80px;
+    margin-left: auto;
+    margin-right: auto;
+    height: 85px;
+    overflow: hidden;
+    position: relative;
+    width: clamp(300px, 85%, 1300px);
+    -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 60px, #000 calc(100% - 60px), transparent 100%);
+    mask-image: linear-gradient(90deg, transparent 0, #000 60px, #000 calc(100% - 60px), transparent 100%);
+    transition: box-shadow 0.35s cubic-bezier(0.2, 0.8, 0.2, 1),
+    backdrop-filter 0.35s cubic-bezier(0.2, 0.8, 0.2, 1),
+    -webkit-backdrop-filter 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
 .slider-header h1 {
     font-size: 1.2rem;
     font-weight: 450;
-    margin: 100px 0 20px;
+    margin: 0px 0 20px;
     position: relative;
     z-index: 100;
     text-align: center;
@@ -32,14 +27,22 @@
     background-clip: initial; 
 }
 
+.slider-header h1 .all {
+    font-weight: 600;
+    background: rgb(206, 206, 206);
+    -webkit-background-clip: text; 
+    -webkit-text-fill-color: transparent; 
+    background-clip: text; 
+}
+
 .slider img {
     filter: grayscale(100%) brightness(1.05);
     opacity: 0.4;
     transform: translateZ(0);
     transition: filter 0.35s cubic-bezier(0.2, 0.8, 0.2, 1),
-                            opacity 0.35s cubic-bezier(0.2, 0.8, 0.2, 1),
-                            transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1),
-                            box-shadow 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
+    opacity 0.35s cubic-bezier(0.2, 0.8, 0.2, 1),
+    transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1),
+    box-shadow 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
     will-change: transform, filter, opacity;
     transform: scale(0.95);
 }
@@ -69,14 +72,13 @@
 
 .slide {
     height: 85px;
-        flex: 0 0 130px;
-        padding: 0 10px; /* breathing space around logos */
-        box-sizing: border-box;
+    flex: 0 0 130px;
+    padding: 0 10px;
+    box-sizing: border-box;
 }
 
 .slide img { display: block; width: 100%; height: 100%; object-fit: contain; }
 
-/* Logo hover focus states */
 .slide img:hover,
 .slide img:focus-visible {
     opacity: 0.95;
@@ -120,7 +122,6 @@
     }
 }
 
-/* Respect reduced motion */
 @media (prefers-reduced-motion: reduce) {
     .slider img,
     .slider,

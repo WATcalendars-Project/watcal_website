@@ -1,84 +1,53 @@
 #Showcase {
     margin-top: 0px;
-}
-
-.showcase {
-    display: flex;
-    width: 100%;
-    overflow: hidden;
-    position: relative;
-    cursor: grab;
-    user-select: none;
-    touch-action: pan-y;
-    -webkit-perspective: 1000;
-    perspective: 1000;
-    backface-visibility: hidden;
-    margin-top: 50px;
-}
-
-.showcase-footer h1 {
-    font-size: 1.2rem;
-    font-weight: 510;
-    margin: 0 0 20px;
-    position: relative;
-    z-index: 100;
     text-align: center;
-    background: none; 
-    -webkit-background-clip: initial; 
-    -webkit-text-fill-color: rgba(214, 214, 214, 0.7); 
-    background-clip: initial; 
-}
-
-.showcase.active {
-    cursor: grabbing;
-    cursor: -webkit-grabbing;
-}
-
-.showcase-slider {
     display: flex;
-    width: max-content;
-    will-change: transform;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
 }
 
-.showcase img {
-    width: 350px;
-    margin: 0 20px;
-}
-
-.images-showcase {
-    /* Pinterest-like masonry using CSS columns */
-    column-count: 3;
-    column-gap: 16px;
-    max-width: 1200px;
-    margin: 0 auto; /* center container */
-}
-
-.images-showcase img {
-    width: 100%;
+#Showcase img {
+    margin-top: -220px;
+    width: 1400px;
     height: auto;
-    display: block;
-    margin: 0 0 16px; /* bottom gap between tiles */
-    break-inside: avoid; /* prevent column breaks through an item */
-    border-radius: 12px;
-    box-shadow: 0 6px 18px rgba(0,0,0,0.25);
-    cursor: zoom-in;
 }
 
-@media (max-width: 1100px) {
-    .images-showcase { column-count: 2; }
+#Showcase .showcase h1 {
+    color: white;
+    opacity: 0.7;
+    font-size: 20px;
+    margin-bottom: 5px;
 }
 
-@media (max-width: 640px) {
-    .images-showcase { column-count: 1; column-gap: 12px; }
-    .images-showcase img { margin-bottom: 12px; border-radius: 10px; }
+.showcase-button-container {
+    margin-top: -200px;
 }
 
-/* Lightbox overlay */
+.showcase-button-container .showcase-button {
+    opacity: 0.8;
+    padding: 7px 16px;
+    border-radius: 8px;
+    background: rgb(210, 210, 210);
+    border: 1px solid rgb(180, 180, 180);
+    color: black;
+    font-weight: 600;
+    font-size: 16px;
+    text-decoration: none;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: background 0.3s ease, box-shadow 0.3s ease;
+}
+
+.showcase-button-container .showcase-button:hover {
+    opacity: 1;
+    background: rgb(229, 229, 229);
+}
+
 .lightbox-overlay {
     position: fixed;
     inset: 0;
     z-index: 1000;
-    display: none; /* toggled via JS */
+    display: none;
     align-items: center;
     justify-content: center;
     background: rgba(0,0,0,0.45);
@@ -102,13 +71,4 @@
     height: auto;
 }
 
-/* Lock scroll when lightbox is open */
 body.lightbox-open { overflow: hidden; }
-
-
-@media (max-width: 900px) {
-    .showcase img {
-        width: 270px;
-        margin: 0 10px;
-    }
-}

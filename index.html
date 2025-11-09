@@ -17,6 +17,8 @@
     <link rel="stylesheet" href="/assets/css/home/counter.css?v=0.4.0">
     <link rel="stylesheet" href="/assets/css/main/support.css?v=0.4.0">
     <link rel="stylesheet" href="/assets/css/home/slider.css?v=0.4.0">
+    <link rel="stylesheet" href="/assets/css/home/tutorial.css?v=0.4.0">
+    <link rel="stylesheet" href="/assets/css/home/about.css?v=0.4.0">
     <!--JS-->
     <script src="/assets/js/main/text-animation.js?v=0.4.0"></script>
     <script src="/assets/js/main/topbar.js?v=0.4.0" defer></script>
@@ -282,7 +284,7 @@
 
         <!-- faculties spinner -->
         <div class="slider-header">
-            <h1>Available <strong>all</strong> faculties.</h1>
+            <h1>Available <span class="all">all</span> faculties.</h1>
         </div>
         <div class="slider">
             <div class="slide-track">
@@ -317,30 +319,47 @@
     <!-- Showcase -->
     <section id="Showcase">
         <div class="showcase">
-            <div class="showcase-slider">
-                <img src="/assets/images/mockups/iphone-day.png" alt="iphone-day">
-                <img src="/assets/images/mockups/iphone-detailed-view.png" alt="iphone-detailed-view">
-                <img src="/assets/images/mockups/iphone-month.png" alt="iphone-month">
-                <img src="/assets/images/mockups/iphone-subscription.png" alt="iphone-subscription">
-                <img src="/assets/images/mockups/iphone-day.png" alt="iphone-day">
-                <img src="/assets/images/mockups/iphone-detailed-view.png" alt="iphone-detailed-view">
-                <img src="/assets/images/mockups/iphone-month.png" alt="iphone-month">
-                <img src="/assets/images/mockups/iphone-subscription.png" alt="iphone-subscription">
+            <h1 data-i18n="showcase.title">Schedule in Google Calendar</h1>
+            <img src="/assets/images/mockups/google-calendar-showcase-month.png" alt="showcase">
+            <div class="showcase-button-container">
+                <a href="/showcase/" class="showcase-button" data-i18n="hero.buttons.showcase">Full Showcase</a>
             </div>
         </div>
-        <div class="showcase-footer">
-            <h1>&lt;Slide left or right to see more&gt;</h1>
+    </section>
+
+    <!-- tutorial -->
+    <section id="Tutorial">
+        <div class="tutorial">
+            <img src="/assets/images/icons/education.png" alt="tutorial-icon">
+            <div class="tutorial-header">
+                <h1 data-i18n="tutorial.title">Get your calendar</h1>
+                <p data-i18n="tutorial.description">Learn how to use WATcalendars with comprehensive tutorial.</p>
+                <div class="tutorial-button-container">
+                    <a href="/tutorials/" class="tutorial-button" data-i18n="hero.tutorial.tutorial">Go to Tutorial</a>
+                </div>
+            </div>
+            <div class="tutorial-text">
+                <p data-i18n="tutorial.description2">Step-by-step instructions for importing schedules into various calendar applications like:</p>
+                <a href="/tutorials/apple-calendar/" class="tutorial-button" data-i18n="tutorial.buttons.apple-calendar">Apple Calendar</a>
+                <a href="/tutorials/google-calendar/" class="tutorial-button" data-i18n="tutorial.buttons.google-calendar">Google Calendar</a>
+            </div>
         </div>
-        <!-- Tutorial slider moved into Showcase section -->
-        <div class="images-showcase">
-            <div class="images-container">
-                <img src="/assets/images/mockups/google-calendar-showcase-week.png" alt="desktop">
-                <img src="/assets/images/mockups/google-calendar-showcase-month.png" alt="desktop">
-                <img src="/assets/images/mockups/google-calendar-showcase-day.png" alt="desktop">
-                <img src="/assets/images/mockups/iphone-day.png" alt="iphone">
-                <img src="/assets/images/mockups/iphone-detailed-view.png" alt="iphone">
-                <img src="/assets/images/mockups/iphone-month.png" alt="iphone">
-                <img src="/assets/images/mockups/terminal-welcome.png" alt="terminal">
+    </section>
+
+    <section id="about">
+        <div class="learn-more">
+            <h1 data-i18n="about.title">Learn More - about project</h1>
+            <p data-i18n="about.text">
+                My project aims to provide students of Military University of Technology , easy access 
+                to current class schedules and seamlessly view of lecturers, locations and full course names. 
+            </p>
+            <p data-i18n="about.text2">
+                I implemented advanced website scraping and data parsing to automatically generate and distribute 
+                calendars in popular formats (e.g., iCal). Click the button below to see and learn how python 
+                scripts work and how they are used to automate the process and maintain.
+            </p>
+            <div class="learn-more-button-container">
+                <a href="/about/" class="learn-more-button" data-i18n="about.button">Learn</a>
             </div>
         </div>
     </section>

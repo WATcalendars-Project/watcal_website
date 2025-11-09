@@ -1,0 +1,109 @@
+#Tutorial {
+    margin-top: 100px;
+    position: relative;
+    display: flex;
+    text-align: center;
+    padding: 40px 20px;
+    justify-content: center;
+    align-items: center;
+}
+
+#Tutorial .tutorial {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 20px;
+    --bg: linear-gradient(
+        20deg,
+        rgba(20, 56, 45, 0.5) 1%,
+        rgba(55, 130, 106, 0.5) 40%,
+        rgba(83, 237, 178, 0.5) 100%
+    );
+    --text: #e5e5e5;
+    background: var(--bg);
+    border-radius: 1rem;
+    width: 60%;
+    padding: 40px;
+    color: white;
+}
+
+.tutorial-header {
+    text-align: left;
+    margin-left: 20px;
+    width: 60%;
+}
+
+.tutorial-header .tutorial-button-container {
+    display: flex;
+}
+
+.tutorial-header .tutorial-button {
+    margin-top: 0px;
+    text-align: center;
+    width: 130px;
+    opacity: 0.8;
+    padding: 9px 30px;
+    border-radius: 8px;
+    background: rgba(69, 164, 106, 1);
+    color: white;
+    font-weight: 600;
+    font-size: 16px;
+    text-decoration: none;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: background 0.3s ease, box-shadow 0.3s ease;
+}
+
+#Tutorial .tutorial-header .tutorial-button:hover {
+    opacity: 1;
+    background: rgb(77, 181, 117);
+}
+
+.tutorial-header h1 {
+    font-size: 32px;
+    font-weight: 600;
+    margin-top: 0px;
+}
+
+.tutorial-header p {
+    font-size: 18px;
+    margin-top: -15px;
+    margin-bottom: 20px;
+}
+
+#Tutorial .tutorial img {
+    margin-left: 0px;
+    width: 150px;
+    height: 150px;
+}
+
+.tutorial-text {
+    text-align: left;
+    margin-left: 20px;
+    width: 60%;
+    color: white;
+    opacity: 0.8;
+    font-size: 20px;
+    text-decoration: none;
+}
+
+.tutorial-text a {
+    display: inline-block;
+    opacity: 0.8;
+    margin-top: 10px;
+    margin-right: 15px;
+    padding: 7px 16px;
+    border-radius: 8px;
+    background: rgb(210, 210, 210);
+    border: 1px solid rgb(180, 180, 180);
+    color: black;
+    font-weight: 600;
+    font-size: 16px;
+    text-decoration: none;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: background 0.3s ease, box-shadow 0.3s ease;
+}
+
+.tutorial-text a:hover {
+    opacity: 1;
+    background: rgb(229, 229, 229);
+}
