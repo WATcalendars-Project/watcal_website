@@ -263,7 +263,7 @@
     width: 100%;
 }
 
-.footer .buttons .get-started {
+.footer .buttons .home {
     text-decoration: none;
     padding: 10px 25px;
     border-radius: 25px;
@@ -279,7 +279,7 @@
 	margin-left: 10px;
 }
 
-.footer .buttons .get-started:before {
+.footer .buttons .home:before {
     content: '';
     position: absolute;
     bottom: 0;
@@ -292,13 +292,13 @@
     transition: width 0.3s;
 }
 
-.footer .buttons .get-started:hover {
+.footer .buttons .home:hover {
     color: white;
     -webkit-text-fill-color: white;
     box-shadow: 0 1px 8px rgba(97, 97, 97, 0.7);
 }
 
-.footer .buttons .get-started:hover:before {
+.footer .buttons .home:hover:before {
     width: 0%;
 }
 

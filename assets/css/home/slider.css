@@ -6,7 +6,7 @@
     height: 85px;
     overflow: hidden;
     position: relative;
-    width: clamp(300px, 85%, 1300px);
+    width: 85%;
     -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 60px, #000 calc(100% - 60px), transparent 100%);
     mask-image: linear-gradient(90deg, transparent 0, #000 60px, #000 calc(100% - 60px), transparent 100%);
     transition: box-shadow 0.35s cubic-bezier(0.2, 0.8, 0.2, 1),
@@ -84,18 +84,6 @@
     opacity: 0.95;
     filter: grayscale(0) brightness(1.0) drop-shadow(0 8px 20px rgba(0, 0, 0, 0.35));
     transform: scale(1);
-}
-
-@media(max-width: 1600px) {
-    .slider { 
-        margin-bottom: 50px;
-    }
-}
-
-@media (max-width: 1300px) {
-    .slider { 
-        width: 100%; 
-    }
 }
 
 @media (max-width: 1000px) {
