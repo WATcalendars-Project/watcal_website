@@ -28,6 +28,8 @@ function setupDropdown(triggerSelector, menuSelector) {
     const menu = document.querySelector(menuSelector);
     // Link we want to keep visually hovered while its dropdown is open
     const hoverLink = trigger ? trigger.querySelector('a[alt="navigation-hover"]') : null;
+    const topbar = document.getElementById('topbar');
+    const isMore = !!(trigger && trigger.classList.contains('dropdown-more'));
     let hideTimeout;
 
     // Invisible bridge element to cover the gap between trigger and menu on desktop
@@ -95,9 +97,16 @@ function setupDropdown(triggerSelector, menuSelector) {
 
     function showMenu() {
         const rect = trigger.getBoundingClientRect();
+        // Prevent 'More' dropdown from opening if changelog is already open (avoid flicker)
+        if (isMore && document.querySelector('.dropdown-changelog.open')) {
+            if (hoverLink) hoverLink.classList.remove('force-hover');
+            return; // skip opening 'More'
+        }
         menu.classList.add('open');
         // Force persistent hover styling while dropdown visible
         if (hoverLink) hoverLink.classList.add('force-hover');
+        // Mark topbar state when 'More' is open (helps CSS move elements below on mobile)
+        if (isMore && topbar) topbar.classList.add('more-open');
         requestAnimationFrame(() => {
             const menuRect = menu.getBoundingClientRect();
             menu.style.top = (rect.bottom + 2) + 'px';
@@ -120,6 +129,7 @@ function setupDropdown(triggerSelector, menuSelector) {
         menu.classList.remove('open');
         // Remove forced hover styling when dropdown hidden
         if (hoverLink) hoverLink.classList.remove('force-hover');
+        if (isMore && topbar) topbar.classList.remove('more-open');
         // Hide and detach bridge
         if (bridge) {
             bridge.style.display = 'none';
@@ -169,6 +179,11 @@ document.querySelectorAll('.dropdown-trigger').forEach(trigger => {
                 d.classList.remove('open');
                 const otherLink = d.querySelector('a[alt="navigation-hover"]');
                 if (otherLink) otherLink.classList.remove('force-hover');
+                // Jeśli zamykamy 'More', zdejmij stan z topbara
+                if (d.classList.contains('dropdown-more')) {
+                    const tb = document.getElementById('topbar');
+                    if (tb) tb.classList.remove('more-open');
+                }
             }
         });
 
@@ -176,6 +191,11 @@ document.querySelectorAll('.dropdown-trigger').forEach(trigger => {
         dropdown.classList.toggle('open', !isOpen);
         const anchor = dropdown.querySelector('a[alt="navigation-hover"]');
         if (anchor) anchor.classList.toggle('force-hover', !isOpen);
+        // Ustaw klasę na #topbar kiedy otwieramy/zamykamy 'More' (mobile)
+        if (dropdown.classList.contains('dropdown-more')) {
+            const tb = document.getElementById('topbar');
+            if (tb) tb.classList.toggle('more-open', !isOpen);
+        }
     });
 });
 

@@ -17,6 +17,12 @@
     box-shadow: 0 1px 6px rgba(0,0,0,0.3);
 }
 
+#topbar .media-buttons {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
 #topbar.hide {
     opacity: 0 !important;
     transform: translateY(-100%) !important;
@@ -141,7 +147,6 @@ nav .separator {
     padding: 7px 17px;
     border-radius: 8px;
     background: rgb(210, 210, 210);
-    border: 1px solid rgb(180, 180, 180);
     color: black;
     font-weight: 600;
     font-size: 14px;
@@ -451,6 +456,21 @@ svg {
 }
 
 @media(max-width: 1250px) {
+    #topbar .logo {
+        pointer-events: none;
+        opacity: 1 !important;
+    }
+    .navigation .dropdown {
+        display: flex;
+        text-decoration: none;
+        color: white;
+        font-size: 14px;
+        transition: all 0.3s ease; 
+        gap: 3px;
+        letter-spacing: 0.7px;
+        flex-direction: column;
+    }
+
     nav .feedback img {
         height: 22px;
         margin-top: 4px;
@@ -501,49 +521,46 @@ svg {
     }
     .accordion-schedules a {
         margin-bottom: 12px;
+        background-color: rgba(216, 216, 216, 0.158);
     }
     .accordion-changelog a {
         margin-bottom: 12px;
+        background-color: rgba(216, 216, 216, 0.158);
     }
     .accordion-more a {
-        margin-bottom: 8px;
+        margin-bottom: 12px;
+        background-color: rgba(216, 216, 216, 0.158);
     }
 
     .active .navigation .accordion-schedules a {
         font-weight: 500;
+        background-color: rgba(216, 216, 216, 0.389);
+        margin-bottom: 2px;
+        text-align: center;
         font-size: 15px;
-        --bg: rgba(255, 255, 255, 0.06);
-        --text: white;
-        background: var(--bg);
-        border-radius: 1rem;
-        -webkit-backdrop-filter: blur(12px);
-        backdrop-filter: blur(12px);
-        padding: 4px 0px;
-        border-radius: 10px;
+        opacity: 1 !important;
+        padding: 7px 14px;
+        border-radius: 5px;
     }
     .active .navigation .accordion-changelog a {
         font-weight: 500;
+        background-color: rgba(216, 216, 216, 0.389);
+        margin-bottom: 2px;
+        text-align: center;
         font-size: 15px;
-        --bg: rgba(255, 255, 255, 0.06);
-        --text: white;
-        background: var(--bg);
-        border-radius: 1rem;
-        -webkit-backdrop-filter: blur(12px);
-        backdrop-filter: blur(12px);
-        padding: 4px 0px;
-        border-radius: 10px;
+        opacity: 1 !important;
+        padding: 7px 17px;
+        border-radius: 5px;
     }
     .active .navigation .accordion-more a {
         font-weight: 500;
+        background-color: rgba(216, 216, 216, 0.389);
+        margin-bottom: 2px;
+        text-align: center;
         font-size: 15px;
-        --bg: rgba(255, 255, 255, 0.06);
-        --text: white;
-        background: var(--bg);
-        border-radius: 1rem;
-        -webkit-backdrop-filter: blur(12px);
-        backdrop-filter: blur(12px);
-        padding: 4px 0px;
-        border-radius: 10px;
+        opacity: 1 !important;
+        padding: 7px 17px;
+        border-radius: 5px;
     }
 
     nav .accordion-schedules,
@@ -554,7 +571,6 @@ svg {
         top: 40px;
         left: 50%;
         transform: translateX(-50%);
-        width: 140px;
         max-height: 0;
         opacity: 0;
         overflow: hidden;
@@ -568,7 +584,7 @@ svg {
         opacity: 1;
     }
     .dropdown-schedules.open ~.dropdown-changelog {
-        margin-top: 166px;
+        margin-top: 155px;
         transition: margin-top 0.4s cubic-bezier(.4,0,.2,1);
     }
     .dropdown-schedules ~.dropdown-changelog {
@@ -576,22 +592,23 @@ svg {
         transition: margin-top 0.4s cubic-bezier(.4,0,.2,1);
     }
     .dropdown-changelog.open ~.dropdown-more {
-        margin-top: 47px;
+        margin-top: 65px;
         transition: margin-top 0.4s cubic-bezier(.4,0,.2,1);
     }
     .dropdown-changelog ~.dropdown-more {
         margin-top: 0;
         transition: margin-top 0.4s cubic-bezier(.4,0,.2,1);
     }
-    /* Move the language toggle when the 'More' dropdown is open (mobile) */
-    #topbar.active .dropdown-more.open ~ .desktop-language-container {
-        margin-top: 260px;
+    /* When 'More' dropdown is open (mobile), push CTAs below */
+    #topbar.active.more-open .media-buttons {
+        margin-top: 285px;
         transition: margin-top 0.4s cubic-bezier(.4,0,.2,1);
     }
-    #topbar.active .dropdown-more ~ .desktop-language-container {
+    #topbar.active:not(.more-open) .media-buttons {
         margin-top: 0;
         transition: margin-top 0.4s cubic-bezier(.4,0,.2,1);
     }
+
     #topbar .logo {
         position: fixed;
         justify-content: flex-start;
@@ -673,8 +690,9 @@ svg {
         transform: rotate(90deg);
     }
     #topbar.active {
-        height: 100%;
+        height: 89%;
         align-items: flex-start;
+        background-color: rgba(0, 0, 0, 0.405);
         padding-top: 12px;
     }
     .active .navigation {
@@ -688,15 +706,15 @@ svg {
         font-size: 16px;
     }
     .active .navigation .feedback img {
-        width: 30px;
-        height: 30px;
+        width: 36px;
+        height: 36px;
     }
     .active .navigation .feedback {
         display: flex;
         flex-direction: row;
         align-items: center;
         padding: 0px;
-        gap: 8px;
+        gap: 15px;
     }
     path {
         transition: transform 500ms cubic-bezier(0.4, 0, 0.2, 1),
