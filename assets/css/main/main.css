@@ -26,33 +26,18 @@ body {
   overflow-x: hidden;
 }
 
-/* Ensure form controls inherit the site's typography (prevents native button font) */
 button, input, select, textarea {
   font: inherit;
-}
-
-/* .noscroll {
-  overflow: hidden !important;
-  position: fixed !important;
-  width: 100vw !important;
-  top: 0 !important;
-  left: 0 !important;
-  height: 100vh !important;
-  overscroll-behavior: contain !important;
-  touch-action: none !important;
-}
-
-.noscroll .navigation {
-  touch-action: pan-y !important;
-} */
-
-@media (max-width: 800px) {
-	.padding {
-		padding: 0px 20px;
-	}
 }
 
 html {
   scrollbar-width: thin;              
   scrollbar-color: #7c7c7c84 transparent;   
+}
+
+@media (max-width: 1250px) {
+  .mobile-container {
+    padding-right: 10px;
+    padding-left: 10px;
+  }
 }

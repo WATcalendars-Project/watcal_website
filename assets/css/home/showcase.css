@@ -1,38 +1,74 @@
 #Showcase {
-    margin-top: 0px;
-    text-align: center;
+    margin-top: 0; /* ważne: bez ujemnych marginesów, żeby nie podjeżdżał przy resize */
     display: flex;
-    justify-content: center;
-    text-align: center;
+    flex-direction: column;
     align-items: center;
+    justify-content: flex-start;
+    text-align: center;
+    width: 100%;
+    padding-top: 0; /* stała pozycja tuż pod sliderem – bez ruchu przy zmianie wysokości okna */
+    /* Stabilne podniesienie sekcji w górę bez wpływu na flow: */
+    transform: translateY(calc(-1 * var(--showcase-offset)));
+    margin-bottom: var(--showcase-offset); /* kompensacja wysokości, żeby dół strony się nie zsuwał */
+    position: relative;  /* potrzebne do overlay z przyciskiem */
+    overflow: hidden;    /* ukrywa rozmycie, które wychodzi poza obraz */
+    cursor: pointer;     /* sugestia interakcji (tap/click) */
 }
 
 #Showcase img {
-    margin-top: -220px;
-    width: 75%;
+    position: relative;
+    z-index: 1; /* pod overlayem z przyciskiem */
+    width: 100%;
+    max-width: 1400px;
     height: auto;
+    object-fit: contain;
+    transition: filter 220ms ease, transform 220ms ease;
 }
 
-#Showcase .showcase h1 {
-    color: white;
-    opacity: 0.7;
-    font-size: 20px;
-    margin-bottom: 5px;
-}
+/* usuwamy stary przepływowy odstęp pod obrazem – overlay przejmuje pozycjonowanie */
+/* (celowo usunięto poprzednie reguły; deklaracja pozostawiona w komentarzu) */
 
+/* Overlay na środku obrazu – pojawia się przy hover/focus */
 .showcase-button-container {
-    margin-top: -200px;
+    position: absolute;
+    inset: 0;                   /* przykrywa obszar showcase */
+    display: grid;
+    place-items: center;        /* centrowanie przycisku */
+    opacity: 0;
+    pointer-events: none;       /* brak interakcji, dopóki niewidoczne */
+    transition: opacity 200ms ease;
+    z-index: 2;                 /* nad obrazem */
 }
 
+#Showcase:hover img,
+#Showcase:focus-within img,
+#Showcase:active img {
+    filter: blur(4px) brightness(0.95);
+}
+
+#Showcase:hover .showcase-button-container,
+#Showcase:focus-within .showcase-button-container,
+#Showcase:active .showcase-button-container {
+    opacity: 1;
+    pointer-events: auto;       /* umożliwia kliknięcie przycisku */
+}
+/* Klasa JS dla dotyku – zachowuje się jak aktywny stan */
+#Showcase.is-active img {
+    filter: blur(4px) brightness(0.95);
+}
+#Showcase.is-active .showcase-button-container {
+    opacity: 1;
+    pointer-events: auto;
+}
 .showcase-button-container .showcase-button {
     opacity: 0.8;
-    padding: 7px 16px;
+    padding: calc(8px + 0.5vw) calc(16px + 1vw);
     border-radius: 8px;
     background: rgb(210, 210, 210);
     border: 1px solid rgb(180, 180, 180);
     color: black;
     font-weight: 600;
-    font-size: 16px;
+    font-size: calc(12px + 0.5vw);
     text-decoration: none;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     transition: background 0.3s ease, box-shadow 0.3s ease;

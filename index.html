@@ -37,7 +37,7 @@
 <body>
     <!--topbar-->
     <nav id="topbar">
-        <a href="/">
+        <a href="/" alt="logo-watcalendars">
             <div class="logo">
                 <img src="/assets/images/logo/logo.png" alt="logo-WAT">
                 <span id="decrypt" class="decrypt-text" data-original="WATcalendars" data-target="@DominikSerafin">WATcalendars</span>
@@ -188,227 +188,254 @@
         <a href="/license/"><span data-i18n="nav.more.license">License</span> <span class="arrow"><img src="/assets/images/icons/right-arrow.svg" alt="arrow"></span></a>
     </div>
 
-    <!--home-->
-    <section id="home">
-        <div class="title">
-            <div class="logo2">
-                <img src="/assets/images/logo/logo.png" alt="logo-wat">
-            </div>
-            <div class="desktop-title">
-                <h1 data-i18n="hero.title.desktop" data-i18n-html="true">The WATcalendars for<br>.ICS Schedules</h1>
-                <span class="desktop-text">
-                    <span data-i18n="hero.desktop.text" data-i18n-html="true">Created to simplify access to academic<br>
-                    schedules and ensure continuous development<br>
-                    through openness and collaboration.</span>
-                </span>
-                <div class="desktop-buttons">
-                    <a href="/schedules/" class="get-started" data-i18n="hero.buttons.get-started">Get Started</a>
-                    <a href="/tutorials/">
-                        <button class="tutorial-button">
-                            <svg viewBox="0 0 24 24" class="arr-2" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"
-                                ></path>
-                            </svg>
-                            <span class="text">Tutorial</span>
-                            <span class="circle"></span>
-                            <svg viewBox="0 0 24 24" class="arr-1" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"
-                                ></path>
-                            </svg>
-                        </button>
-                    </a>
-                    <a href="https://github.com/dominikx2002/WATcalendars" target="_blank">
-                        <button class="tutorial-button">
-                            <svg viewBox="0 0 24 24" class="arr-2" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"
-                                transform="rotate(270 12 12)"
-                                ></path>
-                            </svg>
-                            <span class="text">GitHub</span>
-                            <span class="circle"></span>
-                            <svg viewBox="0 0 24 24" class="arr-1" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"
-                                transform="rotate(270 12 12)"
-                                ></path>
-                            </svg>
-                        </button>
-                    </a>
+
+    <div class="mobile-container">
+        <!--home-->
+        <section id="home">
+            <div class="title">
+                <div class="logo2">
+                    <img src="/assets/images/logo/logo.png" alt="logo-wat">
                 </div>
-            </div>
-            <div class="media-title">
-                <h1 data-i18n="hero.title.media">The WATcalendars for .ICS Schedules</h1>
-                <div class="description">
-                    <span class="tablet-text">
-                        <span data-i18n="hero.media.mobile">Created to simplify access to academic schedules
-                        and ensure continuous development through
-                        openness and collaboration.</span>
+                <div class="desktop-title">
+                    <h1 data-i18n="hero.title.desktop" data-i18n-html="true">The WATcalendars for<br>.ICS Schedules</h1>
+                    <span class="desktop-text">
+                        <span data-i18n="hero.desktop.text" data-i18n-html="true">Created to simplify access to academic<br>
+                        schedules and ensure continuous development<br>
+                        through openness and collaboration.</span>
                     </span>
-                    <span class="mobile-text">
-                        <span data-i18n="hero.media.mobile">Created to simplify access to academic schedules
-                        and ensure continuous development through
-                        openness and collaboration.</span>
-                    </span>
+                    <div class="desktop-buttons">
+                        <a href="/schedules/" class="get-started" data-i18n="hero.buttons.get-started">Get Started</a>
+                        <a href="/tutorials/">
+                            <button class="tutorial-button">
+                                <svg viewBox="0 0 24 24" class="arr-2" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"
+                                    ></path>
+                                </svg>
+                                <span class="text">Tutorial</span>
+                                <span class="circle"></span>
+                                <svg viewBox="0 0 24 24" class="arr-1" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"
+                                    ></path>
+                                </svg>
+                            </button>
+                        </a>
+                        <a href="https://github.com/dominikx2002/WATcalendars" target="_blank">
+                            <button class="tutorial-button">
+                                <svg viewBox="0 0 24 24" class="arr-2" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"
+                                    transform="rotate(270 12 12)"
+                                    ></path>
+                                </svg>
+                                <span class="text">GitHub</span>
+                                <span class="circle"></span>
+                                <svg viewBox="0 0 24 24" class="arr-1" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"
+                                    transform="rotate(270 12 12)"
+                                    ></path>
+                                </svg>
+                            </button>
+                        </a>
+                    </div>
                 </div>
-                <div class="buttons">
-                    <a href="/schedules/" class="get-started" data-i18n="hero.buttons.get-started">Get Started</a>
-                    <a href="/tutorials/" class="schedules" data-i18n="hero.buttons.tutorial">Tutorial</a>
-                    <a href="https://github.com/dominikx2002/WATcalendars" class="github" target="_blank"><span data-i18n="hero.buttons.github">GitHub</span><span class="arrow"><img src="/assets/images/icons/right-arrow.svg" alt="arrow"></span></a>
+                <div class="media-title">
+                    <h1 data-i18n="hero.title.media">The WATcalendars for .ICS Schedules</h1>
+                    <div class="description">
+                        <span class="mobile-text">
+                            <span data-i18n="hero.media.mobile">Created to simplify access to academic schedules
+                            and ensure continuous development through
+                            openness and collaboration.</span>
+                        </span>
+                    </div>
+                    <div class="media-buttons">
+                        <a href="/schedules/" class="get-started" data-i18n="hero.buttons.get-started">Get Started</a>
+                        <a href="/tutorials/">
+                            <button class="tutorial-button">
+                                <svg viewBox="0 0 24 24" class="arr-2" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"
+                                    ></path>
+                                </svg>
+                                <span class="text">Tutorial</span>
+                                <span class="circle"></span>
+                                <svg viewBox="0 0 24 24" class="arr-1" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"
+                                    ></path>
+                                </svg>
+                            </button>
+                        </a>
+                        <a href="https://github.com/dominikx2002/WATcalendars" target="_blank">
+                            <button class="tutorial-button">
+                                <svg viewBox="0 0 24 24" class="arr-2" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"
+                                    transform="rotate(270 12 12)"
+                                    ></path>
+                                </svg>
+                                <span class="text">GitHub</span>
+                                <span class="circle"></span>
+                                <svg viewBox="0 0 24 24" class="arr-1" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"
+                                    transform="rotate(0 12 12)"
+                                    ></path>
+                                </svg>
+                            </button>
+                        </a>
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <!-- three items description -->
-        <div class="threeitems-description">
-            <div class="desktop-threeitems-description">
-                <div class="item1">
-                    <img src="/assets/images/icons/detailed-view.png" alt="detailed-view">
-                    <h1 data-i18n="three.detailed.title">Detailed View</h1>
-                    <p>
-                        <span data-i18n="three.detailed.text">Full course information: the lecturer’s name,
-                        classroom and building, complete subject title,
-                        order of classes, and type of activity.</span>
-                    </p>
-                </div>
-                <div class="item2">
-                    <img src="/assets/images/icons/open-source.png" alt="open-source">
-                    <h1 data-i18n="three.oss.title">Open-Source</h1>
-                    <p>
-                        <span data-i18n="three.oss.text">Users can review and modify as needed.
-                        Active feedback and contributions keep the project reliable.</span>
-                    </p>
-                </div>
-                <div class="item3">
-                    <img src="/assets/images/icons/automated-up-to-date.png" alt="automated-up-to-date">
-                    <h1 data-i18n="three.auto.title">Automated Up-to-Date</h1>
-                    <p>
-                        <span data-i18n="three.auto.text">Scripts for scraping, parsing, fetching, and saving
-                        are run every day so schedules always stay current.</span>
-                    </p>
+            <!-- three items description -->
+            <div class="threeitems-description">
+                <div class="desktop-threeitems-description">
+                    <div class="item1">
+                        <img src="/assets/images/icons/detailed-view.png" alt="detailed-view">
+                        <h1 data-i18n="three.detailed.title">Detailed View</h1>
+                        <p>
+                            <span data-i18n="three.detailed.text">Full course information: the lecturer’s name,
+                            classroom and building, complete subject title,
+                            order of classes, and type of activity.</span>
+                        </p>
+                    </div>
+                    <div class="item2">
+                        <img src="/assets/images/icons/open-source.png" alt="open-source">
+                        <h1 data-i18n="three.oss.title">Open-Source</h1>
+                        <p>
+                            <span data-i18n="three.oss.text">Users can review and modify as needed.
+                            Active feedback and contributions keep the project reliable.</span>
+                        </p>
+                    </div>
+                    <div class="item3">
+                        <img src="/assets/images/icons/automated-up-to-date.png" alt="automated-up-to-date">
+                        <h1 data-i18n="three.auto.title">Automated Up-to-Date</h1>
+                        <p>
+                            <span data-i18n="three.auto.text">Scripts for scraping, parsing, fetching, and saving
+                            are run every day so schedules always stay current.</span>
+                        </p>
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <!-- faculties spinner -->
-        <div class="slider-header">
-            <h1>Available <span class="all">all</span> faculties.</h1>
-        </div>
-        <div class="slider">
-            <div class="slide-track">
-                <div class="slide">
-                    <img src="/assets/images/faculties/ioe_logo.png" alt="ioe_logo"/>
-                </div>
-                <div class="slide">
-                    <img src="/assets/images/faculties/wcy_logo.png" alt="wcy_logo"/>
-                </div>
-                <div class="slide">
-                    <img src="/assets/images/faculties/wel_logo.png" alt="wel_logo"/>
-                </div>
-                <div class="slide">
-                    <img src="/assets/images/faculties/wig_logo.png" alt="wig_logo" />
-                </div>
-                <div class="slide">
-                    <img src="/assets/images/faculties/wim_logo.png" alt="wim_logo"/>
-                </div>
-                <div class="slide">
-                    <img src="/assets/images/faculties/wlo_logo.png" alt="wlo_logo"/>
-                </div>
-                <div class="slide">
-                    <img src="/assets/images/faculties/wml_logo.png" alt="wml_logo"/>
-                </div>
-                <div class="slide">
-                    <img src="/assets/images/faculties/wtc_logo.png" alt="wtc_logo" />
+            <!-- faculties spinner -->
+            <div class="slider-header">
+                <h1>Available <span class="all">all</span> faculties.</h1>
+            </div>
+            <div class="slider">
+                <div class="slide-track">
+                    <div class="slide">
+                        <img src="/assets/images/faculties/ioe_logo.png" alt="ioe_logo"/>
+                    </div>
+                    <div class="slide">
+                        <img src="/assets/images/faculties/wcy_logo.png" alt="wcy_logo"/>
+                    </div>
+                    <div class="slide">
+                        <img src="/assets/images/faculties/wel_logo.png" alt="wel_logo"/>
+                    </div>
+                    <div class="slide">
+                        <img src="/assets/images/faculties/wig_logo.png" alt="wig_logo" />
+                    </div>
+                    <div class="slide">
+                        <img src="/assets/images/faculties/wim_logo.png" alt="wim_logo"/>
+                    </div>
+                    <div class="slide">
+                        <img src="/assets/images/faculties/wlo_logo.png" alt="wlo_logo"/>
+                    </div>
+                    <div class="slide">
+                        <img src="/assets/images/faculties/wml_logo.png" alt="wml_logo"/>
+                    </div>
+                    <div class="slide">
+                        <img src="/assets/images/faculties/wtc_logo.png" alt="wtc_logo" />
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Showcase -->
-    <section id="Showcase">
-        <div class="showcase">
-            <h1 data-i18n="showcase.title">Schedule in Google Calendar</h1>
-            <img src="/assets/images/mockups/google-calendar-showcase-month.png" alt="showcase">
-            <div class="showcase-button-container">
-                <a href="/showcase/" class="showcase-button" data-i18n="hero.buttons.showcase">Full Showcase</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- tutorial -->
-    <section id="Tutorial">
-        <div class="tutorial">
-            <img src="/assets/images/icons/education.png" alt="tutorial-icon">
-            <div class="tutorial-header">
-                <h1 data-i18n="tutorial.title">Get your calendar</h1>
-                <p data-i18n="tutorial.description">Learn how to use WATcalendars with comprehensive tutorial.</p>
-                <div class="tutorial-button-container">
-                    <a href="/tutorials/" class="tutorial-button" data-i18n="hero.tutorial.tutorial">Go to Tutorial</a>
+        <!-- Showcase -->
+        <section id="Showcase">
+            <div class="showcase">
+                <img src="/assets/images/mockups/google-calendar-showcase-month.png" alt="showcase" tabindex="0" role="button" aria-label="Pokaż przycisk showcase">
+                <div class="showcase-button-container">
+                    <a href="/showcase/" class="showcase-button" data-i18n="hero.buttons.showcase">Full Showcase</a>
                 </div>
             </div>
-            <div class="tutorial-text">
-                <p data-i18n="tutorial.description2">Step-by-step instructions for importing schedules into various calendar applications like:</p>
-                <a href="/tutorials/apple-calendar/" class="tutorial-button" data-i18n="tutorial.buttons.apple-calendar">Apple Calendar</a>
-                <a href="/tutorials/google-calendar/" class="tutorial-button" data-i18n="tutorial.buttons.google-calendar">Google Calendar</a>
-            </div>
-        </div>
-    </section>
+        </section>
 
-    <section id="about">
-        <div class="learn-more">
-            <h1 data-i18n="about.title">Learn More - about project</h1>
-            <p data-i18n="about.text">
-                My project aims to provide students of Military University of Technology , easy access 
-                to current class schedules and seamlessly view of lecturers, locations and full course names. 
-            </p>
-            <p data-i18n="about.text2">
-                I implemented advanced website scraping and data parsing to automatically generate and distribute 
-                calendars in popular formats (e.g., iCal). Click the button below to see and learn how python 
-                scripts work and how they are used to automate the process and maintain.
-            </p>
-            <div class="learn-more-button-container">
-                <a href="/about/" class="learn-more-button" data-i18n="about.button">Learn</a>
+        <!-- About the project -->
+        <section id="about">
+            <div class="learn-more">
+                <h1 data-i18n="about.title">Learn More - about project</h1>
+                <p data-i18n="about.text">
+                    My project aims to provide students of Military University of Technology , easy access 
+                    to current class schedules and seamlessly view of lecturers, locations and full course names. 
+                </p>
+                <p data-i18n="about.text2">
+                    I implemented advanced website scraping and data parsing to automatically generate and distribute 
+                    calendars in popular formats (e.g., iCal). Click the button below to see and learn how python 
+                    scripts work and how they are used to automate the process and maintain.
+                </p>
+                <div class="learn-more-button-container">
+                    <a href="/about/" class="learn-more-button" data-i18n="about.button">Learn</a>
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Installation Instructions -->
-    <section id="Installer">
-        <div class="installation">
-            <h1 data-i18n="install.title">Manual Installation</h1>
-            <p data-i18n-html="install.p1">You can install the WATcalendars project available on Github that include <img src="/assets/images/icons/python-icon.png" alt="python-icon"> Python Scripts.</p>
-            <p data-i18n="install.p2">Clone the repository to your local machine.</p>
-            <div class="command">
-                <code>git clone https://github.com/dominikx2002/WATcalendars.git</code>
-                <span class="sh">sh</span>
-                <span class="copy"><img src="/assets/images/icons/copy-icon.png" alt="copy-icon" onclick="copyToClipboard('git clone https://github.com/dominikx2002/WATcalendars.git', this)"></span>
+        <!-- tutorial -->
+        <section id="Tutorial">
+            <div class="tutorial">
+                <img src="/assets/images/icons/education.png" alt="tutorial-icon">
+                <div class="tutorial-header">
+                    <h1 data-i18n="tutorial.title">Get your calendar</h1>
+                    <p data-i18n="tutorial.description">Learn how to use WATcalendars with comprehensive tutorial.</p>
+                    <div class="tutorial-button-container">
+                        <a href="/tutorials/" class="tutorial-button" data-i18n="hero.tutorial.tutorial">Go to Tutorial</a>
+                    </div>
+                </div>
+                <div class="tutorial-text">
+                    <p data-i18n="tutorial.description2">Step-by-step instructions for importing schedules into various calendar applications like:</p>
+                    <a href="/tutorials/apple-calendar/" class="tutorial-button" data-i18n="tutorial.buttons.apple-calendar">Apple Calendar</a>
+                    <a href="/tutorials/google-calendar/" class="tutorial-button" data-i18n="tutorial.buttons.google-calendar">Google Calendar</a>
+                </div>
             </div>
-            <p data-i18n="install.p3">Next add rights to the setup script.</p>
-            <div class="command">
-                <code>cd WATcalendars && chmod +x setup.sh</code>
-                <span class="sh">sh</span>
-                <span class="copy"><img src="/assets/images/icons/copy-icon.png" alt="copy-icon" onclick="copyToClipboard('cd WATcalendars && chmod +x setup.sh', this)"></span>
+        </section>
+
+        <!-- Installation Instructions -->
+        <section id="Installer">
+            <div class="installation">
+                <h1 data-i18n="install.title">Manual Installation</h1>
+                <p data-i18n-html="install.p1">You can install the WATcalendars project available on Github that include <img src="/assets/images/icons/python-icon.png" alt="python-icon"> Python Scripts.</p>
+                <p data-i18n="install.p2">Clone the repository to your local machine.</p>
+                <div class="command">
+                    <code>git clone https://github.com/dominikx2002/WATcalendars.git</code>
+                    <span class="sh">sh</span>
+                    <span class="copy"><img src="/assets/images/icons/copy-icon.png" alt="copy-icon" onclick="copyToClipboard('git clone https://github.com/dominikx2002/WATcalendars.git', this)"></span>
+                </div>
+                <p data-i18n="install.p3">Next add rights to the setup script.</p>
+                <div class="command">
+                    <code>cd WATcalendars && chmod +x setup.sh</code>
+                    <span class="sh">sh</span>
+                    <span class="copy"><img src="/assets/images/icons/copy-icon.png" alt="copy-icon" onclick="copyToClipboard('cd WATcalendars && chmod +x setup.sh', this)"></span>
+                </div>
+                <p data-i18n="install.p4">Running following script will automaticaly install required dependencies.</p>
+                <div class="command">
+                    <code>./setup.sh</code>
+                    <span class="sh">sh</span>
+                    <span class="copy"><img src="/assets/images/icons/copy-icon.png" alt="copy-icon" onclick="copyToClipboard('./setup.sh', this)"></span>
+                </div>
+                <p data-i18n="install.p5">After that, you can Use the scraping scripts, Change them, Customize them, Fix as needed.</p>
+                <p data-i18n-html="install.p6">In the repository check "help.txt" file for available options and useful informations or simply type cat help.txt:</p>
+                <div class="command">
+                    <code>cat help.txt</code>
+                    <span class="sh">sh</span>
+                    <span class="copy"><img src="/assets/images/icons/copy-icon.png" alt="copy-icon" onclick="copyToClipboard('cat help.txt', this)"></span>
+                </div>
+                <p data-i18n-html="install.p7">
+                    Setup script to install the required dependencies are included for
+                    <img src="/assets/images/distribution/debian.png" alt=Debian> <strong>Debian</strong>,
+                    <img src="/assets/images/distribution/ubuntu.png" alt=Ubuntu> <strong>Ubuntu</strong>, or
+                    <img src="/assets/images/distribution/arch.png" alt=Arch> <strong>Arch</strong>.
+                    <br>For other distros, please install <a href="/dependencies/">the dependencies</a> first.
+                </p>
             </div>
-            <p data-i18n="install.p4">Running following script will automaticaly install required dependencies.</p>
-            <div class="command">
-                <code>./setup.sh</code>
-                <span class="sh">sh</span>
-                <span class="copy"><img src="/assets/images/icons/copy-icon.png" alt="copy-icon" onclick="copyToClipboard('./setup.sh', this)"></span>
-            </div>
-            <p data-i18n="install.p5">After that, you can Use the scraping scripts, Change them, Customize them, Fix as needed.</p>
-            <p data-i18n-html="install.p6">In the repository check "help.txt" file for available options and useful informations or simply type cat help.txt:</p>
-            <div class="command">
-                <code>cat help.txt</code>
-                <span class="sh">sh</span>
-                <span class="copy"><img src="/assets/images/icons/copy-icon.png" alt="copy-icon" onclick="copyToClipboard('cat help.txt', this)"></span>
-            </div>
-            <p data-i18n-html="install.p7">
-                Setup script to install the required dependencies are included for
-                <img src="/assets/images/distribution/debian.png" alt=Debian> <strong>Debian</strong>,
-                <img src="/assets/images/distribution/ubuntu.png" alt=Ubuntu> <strong>Ubuntu</strong>, or
-                <img src="/assets/images/distribution/arch.png" alt=Arch> <strong>Arch</strong>.
-                <br>For other distros, please install <a href="/dependencies/">the dependencies</a> first.
-            </p>
-        </div>
-    </section>
+        </section>
+
+    </div>
 
     <!-- Support WATcalendars -->
     <section id="support">
@@ -494,6 +521,6 @@
         </div>
     </div>
 
+<script src="/assets/js/main/showcase.js" defer></script>
 </body>
-
 </html>
