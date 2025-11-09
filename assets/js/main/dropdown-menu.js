@@ -26,20 +26,105 @@ function closeTopbar() {
 function setupDropdown(triggerSelector, menuSelector) {
     const trigger = document.querySelector(triggerSelector);
     const menu = document.querySelector(menuSelector);
+    // Link we want to keep visually hovered while its dropdown is open
+    const hoverLink = trigger ? trigger.querySelector('a[alt="navigation-hover"]') : null;
     let hideTimeout;
+
+    // Invisible bridge element to cover the gap between trigger and menu on desktop
+    let bridge = null;
+
+    function ensureBridge() {
+        if (bridge) return;
+        bridge = document.createElement('div');
+        bridge.className = 'dropdown-hover-bridge';
+        // Invisible but interactive area
+        Object.assign(bridge.style, {
+            position: 'fixed',
+            background: 'transparent',
+            pointerEvents: 'auto',
+            zIndex: '99999',
+            display: 'none'
+        });
+        bridge.addEventListener('mouseenter', () => {
+            clearTimeout(hideTimeout);
+            showMenu();
+        });
+        bridge.addEventListener('mouseleave', () => {
+            hideTimeout = setTimeout(() => {
+                if (!menu.matches(':hover') && !(trigger && trigger.matches(':hover'))) {
+                    hideMenu();
+                }
+            }, 100);
+        });
+        document.body.appendChild(bridge);
+    }
+
+    function positionBridge() {
+        if (!bridge || !trigger || !menu) return;
+        if (window.innerWidth <= 850) { bridge.style.display = 'none'; return; }
+        const t = trigger.getBoundingClientRect();
+        const m = menu.getBoundingClientRect();
+        const gapTop = t.bottom;
+        const gapBottom = m.top;
+        const height = Math.max(0, gapBottom - gapTop);
+        // If there's overlap or no gap, hide bridge
+        if (height <= 0) { bridge.style.display = 'none'; return; }
+        // Cover the horizontal span overlapping trigger and menu
+        const left = Math.max(0, Math.min(t.left, m.left));
+        const right = Math.min(window.innerWidth, Math.max(t.right, m.right));
+        const width = Math.max(0, right - left);
+        if (width <= 0) { bridge.style.display = 'none'; return; }
+        // Slightly enlarge for safety
+        const SAFE_PAD = 2;
+        bridge.style.left = (left - SAFE_PAD) + 'px';
+        bridge.style.top = gapTop + 'px';
+        bridge.style.width = (width + SAFE_PAD * 2) + 'px';
+        bridge.style.height = Math.max(10, height) + 'px';
+        bridge.style.display = 'block';
+    }
+
+    function attachBridgeListeners() {
+        window.addEventListener('scroll', positionBridge, true);
+        window.addEventListener('resize', positionBridge);
+    }
+
+    function detachBridgeListeners() {
+        window.removeEventListener('scroll', positionBridge, true);
+        window.removeEventListener('resize', positionBridge);
+    }
 
     function showMenu() {
         const rect = trigger.getBoundingClientRect();
         menu.classList.add('open');
+        // Force persistent hover styling while dropdown visible
+        if (hoverLink) hoverLink.classList.add('force-hover');
         requestAnimationFrame(() => {
             const menuRect = menu.getBoundingClientRect();
             menu.style.top = (rect.bottom + 2) + 'px';
-            menu.style.left = (rect.right - menuRect.width) + 'px';
+            // Left align dropdown with trigger's left edge; clamp so it doesn't overflow right edge
+            let left = rect.left;
+            const padding = 8; // small safety margin to viewport edge
+            const maxLeft = window.innerWidth - menuRect.width - padding;
+            if (left > maxLeft) left = Math.max(padding, maxLeft);
+            menu.style.left = left + 'px';
+            // Create and position bridge on desktop to span the gap
+            if (window.innerWidth > 850) {
+                ensureBridge();
+                positionBridge();
+                attachBridgeListeners();
+            }
         });
     }
 
     function hideMenu() {
         menu.classList.remove('open');
+        // Remove forced hover styling when dropdown hidden
+        if (hoverLink) hoverLink.classList.remove('force-hover');
+        // Hide and detach bridge
+        if (bridge) {
+            bridge.style.display = 'none';
+        }
+        detachBridgeListeners();
     }
 
     trigger.addEventListener('mouseenter', () => {
@@ -61,7 +146,7 @@ function setupDropdown(triggerSelector, menuSelector) {
     });
 
     menu.addEventListener('mouseleave', () => {
-        hideTimeout = setTimeout(hideMenu, 0);
+        hideTimeout = setTimeout(hideMenu, 100);
     });
 }
 
@@ -80,11 +165,17 @@ document.querySelectorAll('.dropdown-trigger').forEach(trigger => {
         const isOpen = dropdown.classList.contains('open');
         // Zamknij wszystkie inne otwarte dropdowny
         document.querySelectorAll('.dropdown-schedules.open, .dropdown-changelog.open, .dropdown-more.open').forEach(d => {
-            if (d !== dropdown) d.classList.remove('open');
+            if (d !== dropdown) {
+                d.classList.remove('open');
+                const otherLink = d.querySelector('a[alt="navigation-hover"]');
+                if (otherLink) otherLink.classList.remove('force-hover');
+            }
         });
 
         // Przełącz aktualnie kliknięty: jeśli był otwarty — zamknij, jeśli nie — otwórz
         dropdown.classList.toggle('open', !isOpen);
+        const anchor = dropdown.querySelector('a[alt="navigation-hover"]');
+        if (anchor) anchor.classList.toggle('force-hover', !isOpen);
     });
 });
 

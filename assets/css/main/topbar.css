@@ -10,10 +10,11 @@
     z-index: 99998;
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
-    background-color: rgba(0, 0, 0, 0.1);
+    background-color: rgba(0, 0, 0, 0.07);
     height: 75px;
     transition: min-height 0.3s, transform 0.25s cubic-bezier(.4,0,.2,1), opacity 0.2s ease;
     will-change: transform, opacity;
+    box-shadow: 0 1px 6px rgba(0,0,0,0.3);
 }
 
 #topbar.hide {
@@ -23,14 +24,15 @@
 }
 
 .logo {
-    display: flex;
-    position: relative;
+    display: flex;       
     align-items: center;
+    justify-content: center;
     gap: 5px;
 }
 
 .logo img {
-    height: 42px;
+    height: 55px;
+    margin-top: 0;          
     margin-right: 5px;
     width: auto;
 }
@@ -44,13 +46,25 @@
     cursor: pointer;
 }
 
-.decrypt-text .color {
-    color: green;
+nav a.navigation-home {
+    display: none;
 }
 
-.encrypted-char {
-    color: #888;
-    transition:  color 0.2s;
+nav a[alt="navigation-hover"] {
+    padding: 7px 17px;
+    border-radius: 5px;
+}
+
+.navigation .dropdown {
+    display: flex;
+    align-items: center;
+    position: relative;
+    text-decoration: none;
+    color: white;
+    font-size: 14px;
+    transition: all 0.3s ease; 
+    gap: 7px;
+    letter-spacing: 0.7px;
 }
 
 .navigation {
@@ -59,6 +73,20 @@
     gap: clamp(1rem, 4vw, 1.8rem);
     flex-wrap: wrap;
     margin: 0;
+}
+
+nav a:hover {
+    opacity: 1;
+}
+
+nav a[alt="navigation-hover"]:hover {
+    background-color: rgba(216, 216, 216, 0.158);
+}
+
+/* Keep hover look while dropdown is open (toggled from JS) */
+nav a[alt="navigation-hover"].force-hover {
+    background-color: rgba(216, 216, 216, 0.158);
+    opacity: 1;
 }
 
 nav a {
@@ -143,18 +171,7 @@ nav img[alt="Signal"] {
     margin-left: 10px;
 }
 
-nav a:hover {
-    opacity: 1;
-    color: rgba(55, 130, 84, 1);
-    filter: drop-shadow(0 0 5px rgba(55, 130, 84, 0.2));
-}
 
-/* active/current nav link styling (same feel as hover) */
-nav a.current {
-    opacity: 0.9;
-    color: rgba(55, 130, 84, 1);
-    filter: drop-shadow(0 0 5px rgba(55, 130, 84, 0.2));
-}
 
 nav .accordion-schedules,
 nav .accordion-changelog,
@@ -238,7 +255,7 @@ nav a.disabled .arrow img {
     display: flex;
     flex-direction: column;
     font-weight: 600;
-    margin-top: 15px;
+    margin-top: 20px;
     padding: 10px 10px;
     border-radius: 10px;
     border: 1px solid rgba(255,255,255,0.3);
@@ -299,10 +316,8 @@ body.dropdown-open .verse:hover .faculty {
 .menu-changelog a:hover,
 .menu-more a:hover {
     opacity: 1;
-    color: rgba(55, 130, 84, 1);
-    filter: drop-shadow(0 0 5px rgba(55, 130, 84, 0.2));
-    border-radius: 8px;
-    background-color: #92929219;
+    border-radius: 7px;
+    background-color: rgba(216, 216, 216, 0.158);
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
 }
@@ -442,6 +457,9 @@ svg {
         margin-left: 0px;
         width: auto;
     }
+    nav a.navigation-home {
+        display: flex;
+    }
     svg {
         margin-top: -3px;
         width: 50px;
@@ -575,17 +593,14 @@ svg {
         transition: margin-top 0.4s cubic-bezier(.4,0,.2,1);
     }
     #topbar .logo {
-        position: absolute;
-        top: 12px;
-        left: 4vw;
+        position: fixed;
+        justify-content: flex-start;
+        top: 8px;
+        left: 15px;
         transform: none; 
     }
     #topbar .logo img {
-        margin-top: 0px;
-    }
-
-    #topbar .logo .decrypt-text {
-        margin-top: -6px;
+        height: 48px;
     }
     #topbar .menu {
         position: absolute;
