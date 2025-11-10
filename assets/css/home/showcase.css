@@ -19,7 +19,7 @@
     position: relative;
     z-index: 1; /* pod overlayem z przyciskiem */
     width: 100%;
-    max-width: 1400px;
+    max-width: 70%;
     height: auto;
     object-fit: contain;
     transition: filter 220ms ease, transform 220ms ease;
@@ -108,3 +108,9 @@
 }
 
 body.lightbox-open { overflow: hidden; }
+
+@media (max-width: 800px) {
+    #Showcase img {
+        max-width: 95%;
+    }
+}

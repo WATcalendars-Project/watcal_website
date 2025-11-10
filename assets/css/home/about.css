@@ -20,3 +20,46 @@
     color: white;
     opacity: 0.8;
 }
+
+#about img[alt="console gif"] {
+    border-radius: calc(4px + 0.5vw);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    max-width: 70%;
+    pointer-events: none;
+}
+
+.learn-more-button-container .learn-more-button {
+    display: inline-block;
+    margin-top: 10px;
+    opacity: 0.8;
+    padding: calc(3px + 0.5vw) calc(16px + 1vw);
+    border-radius: 8px;
+    background: rgb(210, 210, 210);
+    border: 1px solid rgb(180, 180, 180);
+    color: black;
+    font-weight: 600;
+    font-size: calc(12px + 0.5vw);
+    text-decoration: none;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: background 0.3s ease, box-shadow 0.3s ease;
+}
+
+.learn-more-button-container .learn-more-button:hover {
+    opacity: 1;
+    background: rgb(229, 229, 229);
+}
+
+
+@media (max-width: 800px) {
+    #about img[alt="console gif"] {
+        max-width: 100%;
+    }
+
+    #about h1 {
+        font-size: 36px;
+    }
+
+    #about p {
+        font-size: 16px;
+    }
+}

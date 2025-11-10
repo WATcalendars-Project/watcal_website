@@ -15,7 +15,7 @@
 		transparent 100%
 	);
 	background-repeat: no-repeat;
-	padding-top: 30px;
+	padding-top: 0px;
 
     /* make footer a containing block for absolutely positioned children */
     position: relative;
