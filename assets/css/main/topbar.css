@@ -10,7 +10,7 @@
     z-index: 99998;
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
-    background-color: rgba(0, 0, 0, 0.07);
+    background-color: rgba(13, 17, 23, 0.07);
     height: 75px;
     transition: min-height 0.3s, transform 0.25s cubic-bezier(.4,0,.2,1), opacity 0.2s ease;
     will-change: transform, opacity;
@@ -43,7 +43,7 @@
     width: auto;
 }
 
-nav a[alt="logo-watcalendars"] img {
+nav a[alt="logo-watcalendars"] {
     opacity: 1 !important;
 }
 
@@ -503,7 +503,7 @@ body.dropdown-open .verse:hover .faculty {
     #topbar {
         backdrop-filter: blur(12px);
         -webkit-backdrop-filter: blur(12px);
-        background-color: rgba(0, 0, 0, 0.1);
+        background-color: rgba(13, 17, 23, 0.1);
     }
     .language {
         padding-top: 10px;
@@ -695,7 +695,7 @@ body.dropdown-open .verse:hover .faculty {
     #topbar.active {
         height: 89%;
         align-items: flex-start;
-        background-color: rgba(0, 0, 0, 0.405);
+        background-color: rgba(13, 17, 23, 0.405);
         padding-top: 12px;
     }
     .active .navigation {
