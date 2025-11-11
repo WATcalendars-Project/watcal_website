@@ -51,33 +51,21 @@
 
       // footer
       'footer.home': 'HOME',
-      'footer.home.elements': `
-        <a href="/#Tutorial" alt="normal">Instructions</a>
-        <a href="/#Showcase" alt="normal">Showcase</a>
-        <a href="/#Installer" alt="normal">Local Installation</a>
-        <a href="/#support" alt="normal">Donate</a>
-      `,
+      'footer.tutorials': 'Instructions',
+      'footer.showcase': 'Showcase',
+      'footer.installer': 'Local Installation',
+      'footer.support': 'Give Star',
       'footer.about': 'ABOUT PROJECT',
-      'footer.about.elements': `
-        <a href="/about/1" alt="normal">How it works</a>
-        <a href="/about/2" alt="normal">1. Python Scripts</a>
-        <a href="/about/3" alt="normal">2. Github Actions</a>
-        <a href="/about/4" alt="normal">3. Deployment</a>
-      `,
+      '#1': 'How it works',
+      '#2': '1. Python Scripts',
+      '#3': '2. Github Actions',
+      '#4': '3. Deployment',
       'footer.schedules': 'SCHEDULES',
       'footer.more': 'MORE',
-      'footer.more.elements': `
-        <a href="/dependencies/" alt="normal">Dependencies</a>
-        <a href="https://github.com/dominikx2002/WATcalendars/activity" target="_blank" alt="normal">GitHub Actions</a>
-        <div class="buttons">
-            <a href="/" class="get-started" data-i18n="footer.get-started">GO TO HOME PAGE</a>
-            <a href="https://github.com/dominikx2002/WATcalendars" class="github" target="_blank">GITHUB</a>
-        </div>
-        <a href="/feedback/" data-i18n="footer.feedback" alt="sections2">FEEDBACK</a>
-        <a href="/privacypolicy/" data-i18n="privacypolicy.feedback" alt="sections2">PRIVACY POLICY</a>
-        <a href="/license/" alt="sections2">LICENSE</a>
-        <a href="/license/" alt="signature">© DOMINIK SERAFIN 2025</a>
-      `,
+      'footer.dependencies': 'Dependencies',
+      'footer.feedback': 'FEEDBACK',
+      'footer.privacypolicy': 'PRIVACY POLICY',
+      'footer.license': 'LICENSE',
 
       // topbar
       'nav.home': 'Home',
@@ -154,7 +142,9 @@
 
       // tutorial
       'tutorial.title': 'Get Your Calendar',
-      'tutorial.footer': '<<Instruction>>',
+      'tutorial.description': 'Learn how to use WATcalendars with comprehensive tutorial.',
+      'hero.tutorial.tutorial': 'Go to Tutorial',
+      'tutorial.description2': `Step-by-step instructions for importing schedules into various calendar applications like:`,
       'hero.buttons.schedules': 'Schedules',
       'tutorial.iphone.step1': `Navigate to 
         <a href="/schedules/" class="get-started" data-i18n="hero.buttons.schedules">Schedules</a>
@@ -176,9 +166,7 @@
       'tutorial.google.step4': `After selecting your group, copy the link above the Google button starting with https://<br>and redirect to Google Calendar Settings by hitting the button.`,
       'tutorial.google.step5': `Log in to your Google account.`,
       'tutorial.google.step6': `On Desktop you need to go for "+" in "Other calendars" section and select "From URL" like on the screenshot.`,
-      'tutorial.google.step7': `You will be redirected to Google Calendar subscription Settings.`,
-      'tutorial.google.step8': `!IMPORTANT<br>Paste the link into the "URL" field and <strong>select "Set calendar as public"</strong>`,
-      'tutorial.google.step9': `Once you subscribe the calendar, leave the Settings section and after few seconds you will see your schedule.`,
+      'tutorial.google.step7': `!IMPORTANT<br>Paste the link into the "URL" field and <strong>select "Set calendar as public"</strong>`,
       'tutorial.google.done': `You're all set! Your WATcalendar will now appear in the Google Calendar with all the latest schedule information. Enjoy!`,
 
       'hero.buttons.schedules': 'Schedules',
@@ -189,6 +177,18 @@
       'tutorial.manual.step3': 'Once redirected to your faculty, select your group from the list.',
       'tutorial.manual.step4': `After selecting your group, download the .ics file by clicking "Download .ics" button.`,
       'tutorial.manual.done': `Click the downloaded file and choose your preferred application. Enjoy!`,
+
+      //showcase
+      'hero.buttons.showcase': 'Full Showcase',
+
+      // about
+      'about.title': 'Learn More - about project',
+      'about.text': `My project aims to provide students of Military University of Technology , easy access 
+        to current class schedules and seamlessly view of lecturers, locations and full course names.`,
+      'about.text2': `I implemented advanced website scraping and data parsing to automatically generate and distribute 
+        calendars in popular formats (e.g., iCal). Click the button below to see and learn how python 
+        scripts work and how they are used to automate the process and maintain.`,
+      'about.button': `Learn More`,
 
       // manual installation
       'install.title': 'Manual Installation',
@@ -205,10 +205,10 @@
         <br>For other distros, please install <a href="/dependencies/">the dependencies</a> first.`,
 
       //  support
-      'support.title': 'Give my Project a star on GitHub',
+      'support': 'Consider giving my project a star on GitHub',
       
       // license page
-      'footer.license': 'License',
+      'license': 'License',
       'license.text': `MIT License<br><br>
         Copyright © 2025 Dominik Serafin<br><br>
         Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -276,34 +276,22 @@
       `,
 
       // footer
-      'footer.home': 'STRONA GŁÓWNA',
-      'footer.home.elements': `
-        <a href="/#Tutorial" alt="normal">Instrukcje</a>
-        <a href="/#Showcase" alt="normal">Prezentacja</a>
-        <a href="/#Installer" alt="normal">Instalacja lokalna</a>
-        <a href="/#support" alt="normal">Wsparcie</a>
-      `,
+      'footer.home': 'STRONBA GŁÓWNA',
+      'footer.tutorials': 'Instrukcje',
+      'footer.showcase': 'Prezentacja',
+      'footer.installer': 'Instalacja lokalna',
+      'footer.support': 'Polub projekt',
       'footer.about': 'O PROJEKCIE',
-      'footer.about.elements': `
-        <a href="/about/1" alt="normal">Jak to działa</a>
-        <a href="/about/2" alt="normal">1. Skrypty Pythona</a>
-        <a href="/about/3" alt="normal">2. Github Actions</a>
-        <a href="/about/4" alt="normal">3. Wdrożenie</a>
-      `,
+      '#1': 'Jak to działa',
+      '#2': '1. Skrypty Pythona',
+      '#3': '2. Github Actions',
+      '#4': '3. Wdrożenie',
       'footer.schedules': 'PLANY ZAJĘĆ',
       'footer.more': 'WIĘCEJ',
-      'footer.more.elements': `
-        <a href="/dependencies/" alt="normal">Zależności</a>
-        <a href="https://github.com/dominikx2002/WATcalendars/activity" target="_blank" alt="normal">GitHub Actions</a>
-        <div class="buttons">
-            <a href="/" class="get-started" data-i18n="footer.get-started">GO TO HOME PAGE</a>
-            <a href="https://github.com/dominikx2002/WATcalendars" class="github" target="_blank">GITHUB</a>
-        </div>
-        <a href="/feedback/" data-i18n="footer.feedback" alt="sections2">FEEDBACK</a>
-        <a href="/privacypolicy/" data-i18n="privacypolicy.feedback" alt="sections2">POLITYKA PRYWATNOŚCI</a>
-        <a href="/license/" alt="sections2">LICENCJA</a>
-        <a href="/license/" alt="signature">© DOMINIK SERAFIN 2025</a>
-      `,
+      'footer.dependencies': 'Zależności',
+      'footer.feedback': 'FEEDBACK',
+      'footer.privacypolicy': 'POLITYKA PRYWATNOŚCI',
+      'footer.license': 'LICENCJA',
 
       // topbar
       'nav.home': 'Strona główna',
@@ -380,7 +368,9 @@
 
       // tutorial
       'tutorial.title': 'Ustaw swój plan zajęć w kalendarzu',
-      'tutorial.footer': '<<Instrukcja>>',
+      'tutorial.description': 'Dowiedz się, jak korzystać z WATcalendars dzięki kompleksowemu poradnikowi.',
+      'hero.tutorial.tutorial': 'Idź do Poradnika',
+      'tutorial.description2': `Krok po kroku instrukcje dotyczące importowania harmonogramów do różnych aplikacji kalendarzowych, takich jak:`,
       'hero.buttons.schedules': 'Plany zajęć',
       'tutorial.iphone.step1': `Przejdź do
         <a href="/schedules/" class="get-started" data-i18n="hero.buttons.schedules">Plany zajęć</a>
@@ -416,6 +406,18 @@
       'tutorial.manual.step4': `Po wybraniu grupy pobierz plik .ics, klikając przycisk "Pobierz .ics".`,
       'tutorial.manual.done': `Kliknij pobrany plik i wybierz preferowaną aplikację. Miłej zabawy!`,
 
+      //showcase
+      'hero.buttons.showcase': 'Pełny Pokaz',
+
+      // about
+      'about.title': 'Dowiedz się więcej - o projekcie',
+      'about.text': `Mój projekt ma na celu zapewnienie studentom Wojskowej Akademii Technicznej łatwy dostęp
+        do aktualnych planów zajęć - wygodne wyświetlanie wykładowców, miejsc i pełnych nazw zajęć.`,
+      'about.text2': `Zaimplementowałem zaawansowane skrypty do scrapowania stron internetowych i analizy danych, aby automatycznie generować i dystrybuować
+        kalendarze w popularnych formatach (np. iCal). Kliknij przycisk poniżej, aby zobaczyć i dowiedzieć się, jak działają skrypty Pythona
+        i jak są używane do automatyzacji procesu i jego utrzymania.`,
+      'about.button': `Dowiedz się więcej`,
+
       // manual installation
       'install.title': 'Instalacja ręczna projektu',
       'install.p1': 'Możesz zainstalować projekt WATcalendars dostępny na Githubie, który zawiera <img src="/assets/images/icons/python-icon.png" alt="python-icon"> skrypty Pythona.',
@@ -431,7 +433,7 @@
         <br>Dla innych dystrybucji, proszę najpierw zainstalować <a href="/dependencies/">zależności</a>.`,
 
       //  support
-      'support.title': 'Daj mojemu projektowi gwiazdkę na Githubie',
+      'support': 'Rozważ wystawienie gwiazdki mojemu projektowi na GitHubie',
 
 
 
@@ -439,7 +441,7 @@
 
 
       // license page
-      'footer.license': 'Licencja',
+      'license': 'Licencja',
       'license.text': `Licencja MIT<br><br>
 Copyright © 2025 Dominik Serafin<br><br>
 Niniejszym udziela się każdej osobie, która wejdzie w posiadanie kopii tego oprogramowania i powiązanej dokumentacji ("Oprogramowanie"), bezpłatnego zezwolenia na nieograniczone korzystanie z Oprogramowania, w tym bez ograniczeń prawa do używania, kopiowania, modyfikowania, łączenia, publikowania, rozpowszechniania, udzielania sublicencji i/lub sprzedaży kopii Oprogramowania, a także zezwalania osobom, którym Oprogramowanie zostało dostarczone, na to samo, z zastrzeżeniem następujących warunków:<br><br>
