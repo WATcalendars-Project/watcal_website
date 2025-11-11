@@ -1,5 +1,5 @@
 .installation {
-    margin-top: 150px;
+    margin-top: 100px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -10,7 +10,8 @@
 }
 
 .installation h1 {
-    font-size: 25px;
+    font-size: 48px;
+    font-weight: 600;
 }
 
 .installation .copy img {
@@ -127,7 +128,8 @@
     }
 
     .installation h1 {
-        font-size: 20px;
+        font-size: 36px;
+        font-weight: 500;
     }
 
     .installation .command .sh {

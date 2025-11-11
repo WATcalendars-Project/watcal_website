@@ -101,5 +101,10 @@ body.lightbox-open { overflow: hidden; }
 @media (max-width: 800px) {
     #Showcase img {
         max-width: 95%;
+        margin-top: 50px;
+    }
+
+    #Showcase .showcase-button {
+        margin-top: 50px;
     }
 }
