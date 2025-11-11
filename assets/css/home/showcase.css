@@ -40,18 +40,7 @@
     z-index: 2;                 /* nad obrazem */
 }
 
-#Showcase:hover img,
-#Showcase:focus-within img,
-#Showcase:active img {
-    filter: blur(4px) brightness(0.95);
-}
-
-#Showcase:hover .showcase-button-container,
-#Showcase:focus-within .showcase-button-container,
-#Showcase:active .showcase-button-container {
-    opacity: 1;
-    pointer-events: auto;       /* umożliwia kliknięcie przycisku */
-}
+/* Hover/focus/active effects disabled: blur/overlay are controlled only by .is-active (center + click) */
 /* Klasa JS dla dotyku – zachowuje się jak aktywny stan */
 #Showcase.is-active img {
     filter: blur(4px) brightness(0.95);

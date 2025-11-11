@@ -321,6 +321,7 @@
 		grid-column-gap: 0px;
 		grid-row-gap: 0px;
 		padding-top: 0px;
+		padding: 10px 10px;
 	}
 
 	.footer .home { grid-area: 1 / 1 / 2 / 2; }
