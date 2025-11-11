@@ -1,7 +1,7 @@
-#About .content h1.about-title {
+#Showcase .content h1.showcase-title {
     font-size: calc(24px + 1vw);
     font-weight: 700;
     text-align: center;
-    margin-top: 10%;
+    margin-top: 50%;
     color: white;
 }
