@@ -14,12 +14,7 @@
     flex-direction: row;
     align-items: center;
     gap: 20px;
-    --bg: linear-gradient(
-        20deg,
-        rgba(20, 56, 45, 0.5) 1%,
-        rgba(55, 130, 106, 0.5) 40%,
-        rgba(83, 237, 178, 0.5) 100%
-    );
+    --bg: radial-gradient(circle at 20% 120%, #146454, #146254, #175552, #162b34, #10161d, #0d1117, #0d1117, #10161d, #162b34, #175552, #146254, #146454);
     --text: #e5e5e5;
     background: var(--bg);
     border-radius: 1rem;
