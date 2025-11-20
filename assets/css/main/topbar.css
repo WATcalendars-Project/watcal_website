@@ -96,8 +96,8 @@
 }
 
 #topbar .navigation-links .arrow-down {
-    transform: rotate(45deg) translateY(-2px);
-    -webkit-transform: rotate(45deg) translateY(-2px);
+    transform: rotate(45deg) translateY(-5px);
+    -webkit-transform: rotate(45deg) translateY(-5px);
     transition: 0.3s cubic-bezier(0.075, 0.82, 0.165, 1);
 }
 
@@ -108,8 +108,8 @@
     border-radius: 6px;
     background-color: #6464643d;
     .arrow-down {
-        transform: rotate(-135deg) translateY(0px) translateX(-2px);
-        -webkit-transform: rotate(-135deg) translateY(0px) translateX(-2px);
+        transform: rotate(-135deg) translateY(2px) translateX(-2px);
+        -webkit-transform: rotate(-135deg) translateY(2px) translateX(-2px);
     }
 }
 
@@ -353,6 +353,12 @@
 }
 
 @media (max-width: 1300px) {
+    #topbar .navigation-buttons {
+        display: none;
+    }
+}
+
+@media (max-width: 1000px) {
     #topbar {
         height: 60px;
         padding: 0 10px;
@@ -365,6 +371,7 @@
         height: 45px;
         margin-top: 4px;
         margin-right: 3px;
+        margin-left: 3px;
     }
 
     #topbar .navigation-links,
@@ -380,7 +387,7 @@
         flex-direction: column;
         align-items: flex-start;
         padding: 8px 10px 0px;
-        height: auto;
+        height: 100%;
         background: #0e1318;
         box-shadow: 0 8px 24px rgba(0,0,0,0.4);
         overflow-y: auto;
@@ -388,26 +395,26 @@
     }
 
     #topbar.open .logo { 
+        position: absolute;
         order: 0; 
-        margin-left: 0px;
-        margin-top: -2.5px;
     }
     
     #topbar.open .menu { 
+        position: absolute;
         order: 1; 
         align-self: flex-end; 
-        margin-top: -52.5px; 
+        margin-top: 0px; 
         margin-right: 0px; 
     }
 
     #topbar.open .navigation-links {
         order: 2; 
         display: flex; 
+        position: relative;
         flex-direction: column; 
         align-items: flex-start;
-        justify-content: space-between;
         width: 100%;
-        margin-top: 25px; 
+        margin-top: 60px; 
         margin-left: -15px;
         margin-right: 0px;
         gap: 0px;
@@ -425,7 +432,7 @@
     #topbar.open .navigation-separator { display: none; }
     #topbar.open .navigation-links > div { 
         display: flex; 
-        flex-direction: column; /* allow dropdown to sit below link */
+        flex-direction: column; 
         align-items: stretch; 
         width: 100%; 
     }
@@ -441,7 +448,7 @@
     #topbar.open .navigation-links > div > .arrow-down { 
         flex: 0 0 auto; 
         margin-left: auto;
-        margin-right: 40px;
+        margin-right: 45px;
         transform: rotate(45deg) translateY(-35px), translateX(0px);
         -webkit-transform: rotate(45deg) translateY(-35px) translateX(0px);
         transition: none;
@@ -465,9 +472,9 @@
         margin: -5px 0 10px; 
         margin-left: -10px;
         padding-right: 20px;
-        box-shadow: none; 
-        border-top: 1px solid rgba(255,255,255,0.1);
-        background: rgba(0,0,0,0.20); 
+        box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.152);
+        border-top: 1px solid rgba(255, 255, 255, 0.07);
+        background: #151d25;
         z-index: auto; 
         border-radius: 0px;
     }
@@ -480,10 +487,12 @@
     #topbar.open .navigation-buttons { 
         order: 3; 
         display: flex; 
+        position: relative;
         flex-direction: column; 
         gap: 15px; 
-        margin-top: 14px; 
+        margin-top: auto; 
         width: 100%;
+        margin-bottom: 20px;
     }
 
     #topbar.open .navigation-buttons .getstarted-topbar a.getstarted-button,
@@ -495,16 +504,17 @@
 
     #topbar.open .language-container { 
         display: flex;
+        margin-left: 0px;
         order: 4; 
-        margin-top: 20px;
+        margin-top: 0px;
         justify-content: center;
-        width: 85%;
+        width: 97%;
     }
 
     #topbar.open .topbar-icons { 
         order: 5; 
         display: flex; 
-        margin-top: 30px; 
+        margin-top: 20px; 
         justify-content: center;
         width: 100%;
         margin-bottom: 20px;

@@ -74,6 +74,7 @@
 		rgba(13, 17, 23, 0) 100%
 	);
 	z-index: 2;
+	margin-top: 300px;
 }
 
 .footer .logo::before {
