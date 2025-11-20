@@ -43,17 +43,6 @@
                 <span id="decrypt" class="decrypt-text" data-original="WATcalendars" data-target="@DominikSerafin">WATcalendars</span>
             </div>
         </a>
-        <div class="media-container">
-            <div class="language">
-                <label for="checkbox">
-                    <input type="checkbox" name="" id="checkbox">
-                    <div class="toggle">
-                        <div class="EN"></div>
-                        <div class="PL"></div>
-                    </div>
-                </label>
-            </div>
-        </div>
         <div class="menu">
             <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 200 200" onclick="this.classList.toggle('active')">
                 <g stroke-width="6.5" stroke-linecap="round">
@@ -93,100 +82,75 @@
                 />
                 </g>
             </svg>
-            <div class="navigation">
-                <div class="line1"></div>
-                <div class="dropdown">
-                    <a href="/" data-i18n="nav.home" class="navigation-home" alt="navigation-hover">Home</a>
-                    <a href="/about/" data-i18n="nav.about" alt="navigation-hover">About</a>
-                    <div class="dropdown-schedules">
-                        <a href="/schedules/" class="dropdown-trigger" alt="navigation-hover"><span data-i18n="nav.schedules">Schedules</span> <span class="down_arrow"><img src="/assets/images/icons/down-arrow.svg" alt="arrow"></span></a>
-                        <div class="accordion-schedules">
-                            <div class="column1">
-                                <a href="/schedules/ioe/">IOE</a>
-                                <a href="/schedules/wcy/">WCY</a>
-                                <a href="/schedules/wel/">WEL</a>
-                                <a href="/schedules/wig/">WIG</a>
-                            </div>
-                            <div class="column2">
-                                <a href="/schedules/wim/">WIM</a>
-                                <a href="/schedules/wlo/">WLO</a>
-                                <a href="/schedules/wml/">WML</a>
-                                <a href="/schedules/wtc/">WTC</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="dropdown-changelog">
-                        <a href="#" class="dropdown-trigger" alt="navigation-hover">Project <span class="down_arrow"><img src="/assets/images/icons/down-arrow.svg" alt="arrow"></span></a>
-                        <div class="accordion-changelog">
-                            <a href="https://github.com/dominikx2002/WATcalendars/activity" target="_blank"><span data-i18n="nav.changelog">GitHub Actions</span></a>
-                        </div>
-                    </div>
-                    <div class="dropdown-more">
-                        <a href="#" class="dropdown-trigger" alt="navigation-hover"><span data-i18n="nav.more">More</span> <span class="down_arrow"><img src="/assets/images/icons/down-arrow.svg" alt="arrow"></span></a>
-                        <div class="accordion-more">
-                            <a href="/tutorials/"><span data-i18n="nav.more.tutorial">Tutorial</span></a>
-                            <a href="/#Installer"><span data-i18n="nav.more.installer">Local Installation</span></a>
-                            <a href="/dependencies/"><span data-i18n="nav.more.dependencies">Dependencies</span></a>
-                            <a href="/showcase/"><span data-i18n="nav.more.showcase">Showcase</span></a>
-                            <a href="/feedback/"><span data-i18n="nav.more.feedback">Feedback</span></a>
-                            <a href="/license/"><span data-i18n="nav.more.license">License</span></a>
-                            <a href="/privacypolicy/"><span data-i18n="nav.more.privacypolicy">Privacy Policy</span></a>
-                        </div>
-                    </div>
+        </div>
+        <div class="navigation-links">
+            <div class="navigation-schedules">
+                <a>Schedules</a><i class="arrow-down"></i>
+                <div class="dropdown-schedules">
+                    <a href="/schedules/ioe">IOE</a>
+                    <a href="/schedules/wcy">WCY</a>
+                    <a href="/schedules/wel">WEL</a>
+                    <a href="/schedules/wig">WIG</a>
+                    <a href="/schedules/wim">WIM</a>
+                    <a href="/schedules/wlo">WLO</a>
+                    <a href="/schedules/wml">WML</a>
+                    <a href="/schedules/wtc">WTC</a>
                 </div>
-                <div class="separator"></div>
-                <div class="media-buttons">
-                    <div class="getstarted-topbar">
-                        <a href="/schedules/" class="getstarted-button" data-i18n="hero.buttons.get-started">Get Started</a>
-                    </div>
-                    <div class="tutorial-topbar">
-                        <a href="/tutorials/" class="tutorial-button" data-i18n="hero.button-topbar.tutorial">Tutorial For All</a>
-                    </div>
+            </div>
+            <div class="navigation-about">
+                <a href="/about/">About </a>
+            </div>
+            <div class="navigation-project">
+                <a>Project</a><i class="arrow-down"></i>
+                <div class="dropdown-project">
+                    <a href="https://github.com/WATcalendars-Project/WATcalendars/actions" target="_blank">GitHub Actions</a>
+                    <a href="/dependencies/">Dependencies</a>
+                    <a href="/#Installer">Local Installation</a>
                 </div>
-                <div class="desktop-language-container">
-                    <div class="language">
-                        <label for="checkbox">
-                            <input type="checkbox" name="" id="checkbox">
-                            <div class="toggle">
-                                <div class="EN"></div>
-                                <div class="PL"></div>
-                            </div>
-                        </label>
-                    </div>
-                </div>
-                <div class="feedback">
-                    <a href="https://github.com/dominikx2002/WATcalendars" target="_blank">
-                        <img src="/assets/images/logo/github-mark-white.svg" alt="Github">
-                    </a>
-                    <a href="/feedback/">
-                        <img src="/assets/images/icons/feedback.svg" alt="Signal">
-                    </a>
+            </div>
+            <div class="navigation-more">
+                <a>More</a><i class="arrow-down"></i>
+                <div class="dropdown-more">
+                    <a href="/schedules/">Schedules</a>
+                    <a href="/tutorials/">Tutorials</a>
+                    <a href="/showcase/">Showcase</a>
+                    <a href="/feedback/">Feedback</a>
+                    <a href="/privacypolicy/">Privacy Policy</a>
+                    <a href="/license/">License</a>
                 </div>
             </div>
         </div>
+        <div class="navigation-separator"></div>
+        <div class="navigation-buttons">
+            <div class="getstarted-topbar">
+                <a href="/schedules/" class="getstarted-button" data-i18n="hero.buttons.get-started">Get Started</a>
+            </div>
+            <div class="tutorial-topbar">
+                <a href="/tutorials/" class="tutorial-button" data-i18n="hero.button-topbar.tutorial">Tutorial For All</a>
+            </div>
+        </div>
+        <div class="language-container">
+            <div class="language">
+                <label for="checkbox">
+                    <input type="checkbox" name="" id="checkbox">
+                    <div class="toggle">
+                        <div class="EN"></div>
+                        <div class="PL"></div>
+                    </div>
+                </label>
+            </div>
+        </div>
+        <div class="topbar-icons">
+            <div class="feedback">
+                <a href="https://github.com/dominikx2002/WATcalendars" target="_blank">
+                    <img src="/assets/images/logo/github-mark-white.svg">
+                </a>
+                <a href="/feedback/">
+                    <img src="/assets/images/icons/feedback.svg">
+                </a>
+            </div>
+        </div>
     </nav>
-    <div class="menu-schedules">
-        <a href="/schedules/ioe/">IOE <span class="arrow"><img src="/assets/images/icons/right-arrow.svg" alt="arrow"></span></a>
-        <a href="/schedules/wcy/">WCY <span class="arrow"><img src="/assets/images/icons/right-arrow.svg" alt="arrow"></span></a>
-        <a href="/schedules/wel/">WEL <span class="arrow"><img src="/assets/images/icons/right-arrow.svg" alt="arrow"></span></a>
-        <a href="/schedules/wig/">WIG <span class="arrow"><img src="/assets/images/icons/right-arrow.svg" alt="arrow"></span></a>
-        <a href="/schedules/wim/">WIM <span class="arrow"><img src="/assets/images/icons/right-arrow.svg" alt="arrow"></span></a>
-        <a href="/schedules/wlo/">WLO <span class="arrow"><img src="/assets/images/icons/right-arrow.svg" alt="arrow"></span></a>
-        <a href="/schedules/wml/">WML <span class="arrow"><img src="/assets/images/icons/right-arrow.svg" alt="arrow"></span></a>
-        <a href="/schedules/wtc/">WTC <span class="arrow"><img src="/assets/images/icons/right-arrow.svg" alt="arrow"></span></a>
-    </div>
-    <div class="menu-changelog">
-        <a href="https://github.com/dominikx2002/WATcalendars/activity" target="_blank"><span data-i18n="nav.changelog">GitHub Actions</span> <span class="arrow"><img src="/assets/images/icons/right-arrow.svg" alt="arrow"></span></a>
-    </div>
-    <div class="menu-more">
-        <a href="/tutorials/"><span data-i18n="nav.more.tutorial">Tutorial</span></a>
-        <a href="/#Installer"><span data-i18n="nav.more.installer">Local Installation</span></a>
-        <a href="/dependencies/"><span data-i18n="nav.more.dependencies">Dependencies</span> <span class="arrow"><img src="/assets/images/icons/right-arrow.svg" alt="arrow"></span></a>
-        <a href="/showcase/"><span data-i18n="nav.more.showcase">Showcase</span></a>
-        <a href="/feedback/"><span data-i18n="nav.more.feedback">Feedback</span> <span class="arrow"><img src="/assets/images/icons/right-arrow.svg" alt="arrow"></span></a>
-        <a href="/license/"><span data-i18n="nav.more.license">License</span> <span class="arrow"><img src="/assets/images/icons/right-arrow.svg" alt="arrow"></span></a>
-        <a href="/privacypolicy/"><span data-i18n="nav.more.privacypolicy">Privacy Policy</span> <span class="arrow"><img src="/assets/images/icons/right-arrow.svg" alt="arrow"></span></a>
-    </div>
 
 
     <div class="mobile-container">

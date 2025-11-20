@@ -1,221 +1,177 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const topbar = document.getElementById('topbar');
-    const svg = document.querySelector('.menu svg');
-    if (svg && topbar) {
-        svg.addEventListener('click', (e) => {
-            e.stopPropagation();
-            topbar.classList.toggle('active');
-            
-            if (topbar.classList.contains('active')) {
-                openTopbar();
-            } else {
-                closeTopbar();
-            }
-        });
-    }
-});
+// Dropdown hover behavior for topbar navigation
+// Shows dropdowns on hover/focus for desktop (pointer: fine), with graceful hide and outside/Escape close.
 
-function openTopbar() {
-    document.body.classList.add('noscroll');
-}
+(function () {
+	const onReady = (fn) => {
+		if (document.readyState === 'loading') {
+			document.addEventListener('DOMContentLoaded', fn, { once: true });
+		} else {
+			fn();
+		}
+	};
 
-function closeTopbar() {
-    document.body.classList.remove('noscroll');
-}
+	onReady(() => {
+		// Only enable hover-driven dropdowns on devices that support hover (desktops/laptops).
+		const supportsHover = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
 
-function setupDropdown(triggerSelector, menuSelector) {
-    const trigger = document.querySelector(triggerSelector);
-    const menu = document.querySelector(menuSelector);
-    // Link we want to keep visually hovered while its dropdown is open
-    const hoverLink = trigger ? trigger.querySelector('a[alt="navigation-hover"]') : null;
-    const topbar = document.getElementById('topbar');
-    const isMore = !!(trigger && trigger.classList.contains('dropdown-more'));
-    let hideTimeout;
+		const topbar = document.querySelector('#topbar');
+		if (!topbar) return;
 
-    // Invisible bridge element to cover the gap between trigger and menu on desktop
-    let bridge = null;
+		const pairs = [
+			{
+				name: 'schedules',
+				trigger: topbar.querySelector('.navigation-schedules'),
+				dropdown: topbar.querySelector('.dropdown-schedules'),
+			},
+			{
+				name: 'project',
+				trigger: topbar.querySelector('.navigation-project'),
+				dropdown: topbar.querySelector('.dropdown-project'),
+			},
+			{
+				name: 'more',
+				trigger: topbar.querySelector('.navigation-more'),
+				dropdown: topbar.querySelector('.dropdown-more'),
+			},
+		].filter(p => p.trigger && p.dropdown);
 
-    function ensureBridge() {
-        if (bridge) return;
-        bridge = document.createElement('div');
-        bridge.className = 'dropdown-hover-bridge';
-        // Invisible but interactive area
-        Object.assign(bridge.style, {
-            position: 'fixed',
-            background: 'transparent',
-            pointerEvents: 'auto',
-            zIndex: '99999',
-            display: 'none'
-        });
-        bridge.addEventListener('mouseenter', () => {
-            clearTimeout(hideTimeout);
-            showMenu();
-        });
-        bridge.addEventListener('mouseleave', () => {
-            hideTimeout = setTimeout(() => {
-                if (!menu.matches(':hover') && !(trigger && trigger.matches(':hover'))) {
-                    hideMenu();
-                }
-            }, 100);
-        });
-        document.body.appendChild(bridge);
-    }
+		if (!pairs.length) return;
 
-    function positionBridge() {
-        if (!bridge || !trigger || !menu) return;
-        if (window.innerWidth <= 850) { bridge.style.display = 'none'; return; }
-        const t = trigger.getBoundingClientRect();
-        const m = menu.getBoundingClientRect();
-        const gapTop = t.bottom;
-        const gapBottom = m.top;
-        const height = Math.max(0, gapBottom - gapTop);
-        // If there's overlap or no gap, hide bridge
-        if (height <= 0) { bridge.style.display = 'none'; return; }
-        // Cover the horizontal span overlapping trigger and menu
-        const left = Math.max(0, Math.min(t.left, m.left));
-        const right = Math.min(window.innerWidth, Math.max(t.right, m.right));
-        const width = Math.max(0, right - left);
-        if (width <= 0) { bridge.style.display = 'none'; return; }
-        // Slightly enlarge for safety
-        const SAFE_PAD = 2;
-        bridge.style.left = (left - SAFE_PAD) + 'px';
-        bridge.style.top = gapTop + 'px';
-        bridge.style.width = (width + SAFE_PAD * 2) + 'px';
-        bridge.style.height = Math.max(10, height) + 'px';
-        bridge.style.display = 'block';
-    }
+		// Ensure triggers are positioned for absolute dropdown anchoring.
+		pairs.forEach(({ trigger }) => {
+			const style = window.getComputedStyle(trigger);
+			if (style.position === 'static') {
+				trigger.style.position = 'relative';
+			}
+		});
 
-    function attachBridgeListeners() {
-        window.addEventListener('scroll', positionBridge, true);
-        window.addEventListener('resize', positionBridge);
-    }
+		// Mark dropdown containers with a class for external CSS styling
+		pairs.forEach(({ dropdown }) => dropdown.classList.add('dropdown-panel'));
 
-    function detachBridgeListeners() {
-        window.removeEventListener('scroll', positionBridge, true);
-        window.removeEventListener('resize', positionBridge);
-    }
+		let openName = null;
+		const hideTimers = new Map();
 
-    function showMenu() {
-        const rect = trigger.getBoundingClientRect();
-        // Prevent 'More' dropdown from opening if changelog is already open (avoid flicker)
-        if (isMore && document.querySelector('.dropdown-changelog.open')) {
-            if (hoverLink) hoverLink.classList.remove('force-hover');
-            return; // skip opening 'More'
-        }
-        menu.classList.add('open');
-        // Force persistent hover styling while dropdown visible
-        if (hoverLink) hoverLink.classList.add('force-hover');
-        // Mark topbar state when 'More' is open (helps CSS move elements below on mobile)
-        if (isMore && topbar) topbar.classList.add('more-open');
-        requestAnimationFrame(() => {
-            const menuRect = menu.getBoundingClientRect();
-            menu.style.top = (rect.bottom + 2) + 'px';
-            // Left align dropdown with trigger's left edge; clamp so it doesn't overflow right edge
-            let left = rect.left;
-            const padding = 8; // small safety margin to viewport edge
-            const maxLeft = window.innerWidth - menuRect.width - padding;
-            if (left > maxLeft) left = Math.max(padding, maxLeft);
-            menu.style.left = left + 'px';
-            // Create and position bridge on desktop to span the gap
-            if (window.innerWidth > 850) {
-                ensureBridge();
-                positionBridge();
-                attachBridgeListeners();
-            }
-        });
-    }
+		function getAnchor(trigger) {
+			return trigger.querySelector('a');
+		}
 
-    function hideMenu() {
-        menu.classList.remove('open');
-        // Remove forced hover styling when dropdown hidden
-        if (hoverLink) hoverLink.classList.remove('force-hover');
-        if (isMore && topbar) topbar.classList.remove('more-open');
-        // Hide and detach bridge
-        if (bridge) {
-            bridge.style.display = 'none';
-        }
-        detachBridgeListeners();
-    }
+		function showDropdown(name) {
+			// Hide any other open dropdown first
+			pairs.forEach(p => {
+				if (p.name !== name) hideDropdown(p.name, true);
+			});
 
-    trigger.addEventListener('mouseenter', () => {
-        clearTimeout(hideTimeout);
-        showMenu();
-    });
+			const pair = pairs.find(p => p.name === name);
+			if (!pair) return;
 
-    trigger.addEventListener('mouseleave', () => {
-        hideTimeout = setTimeout(() => {
-            if (!menu.matches(':hover')) {
-                hideMenu();
-            }
-        }, 100);
-    });
+			clearHideTimer(name);
 
-    menu.addEventListener('mouseenter', () => {
-        clearTimeout(hideTimeout);
-        showMenu();
-    });
+			pair.dropdown.classList.add('open');
+			const anchor = getAnchor(pair.trigger);
+			if (anchor) anchor.setAttribute('aria-expanded', 'true');
+			openName = name;
+		}
 
-    menu.addEventListener('mouseleave', () => {
-        hideTimeout = setTimeout(hideMenu, 100);
-    });
-}
+		function hideDropdown(name, immediate = false) {
+			const pair = pairs.find(p => p.name === name);
+			if (!pair) return;
 
-setupDropdown('.dropdown-schedules', '.menu-schedules');
-setupDropdown('.dropdown-changelog', '.menu-changelog');
-setupDropdown('.dropdown-more', '.menu-more');
+			const doHide = () => {
+				pair.dropdown.classList.remove('open');
+				const anchor = getAnchor(pair.trigger);
+				if (anchor) anchor.setAttribute('aria-expanded', 'false');
+				if (openName === name) openName = null;
+			};
 
-document.querySelectorAll('.dropdown-trigger').forEach(trigger => {
-    trigger.addEventListener('click', function(e){
-        if(window.innerWidth > 850) return;
+			if (immediate) {
+				clearHideTimer(name);
+				doHide();
+			} else {
+				startHideTimer(name, doHide);
+			}
+		}
 
-        e.preventDefault();
-        const dropdown = this.closest('.dropdown-schedules, .dropdown-changelog, .dropdown-more');
-        if(!dropdown) return;
+		function startHideTimer(name, fn) {
+			clearHideTimer(name);
+			const id = setTimeout(fn, 150);
+			hideTimers.set(name, id);
+		}
 
-        const isOpen = dropdown.classList.contains('open');
-        // Zamknij wszystkie inne otwarte dropdowny
-        document.querySelectorAll('.dropdown-schedules.open, .dropdown-changelog.open, .dropdown-more.open').forEach(d => {
-            if (d !== dropdown) {
-                d.classList.remove('open');
-                const otherLink = d.querySelector('a[alt="navigation-hover"]');
-                if (otherLink) otherLink.classList.remove('force-hover');
-                // Jeśli zamykamy 'More', zdejmij stan z topbara
-                if (d.classList.contains('dropdown-more')) {
-                    const tb = document.getElementById('topbar');
-                    if (tb) tb.classList.remove('more-open');
-                }
-            }
-        });
+		function clearHideTimer(name) {
+			const id = hideTimers.get(name);
+			if (id) {
+				clearTimeout(id);
+				hideTimers.delete(name);
+			}
+		}
 
-        // Przełącz aktualnie kliknięty: jeśli był otwarty — zamknij, jeśli nie — otwórz
-        dropdown.classList.toggle('open', !isOpen);
-        const anchor = dropdown.querySelector('a[alt="navigation-hover"]');
-        if (anchor) anchor.classList.toggle('force-hover', !isOpen);
-        // Ustaw klasę na #topbar kiedy otwieramy/zamykamy 'More' (mobile)
-        if (dropdown.classList.contains('dropdown-more')) {
-            const tb = document.getElementById('topbar');
-            if (tb) tb.classList.toggle('more-open', !isOpen);
-        }
-    });
-});
+		function insidePairEl(name, target) {
+			const pair = pairs.find(p => p.name === name);
+			if (!pair) return false;
+			return pair.trigger.contains(target) || pair.dropdown.contains(target);
+		}
 
-// Obsługa linków anchor w menu mobilnym
-document.querySelectorAll('.accordion-schedules a, .accordion-changelog a, .accordion-more a').forEach(link => {
-    link.addEventListener('click', function(e) {
-        if (this.getAttribute('href').startsWith('#') || this.getAttribute('href').includes('#')) {
-            const topbar = document.getElementById('topbar');
-            const svg = document.querySelector('.menu svg');
-            if (topbar && topbar.classList.contains('active')) {
-                topbar.classList.remove('active');
-                if (svg && svg.classList.contains('active')) {
-                    svg.classList.remove('active');
-                }
-                if (typeof closeTopbar === 'function') {
-                    closeTopbar();
-                }
-            }
-        }
-    });
-});
+		// Hover and focus handlers
+		pairs.forEach(({ name, trigger, dropdown }) => {
+			// Accessibility: initialize aria-expanded on anchors
+			const anchor = getAnchor(trigger);
+			if (anchor) {
+				anchor.setAttribute('aria-haspopup', 'true');
+				anchor.setAttribute('aria-expanded', 'false');
+				anchor.setAttribute('role', 'button');
+			}
 
+			// Hover only when supported
+			if (supportsHover) {
+				trigger.addEventListener('mouseenter', () => showDropdown(name));
+				trigger.addEventListener('mouseleave', () => hideDropdown(name));
+				dropdown.addEventListener('mouseenter', () => showDropdown(name));
+				dropdown.addEventListener('mouseleave', () => hideDropdown(name));
+			}
+
+			// Keyboard focus support
+			trigger.addEventListener('focusin', () => showDropdown(name));
+			trigger.addEventListener('focusout', (e) => {
+				// If focus moves outside trigger+dropdown, hide
+				setTimeout(() => {
+					const active = document.activeElement;
+					if (!insidePairEl(name, active)) hideDropdown(name, true);
+				}, 0);
+			});
+
+			// Optional: click on the trigger toggles on touch/non-hover devices
+			trigger.addEventListener('click', (e) => {
+				if (supportsHover) return; // do not toggle on desktop via click
+				const isInsideLink = e.target.closest('a[href]');
+				// If the click is on the label (no href) or on the container, toggle dropdown
+				if (!isInsideLink || isInsideLink.getAttribute('href') === '#') {
+					e.preventDefault();
+					if (openName === name) hideDropdown(name, true); else showDropdown(name);
+				}
+			});
+		});
+
+		// Close on outside click
+		document.addEventListener('pointerdown', (e) => {
+			if (!openName) return;
+			const isInsideAny = pairs.some(p => p.trigger.contains(e.target) || p.dropdown.contains(e.target));
+			if (!isInsideAny) {
+				hideDropdown(openName, true);
+			}
+		});
+
+		// Close on Escape
+		document.addEventListener('keydown', (e) => {
+			if (e.key === 'Escape' && openName) {
+				hideDropdown(openName, true);
+				// Return focus to the trigger anchor for accessibility
+				const pair = pairs.find(p => p.name === openName);
+				if (pair) {
+					const anchor = getAnchor(pair.trigger);
+					if (anchor) anchor.focus();
+				}
+			}
+		});
+	});
+})();
 
