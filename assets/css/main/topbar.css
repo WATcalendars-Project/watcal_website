@@ -467,7 +467,7 @@
 
     #topbar.open .navigation-links [class^="dropdown-"] {
         position: static; 
-        width: 100%;
+        width: 110%;
         transform: none !important; 
         
         display: block;
